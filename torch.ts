@@ -308,6 +308,18 @@ namespace Torch {
         return x > 0 ? x : alpha * (Math.exp(x) - 1);
     }
 
+    export function hardSigmoid(x: number): number {
+        return Math.max(0, Math.min(1, (0.2 * x + 0.5)));
+    }
+
+    export function bentIdentity(x: number): number {
+        return (Math.sqrt(x * x + 1) - 1) / 2 + x;
+    }
+
+    export function mish(x: number): number {
+        return x * tanh(Math.log(1 + Math.exp(x)));
+    }
+
     export function swish(x: number): number {
         return x / (1 + Math.exp(-x)); // Uses sigmoid-like smoothing
     }

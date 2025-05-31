@@ -7,7 +7,7 @@ Torch is a lightweight **neural network library** designed for use within **Make
 - **Neuron & Linear Layers** → Implements simple neuron models and fully connected layers.
 - **Convolutional Layer** → Enables basic convolution operations for feature extraction.
 - **Training Support** → Uses **Mean Squared Error (MSE)** loss and backpropagation for weight updates.
-- **Activation Functions** → Includes **ReLU, Sigmoid, Tanh, Leaky ReLU, Softmax, ELU, Swish, and GELU** for non-linear transformations.
+- **Activation Functions** → Includes **ReLU, Sigmoid, Tanh, Leaky ReLU, Softmax, ELU, Swish, GELU, Hard Sigmoid, Bent Identity, and Mish** for non-linear transformations.
 
 ## 🔗 Installation & Usage
 
