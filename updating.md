@@ -12,8 +12,8 @@ This guide explains how to **update models when new versions of Torch are releas
 |------------|----------------|---------------------|
 | **1.1.x** | Added ConvLayer support | Use `Torch.ConvLayer(...)` for CNN-based models |
 | **1.2.x** | Expanded activation functions | Update `Torch.ReLU` to `Torch.relu`, `Torch.Sigmoid` to `Torch.sigmoid` |
-| **1.3.x** | Optimized `matmul()` | Ensure matrix multiplication calls align with new implementation |
-| **1.4.x** | Improved memory handling | Replace manual allocations with pre-allocated tensors |
+| **1.3.x** | Optimized `matmul()` | Ensure matrix multiplication usage does not use old features/bugs |
+| **1.4.x** | Improved memory handling | None Needed unless the memory allocation used is critcal |
 | **1.5.x** | Introduced custom loss function support | Pass `Torch.mse`, `Torch.huber`, etc., in `train()` |
 | **1.6.x** | Added expanded error functions | Update models to use `Torch.mce`, `Torch.rmse`, etc. |
 | **1.7.x** | Silent Mode for training | Use `train(..., silent: true)` to disable logs |
