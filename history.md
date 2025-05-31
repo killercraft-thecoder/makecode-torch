@@ -1,3 +1,5 @@
+📌 Looking for the README? [Click here](https://github.com/killercraft-thecoder/makecode-torch/blob/master/README.md)
+
 # 🔄 Torch - Version History
 
 ## **1.3.0** - Expanded Activation Functions
