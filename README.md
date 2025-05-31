@@ -10,7 +10,7 @@ Torch is a lightweight **neural network library** designed for use within **Make
 - **Activation Functions** → Includes **ReLU, Sigmoid, Tanh, Leaky ReLU, Softmax, ELU, Swish, GELU, Hard Sigmoid, Bent Identity, and Mish** for non-linear transformations.
 
 📌 [See Full Version History](https://github.com/killercraft-thecoder/makecode-torch/blob/master/history.md)
-
+📌 [See How to Update Models](https://github.com/killercraft-thecoder/makecode-torch/blob/master/updating.md)
 ## 🔗 Installation & Usage
 
 ### ✅ **Use as an Extension**
@@ -53,6 +53,7 @@ This means you can:
 - Store **documentation or version history** externally without affecting the MakeCode project.
 - Keep **development notes or testing scripts** only in GitHub.
 - Maintain **extra resources** without cluttering the MakeCode editor.
+- Also Rember makecode arcade only pulls files in the files part of pxt.json!
 
 If you need to **make non-code updates**, doing them externally can keep the project cleaner while still benefiting from GitHub's commit tracking!
 
