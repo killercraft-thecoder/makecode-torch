@@ -290,12 +290,41 @@ namespace Torch {
         }
     }
 
+    // Mean Squared Error (MSE)
+    export function mse(error: Tensor): number {
+        return error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length);
+    }
+
+    // Mean Cubed Error (MCE)
+    export function mce(error: Tensor): number {
+        return error.applyFunction(x => x * x * x).sum() / Math.max(1, error.data.length);
+    }
+
+    // Mean Error (ME) - Identity function (X = X)
+    export function me(error: Tensor): number {
+        return error.sum() / Math.max(1, error.data.length);
+    }
+
+    // Root Mean Squared Error (RMSE)
+    export function rmse(error: Tensor): number {
+        return Math.sqrt(error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length));
+    }
+
+    // Huber Loss (Delta = 1)
+    export function huber(error: Tensor): number {
+        return error.applyFunction(x => Math.abs(x) <= 1 ? 0.5 * x * x : Math.abs(x) - 0.5).sum() / Math.max(1, error.data.length);
+    }
+
+
+
     export function mae(predictions: Tensor, targets: Tensor): number {
         let errorTensor = predictions.add(targets.applyFunction(x => -x));
         let totalError = errorTensor.data.reduce((sum, row) => sum + row.reduce((rSum, val) => rSum + Math.abs(val), 0), 0);
         let elementCount = predictions.data.length * predictions.data[0].length;
         return totalError / elementCount;
     }
+    
+
 
     export function relu(x: number): number {
         return Math.max(0, x);
