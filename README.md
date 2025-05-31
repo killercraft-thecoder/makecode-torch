@@ -9,6 +9,8 @@ Torch is a lightweight **neural network library** designed for use within **Make
 - **Training Support** → Uses **Mean Squared Error (MSE)** loss and backpropagation for weight updates.
 - **Activation Functions** → Includes **ReLU, Sigmoid, Tanh, Leaky ReLU, Softmax, ELU, Swish, GELU, Hard Sigmoid, Bent Identity, and Mish** for non-linear transformations.
 
+📌 [See Full Version History](https://github.com/killercraft-thecoder/makecode-torch/blob/master/history.md)
+
 ## 🔗 Installation & Usage
 
 ### ✅ **Use as an Extension**
