@@ -31,6 +31,7 @@ function example() {
     let testInput = new Torch.Tensor([[5]]); // Expected output: ~5
     let prediction = model.forward(testInput, Torch.relu);
     console.log("Predicted Output: " + JSON.stringify(prediction.data));
+    console.log("Error:" + (prediction.data[0][0] - 5))
 
 }
 example()
