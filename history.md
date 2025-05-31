@@ -2,6 +2,19 @@
 
 # 🔄 Torch - Version History
 
+## **1.6.0** - Expanded Error Function Support  
+- **Added new error functions** to enhance training flexibility:  
+  - **MSE (Mean Squared Error)** → Standard squared error computation.  
+  - **MCE (Mean Cubed Error)** → Amplifies larger errors for stronger adjustments.  
+  - **ME (Mean Error, X = X)** → Direct propagation of error without modification.  
+  - **RMSE (Root Mean Squared Error)** → Square root-based loss for balanced error scaling.  
+  - **Huber Loss (Delta = 1)** → Stabilizes training by reducing sensitivity to outliers.  
+
+### 🔹 **Important Notes**  
+- Users can now choose error functions when training **Torch.Sequential** and **Torch.Linear** models.  
+- Default remains **MSE**, but experiments with **Huber, RMSE, and MCE** may improve stability in different scenarios.  
+- This update enhances model adaptability for various optimization strategies.  
+
 ## **1.5.0** - Custom Loss Function Support  
 - **Added support for custom loss functions** in both `Torch.Sequential` and `Torch.Linear`.  
   - Users can now pass a **lossFunction** parameter to `train()` to customize error calculations.  
