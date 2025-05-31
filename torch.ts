@@ -144,9 +144,13 @@ namespace Torch {
             return new Tensor(output);
         }
 
-        backward(error: Tensor, learningRate: number, activation: (x: number) => number): Tensor {
+        backward(error: Tensor, learningRate: number, activation: (x: number) => number,
+            lossFunction?: (error: Tensor) => number): Tensor {
+
+            // Apply activation derivative
             let activatedError = error.applyFunction(x => activationDerivative(x, activation));
             let newError: number[][] = [];
+
             for (let i = 0; i < this.neurons.length; i++) {
                 newError.push([]); // Properly initializes an empty array
             }
@@ -154,6 +158,12 @@ namespace Torch {
             this.neurons.forEach((neuron, index) => {
                 neuron.weights = neuron.weights.map((w, j) => {
                     let gradient = activatedError.data[0][index] * error.data[0][index];
+
+                    // Apply loss function if provided
+                    if (lossFunction) {
+                        gradient *= lossFunction(error);
+                    }
+
                     newError[j].push(gradient); // Accumulate error for next layer
                     return w + learningRate * gradient;
                 });
@@ -164,10 +174,11 @@ namespace Torch {
             return new Torch.Tensor(newError);
         }
 
+        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number,
+            activation?: (x: number) => number, lossFunction?: (error: Tensor) => number, disableLogging?: boolean): void {
 
-
-        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number, activation?: (x: number) => number,disablelogging?:boolean): void {
             if (!activation) activation = Torch.sigmoid; // Default activation function
+            if (!lossFunction) lossFunction = (error) => error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length); // Default to MSE
 
             for (let epoch = 0; epoch < epochs; epoch++) {
                 let totalLoss = 0;
@@ -185,17 +196,14 @@ namespace Torch {
                         error = new Torch.Tensor([[0]]);
                     }
 
-                    // Compute Mean Squared Error (MSE)
-                    let divisor = Math.max(1, error.data.length);
-                    let loss = error.applyFunction(x => x * x).sum() / divisor;
+                    // Compute loss using the provided function
+                    let loss = lossFunction(error);
                     if (isNaN(loss)) {
-                        loss = 0
+                        loss = 0;
                     }
                     totalLoss += loss;
-                    
 
                     // Compute activation derivative BEFORE weight updates
-                    //error = error.applyFunction(x => isNaN(x) ? 0 : x);
                     let activatedError = error.applyFunction(x => activationDerivative(x, activation));
 
                     // Weight update using backpropagation
@@ -204,9 +212,9 @@ namespace Torch {
                             let gradient = activatedError.data[0][index] * input.data[0][j];
                             return w + learningRate * gradient;
                         });
-                        let value = activatedError.data[0][index]
+                        let value = activatedError.data[0][index];
                         if (!isNaN(value)) {
-                          neuron.bias += learningRate * value;
+                            neuron.bias += learningRate * value;
                         }
                     });
                 }
@@ -215,8 +223,9 @@ namespace Torch {
                 if (epoch % 200 === 0) {
                     learningRate = Math.max(learningRate * 0.95, 0.005);
                 }
-                if (disablelogging != true) {
-                  console.log(`Epoch ${epoch + 1}, Loss: ${totalLoss / inputs.length}`);
+
+                if (!disableLogging) {
+                    console.log(`Epoch ${epoch + 1}, Loss: ${totalLoss / inputs.length}`);
                 }
             }
         }
@@ -383,8 +392,11 @@ namespace Torch {
         }
 
         // Train the model
-        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number, activation?: (x: number) => number): void {
-            if (!activation) activation = Torch.sigmoid;
+        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number,
+            activation?: (x: number) => number, lossFunction?: (error: Tensor) => number): void {
+
+            if (!activation) activation = Torch.sigmoid; // Default activation function
+            if (!lossFunction) lossFunction = (error) => error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length); // Default to MSE
 
             for (let epoch = 0; epoch < epochs; epoch++) {
                 let totalLoss = 0;
@@ -397,20 +409,20 @@ namespace Torch {
                     let prediction = this.forward(input, activation);
                     let error = target.sub(prediction);
 
-                    // Compute Mean Squared Error (MSE)
-                    let loss = error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length);
+                    // Compute loss using the provided function
+                    let loss = lossFunction(error);
                     totalLoss += loss;
 
                     // Backpropagation through all layers in reverse order
                     let previousError = error;
-                    let reversedLayers = this.layers.slice(); // Clone and reverse layers
-                    reversedLayers.reverse(); // Do the Revserse
+                    let reversedLayers = this.layers.slice();
+                    reversedLayers.reverse();
 
                     reversedLayers.forEach(layer => {
                         if (layer instanceof ConvLayer) {
                             layer.backward(previousError, learningRate); // ConvLayer only adjusts kernels
                         } else {
-                            previousError = layer.backward(previousError, learningRate, activation);
+                            previousError = layer.backward(previousError, learningRate, activation,lossFunction);
                         }
                     });
                 }
@@ -423,10 +435,9 @@ namespace Torch {
                 console.log(`Epoch ${epoch + 1}, Loss: ${totalLoss / inputs.length}`);
             }
         }
+
+
     }
-
-
-
 
 
 }
