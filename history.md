@@ -5,7 +5,7 @@
 ## **1.7.0** - Performance & Training Enhancements  
 - **Optimized `matmul()` in Torch.Tensor** → Improved efficiency and memory allocation for MakeCode Arcade.  
 - **Added Silent Mode (`silent` parameter) to `train()`** → Allows training without console logs when set to `true`.  
-- **Improved memory handling** → Proper array allocation fixes to prevent unintended modifications.  
+- **Improved memory handling** → Proper array allocation chnages to speed up `matmul()`  
 - **Refined matrix operations** → Ensured independent row duplication for stable calculations.  
 
 ### 🔹 **Important Notes**  
