@@ -50,14 +50,15 @@ namespace Torch {
             let rows = Math.min(this.data.length, other.data.length);
             let cols = Math.min(this.data[0].length, other.data[0].length);
 
+            // Manual preallocation to prevent dynamic resizing overhead
             let result: number[][] = [];
-
+            let data1 = this.data;
+            let data2 = other.data;
+            // Optimized addition loop
             for (let r = 0; r < rows; r++) {
-                let row: number[] = [];
                 for (let c = 0; c < cols; c++) {
-                    row.push(this.data[r][c] + other.data[r][c]);
+                    result[r][c] = data1[r][c] + data2[r][c]; // Direct assignment avoids push overhead
                 }
-                result.push(row);
             }
 
             return new Torch.Tensor(result);
@@ -66,26 +67,30 @@ namespace Torch {
             let rows = Math.min(this.data.length, other.data.length);
             let cols = Math.min(this.data[0].length, other.data[0].length);
 
+            // Manual memory allocation workaround
             let result: number[][] = [];
+            let base: number[] = [];
+            for (let c = 0; c < cols; c++) {
+                base[c] = 0; // Initialize array with zero values
+            }
 
             for (let r = 0; r < rows; r++) {
-                let row: number[] = [];
+                result[r] = base.slice(0); // Correct duplication without referencing `Array`
+            }
+            let data1 = this.data;
+            let data2 = other.data;
+
+            // Optimized subtraction loop
+            for (let r = 0; r < rows; r++) {
                 for (let c = 0; c < cols; c++) {
-                    row.push(this.data[r][c] - other.data[r][c]);
+                    result[r][c] = data1[r][c] - data2[r][c]; // Direct assignment avoids push overhead
                 }
-                result.push(row);
             }
 
             return new Torch.Tensor(result);
         }
         sum(): number {
-            let total = 0;
-            for (let row of this.data) {
-                for (let value of row) {
-                    total += value;
-                }
-            }
-            return total;
+            return this.data.reduce((acc: number, row: number[]) => acc + row.reduce((rowAcc: number, value: number) => rowAcc + value, 0), 0);
         }
     }
 
