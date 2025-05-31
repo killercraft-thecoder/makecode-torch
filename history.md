@@ -7,7 +7,7 @@
 - **MAE function refactor** → Reduced loop overhead for faster computation.
 - **General activation function improvements** → Optimized Sigmoid, Gelu, and other functions to avoid redundant calculations.
 
-## **1.4.0** - Optimized Matrix Multiplication + PyTorch Model Conversion
+## **1.4.0** - Optimized Matrix Multiplication
 - **Optimized `matmul()` in Torch.Tensor** to improve memory allocation and speed in MakeCode Arcade.
 
 ## **1.3.0** - Expanded Activation Functions
