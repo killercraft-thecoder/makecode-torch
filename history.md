@@ -2,6 +2,16 @@
 
 # 🔄 Torch - Version History
 
+## **1.7.0** - Performance & Training Enhancements  
+- **Optimized `matmul()` in Torch.Tensor** → Improved efficiency and memory allocation for MakeCode Arcade.  
+- **Added Silent Mode (`silent` parameter) to `train()`** → Allows training without console logs when set to `true`.  
+- **Improved memory handling** → Proper array allocation fixes to prevent unintended modifications.  
+- **Refined matrix operations** → Ensured independent row duplication for stable calculations.  
+
+### 🔹 **Important Notes**  
+- `matmul()` now runs **faster and more efficiently**, reducing memory overhead in matrix-heavy computations.  
+- Silent Mode (`silent: true`) prevents unnecessary logging in training, making it useful for **background executions**.  
+
 ## **1.6.0** - Expanded Error Function Support  
 - **Added new error functions** to enhance training flexibility:  
   - **MSE (Mean Squared Error)** → Standard squared error computation.  
