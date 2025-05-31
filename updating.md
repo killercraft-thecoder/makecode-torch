@@ -41,7 +41,7 @@ silent:true prevents logging output during training
 
 the API remains the same ensurng a smooth transition
 
-## ** Example 2: Updating a model from 1.0.x -> 1.7.x**
+## ** Example 2: Updating a model from 1.0.x → 1.7.x**
 
 **Old code (1.0.x)**
 ```typescript
