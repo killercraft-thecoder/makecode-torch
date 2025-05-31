@@ -283,16 +283,8 @@ namespace Torch {
 
     export function mae(predictions: Tensor, targets: Tensor): number {
         let errorTensor = predictions.add(targets.applyFunction(x => -x));
-
-        // **Fix unsupported `.flat()` method by manually summing**
-        let totalError = 0;
-        let elementCount = 0;
-        for (let row of errorTensor.data) {
-            for (let val of row) {
-                totalError += Math.abs(val);
-                elementCount++;
-            }
-        }
+        let totalError = errorTensor.data.reduce((sum, row) => sum + row.reduce((rSum, val) => rSum + Math.abs(val), 0), 0);
+        let elementCount = predictions.data.length * predictions.data[0].length;
         return totalError / elementCount;
     }
 
@@ -301,7 +293,8 @@ namespace Torch {
     }
 
     export function sigmoid(x: number): number {
-        return 1 / (1 + Math.exp(-x));
+        let expX = Math.exp(-x);
+        return 1 / (1 + expX);
     }
 
     export function elu(x: number, alpha: number = 1): number {
@@ -323,9 +316,11 @@ namespace Torch {
     export function swish(x: number): number {
         return x / (1 + Math.exp(-x)); // Uses sigmoid-like smoothing
     }
-
+    const sqrt2pi = Math.sqrt(2 / Math.PI);
+    const coeff = 0.044715;
     export function gelu(x: number): number {
-        return x * (1 + tanh(Math.sqrt(2 / Math.PI) * (x + 0.044715 * Math.pow(x, 3)))) / 2;
+        let x3 = x * x * x;
+        return x * (1 + tanh(sqrt2pi * (x + coeff * x3))) / 2;
     }
 
     // Tanh (Hyperbolic Tangent)
@@ -341,9 +336,26 @@ namespace Torch {
 
     // Softmax (Used for classification problems)
     export function softmax(inputs: number[]): number[] {
-        let expValues = inputs.map(x => Math.exp(x));
-        let sumExp = expValues.reduce((a, b) => a + b, 0);
-        return expValues.map(x => x / sumExp);
+        let maxInput = inputs[0]; // Initialize max value
+        for (let i = 1; i < inputs.length; i++) {
+            if (inputs[i] > maxInput) maxInput = inputs[i];
+        }
+
+        let expValues: number[] = [];
+        let sumExp = 0;
+
+        for (let i = 0; i < inputs.length; i++) {
+            let expVal = Math.exp(inputs[i] - maxInput); // Normalize for stability
+            expValues.push(expVal);
+            sumExp += expVal;
+        }
+
+        let softmaxOutput: number[] = [];
+        for (let i = 0; i < expValues.length; i++) {
+            softmaxOutput.push(expValues[i] / sumExp);
+        }
+
+        return softmaxOutput;
     }
 
     export class Sequential {
