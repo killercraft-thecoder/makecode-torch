@@ -8,17 +8,16 @@ function example() {
 
     // Create a simple neural network with one layer
     let model = new Torch.Sequential([
-        new Torch.Linear(1, 1), // Single neuron, single output
-        new Torch.Linear(1,1)
+        new Torch.Linear(1, 1) // Single neuron, single output
     ]);
 
     // Generate training data
     let inputs: Torch.Tensor[] = [];
     let targets: Torch.Tensor[] = [];
 
-    for (let i = 0; i <= 90; i++) {
+    for (let i = 0; i <= 1; i++) {
         let inputValue = new Torch.Tensor([[i]]);
-        let targetValue = new Torch.Tensor([[i + 2]]); // Output should be (X + 2)
+        let targetValue = new Torch.Tensor([[i]]); // Output should be (X)
         inputs.push(inputValue);
         targets.push(targetValue);
     }
@@ -30,7 +29,7 @@ function example() {
     // Train using different loss functions
     console.log("Training with MSE...");
     pause(0)
-    model.train(inputs, targets, learningRate, epochs, Torch.relu, Torch.huber,true);
+    model.train(inputs, targets, learningRate, epochs, Torch.relu);
 
     // Testing trained models
     let testInputs = [new Torch.Tensor([[5]]), new Torch.Tensor([[8]]),new Torch.Tensor([[0]])];
