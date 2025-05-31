@@ -10,7 +10,7 @@
 
 ### 🔹 **Important Notes**  
 - `matmul()` now runs **faster and more efficiently**, reducing memory overhead in matrix-heavy computations.  
-- Silent Mode (`silent: true`) prevents unnecessary logging in training, making it useful for **background executions**.  
+- Silent Mode (`silent: true`) prevents unnecessary logging in training, making it useful for **background executions** and faster to train be limiting I/O.  
 
 ## **1.6.0** - Expanded Error Function Support  
 - **Added new error functions** to enhance training flexibility:  
