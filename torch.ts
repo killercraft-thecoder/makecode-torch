@@ -211,9 +211,10 @@ namespace Torch {
 
     export class ConvLayer {
         kernel: Tensor;
+        kernelGradients: Tensor; // Store gradients for backpropagation
 
         constructor(size: number) {
-            // **Fix unsupported `.fill().map()` usage with explicit loops**
+            // Explicitly initialize the kernel with randomized weights
             let kernelArray: number[][] = [];
             for (let i = 0; i < size; i++) {
                 let row: number[] = [];
@@ -223,10 +224,47 @@ namespace Torch {
                 kernelArray.push(row);
             }
             this.kernel = new Tensor(kernelArray);
+            this.kernelGradients = new Tensor(kernelArray.map(row => row.map(() => 0))); // Initialize gradients
         }
 
-        apply(input: Tensor): Tensor {
+        // **Forward Pass**: Apply convolution to input tensor
+        forward(input: Tensor): Tensor {
             return input.matmul(this.kernel);
+        }
+
+        // **Backpropagation**: Compute gradients for weight updates
+        backward(error: Tensor, learningRate: number): void {
+            // Compute gradients
+            this.kernelGradients = error.matmul(this.kernel);
+
+            // Update kernel weights using gradient descent
+            this.kernel.data = this.kernel.data.map((row, r) => row.map((val, c) =>
+                val - learningRate * this.kernelGradients.data[r][c]));
+        }
+
+        // **Training Step**
+        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number): void {
+            for (let epoch = 0; epoch < epochs; epoch++) {
+                let totalLoss = 0;
+
+                for (let i = 0; i < inputs.length; i++) {
+                    let input = inputs[i];
+                    let target = targets[i];
+
+                    // Forward pass
+                    let prediction = this.forward(input);
+                    let error = target.sub(prediction);
+
+                    // Compute Mean Squared Error (MSE) loss
+                    let loss = error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length);
+                    totalLoss += loss;
+
+                    // Backward pass to adjust kernel weights
+                    this.backward(error, learningRate);
+                }
+
+                console.log(`Epoch ${epoch + 1}, Loss: ${totalLoss / inputs.length}`);
+            }
         }
     }
 
@@ -272,9 +310,9 @@ namespace Torch {
     }
 
     export class Sequential {
-        layers: Linear[];
+        layers: (Linear | ConvLayer)[];
 
-        constructor(layers: Linear[]) {
+        constructor(layers: (Linear | ConvLayer)[]) {
             this.layers = layers;
         }
 
@@ -282,7 +320,11 @@ namespace Torch {
         forward(input: Tensor, activation: (x: number) => number): Tensor {
             let output = input;
             for (let layer of this.layers) {
-                output = layer.forward(output, activation);
+                if (layer instanceof ConvLayer) {
+                    output = layer.forward(output); // ConvLayer does not use an activation
+                } else {
+                    output = layer.forward(output, activation);
+                }
             }
             return output;
         }
@@ -308,10 +350,15 @@ namespace Torch {
 
                     // Backpropagation through all layers in reverse order
                     let previousError = error;
-                    let reversedLayers = this.layers.slice(); // Clone and reverse for backpropagation
-                    reversedLayers.reverse()
+                    let reversedLayers = this.layers.slice(); // Clone and reverse layers
+                    reversedLayers.reverse(); // Do the Revserse
+
                     reversedLayers.forEach(layer => {
-                        previousError = layer.backward(previousError, learningRate, activation);
+                        if (layer instanceof ConvLayer) {
+                            layer.backward(previousError, learningRate); // ConvLayer only adjusts kernels
+                        } else {
+                            previousError = layer.backward(previousError, learningRate, activation);
+                        }
                     });
                 }
 
