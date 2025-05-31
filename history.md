@@ -2,6 +2,18 @@
 
 # 🔄 Torch - Version History
 
+## **1.5.0** - Custom Loss Function Support  
+- **Added support for custom loss functions** in both `Torch.Sequential` and `Torch.Linear`.  
+  - Users can now pass a **lossFunction** parameter to `train()` to customize error calculations.  
+  - Default remains **Mean Squared Error (MSE)** if no loss function is provided.  
+  - `backward()` now accepts **lossFunction** for greater flexibility in weight updates.  
+- **Refactored training logic** to improve modularity and maintainability.  
+- **Version bump from 1.4.2 to 1.5.0**, marking a significant feature addition.  
+
+### 🔹 **Important Notes**  
+- Recommended to experiment with different loss functions (**MAE, Huber, Cross-Entropy**) for various training scenarios.  
+- Users upgrading from **1.4.x** should ensure compatibility with any custom training workflows.  
+
 ## **1.4.1** - Performance Optimization Update
 - **Softmax optimization** → Improved numerical stability by removing unsupported MakeCode Arcade features.
 - **MAE function refactor** → Reduced loop overhead for faster computation.
