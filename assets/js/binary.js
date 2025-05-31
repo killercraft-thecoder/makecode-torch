@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v2.0.56/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.7.2","target":"arcade","targetVersion":"2.0.56","repo":"killercraft-thecoder/makecode-torch"}
-// total=1791368 new=31.54% cached=64.35% other=4.11%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v2.0.56/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.8.0","target":"arcade","targetVersion":"2.0.56","repo":"killercraft-thecoder/makecode-torch"}
+// total=1801616 new=31.93% cached=63.98% other=4.09%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -446,7 +446,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P596237(s) {
+function _main___P610266(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -852,18 +852,18 @@ switch (step) {
   case 46:
     r0 = s.retval;
     r0 = pxsim.Math_.sqrt(0.6366197723675814);
-    globals.sqrt2pi___565541 = (r0);
+    globals.sqrt2pi___608784 = (r0);
     s.tmp_1 = game_ask__P480784_mk(s);
     s.tmp_1.arg0 = "Trained Model test?";
     s.tmp_1.arg1 = undefined;
-    s.callLocIdx = 139; s.pc = 47; return s.tmp_1;
+    s.callLocIdx = 144; s.pc = 47; return s.tmp_1;
   case 47:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_2 = example__P595451_mk(s);
-    s.callLocIdx = 140; s.pc = 48; return s.tmp_2;
+    s.callLocIdx = 145; s.pc = 48; return s.tmp_2;
   case 48:
     r0 = s.retval;
     { step = 10; continue; }
@@ -871,7 +871,7 @@ switch (step) {
     s.tmp_1 = game_ask__P480784_mk(s);
     s.tmp_1.arg0 = "matrix Mul Spedd Test?";
     s.tmp_1.arg1 = undefined;
-    s.callLocIdx = 141; s.pc = 49; return s.tmp_1;
+    s.callLocIdx = 146; s.pc = 49; return s.tmp_1;
   case 49:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -880,7 +880,7 @@ switch (step) {
     s.tmp_2 = game_consoleOverlay_setVisible__P480855_mk(s);
     s.tmp_2.arg0 = true;
     s.tmp_2.arg1 = undefined;
-    s.callLocIdx = 142; s.pc = 50; return s.tmp_2;
+    s.callLocIdx = 147; s.pc = 50; return s.tmp_2;
   case 50:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
@@ -914,7 +914,7 @@ switch (step) {
     s.tmp_4.arg0 = globals.base___595578;
     s.tmp_4.arg1 = 0;
     s.tmp_4.arg2 = undefined;
-    s.callLocIdx = 143; s.pc = 51; return s.tmp_4;
+    s.callLocIdx = 148; s.pc = 51; return s.tmp_4;
   case 51:
     r0 = s.retval;
     s.tmp_3 = r0;
@@ -929,37 +929,37 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_1 = r0;
-    s.tmp_2 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_2 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_2.arg0 = s.tmp_1;
     s.tmp_2.arg1 = globals.result___595576;
-    s.callLocIdx = 144; s.pc = 52; return s.tmp_2;
+    s.callLocIdx = 149; s.pc = 52; return s.tmp_2;
   case 52:
     r0 = s.retval;
     s.tensor1___595607 = (s.tmp_1);
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_1 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = globals.result___595576;
-    s.callLocIdx = 145; s.pc = 53; return s.tmp_1;
+    s.callLocIdx = 150; s.pc = 53; return s.tmp_1;
   case 53:
     r0 = s.retval;
     s.tensor2___595611 = (s.tmp_0);
     r0 = pxsim.control.micros();
     s.start___595615 = (r0);
-    s.tmp_0 = Torch_Tensor_matmul__P564460_mk(s);
+    s.tmp_0 = Torch_Tensor_matmul__P607589_mk(s);
     s.tmp_0.arg0 = s.tensor1___595607;
     s.tmp_0.arg1 = s.tensor2___595611;
-    s.callLocIdx = 146; s.pc = 54; return s.tmp_0;
+    s.callLocIdx = 151; s.pc = 54; return s.tmp_0;
   case 54:
     r0 = s.retval;
     r0 = pxsim.control.micros();
     s.end___595621 = (r0);
     s.tmp_0 = console_log__P478077_mk(s);
     s.tmp_0.arg0 = "Time for Matrix Multiplactation for matrixs of size 100x100 with each matrix wit hrandom numbers from 0 -> 100:";
-    s.callLocIdx = 147; s.pc = 55; return s.tmp_0;
+    s.callLocIdx = 152; s.pc = 55; return s.tmp_0;
   case 55:
     r0 = s.retval;
     s.tmp_0 = console_log__P478077_mk(s);
@@ -978,7 +978,7 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_1, " Milliseconds");
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 148; s.pc = 56; return s.tmp_0;
+    s.callLocIdx = 153; s.pc = 56; return s.tmp_0;
   case 56:
     r0 = s.retval;
     r0 = (s.r___595603 + 1);
@@ -992,13 +992,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P596237.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
-_main___P596237.continuations = [ 57 ]
+_main___P610266.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
+_main___P610266.continuations = [ 57 ]
 
-function _main___P596237_mk(s) {
+function _main___P610266_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P596237, depth: s.depth + 1,
+        parent: s, fn: _main___P610266, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2257,7 +2257,7 @@ function helpers_arrayJoin__P477800_mk(s) {
 
 
 
-function Torch_Tensor_matmul__P564460(s) {
+function Torch_Tensor_matmul__P607589(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2267,56 +2267,56 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.temp1___564474 = undefined;
-    s.temp2___564484 = undefined;
-    s.rowsA___564494 = undefined;
-    s.colsA___564497 = undefined;
-    s.rowsB___564500 = undefined;
-    s.colsB___564503 = undefined;
-    s.result___564510 = undefined;
-    s.base___564512 = undefined;
-    s.c___564514 = undefined;
-    s.r___564524 = undefined;
-    s.r___564537 = undefined;
-    s.i___564542 = undefined;
-    s.temp3___564547 = undefined;
-    s.c___564552 = undefined;
+    s.temp1___607603 = undefined;
+    s.temp2___607613 = undefined;
+    s.rowsA___607623 = undefined;
+    s.colsA___607626 = undefined;
+    s.rowsB___607629 = undefined;
+    s.colsB___607632 = undefined;
+    s.result___607639 = undefined;
+    s.base___607641 = undefined;
+    s.c___607643 = undefined;
+    s.r___607653 = undefined;
+    s.r___607666 = undefined;
+    s.i___607671 = undefined;
+    s.temp3___607676 = undefined;
+    s.c___607681 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Tensor__C564459_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_Tensor__C607588_VT)) failedCast(r0);
     s.tmp_0 = helpers_arrayMap__P477803_mk(s);
     r0 = s.arg0.fields["data"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = temp1_inline__P564478;
+    s.tmp_0.arg1 = temp1_inline__P607607;
     s.callLocIdx = 64; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
-    s.temp1___564474 = (r0);
+    s.temp1___607603 = (r0);
     s.tmp_0 = helpers_arrayMap__P477803_mk(s);
     r0 = s.arg1.fields["data"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = temp2_inline__P564488;
+    s.tmp_0.arg1 = temp2_inline__P607617;
     s.callLocIdx = 66; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
-    s.temp2___564484 = (r0);
-    r0 = pxsim_Array__length(s.temp1___564474);
-    s.rowsA___564494 = (r0);
-    r0 = pxsim_Array__getAt(s.temp1___564474, 0);
+    s.temp2___607613 = (r0);
+    r0 = pxsim_Array__length(s.temp1___607603);
+    s.rowsA___607623 = (r0);
+    r0 = pxsim_Array__getAt(s.temp1___607603, 0);
     s.tmp_0 = r0;
     r0 = pxsim_Array__length(s.tmp_0);
-    s.colsA___564497 = (r0);
-    r0 = pxsim_Array__length(s.temp2___564484);
-    s.rowsB___564500 = (r0);
-    r0 = pxsim_Array__getAt(s.temp2___564484, 0);
+    s.colsA___607626 = (r0);
+    r0 = pxsim_Array__length(s.temp2___607613);
+    s.rowsB___607629 = (r0);
+    r0 = pxsim_Array__getAt(s.temp2___607613, 0);
     s.tmp_0 = r0;
     r0 = pxsim_Array__length(s.tmp_0);
-    s.colsB___564503 = (r0);
-    r0 = (s.colsA___564497 !== s.rowsB___564500);
+    s.colsB___607632 = (r0);
+    r0 = (s.colsA___607626 !== s.rowsB___607629);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -2325,30 +2325,30 @@ switch (step) {
   case 1:
   case 2:
     r0 = pxsim_Array__mk();
-    s.result___564510 = (r0);
+    s.result___607639 = (r0);
     r0 = pxsim_Array__mk();
-    s.base___564512 = (r0);
-    s.c___564514 = (0);
+    s.base___607641 = (r0);
+    s.c___607643 = (0);
   case 3:
-    r0 = (s.c___564514 < s.colsB___564503);
+    r0 = (s.c___607643 < s.colsB___607632);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    r0 = pxsim_Array_.setAt(s.base___564512, s.c___564514, 0);
-    r0 = (s.c___564514 + 1);
-    s.c___564514 = (r0);
+    r0 = pxsim_Array_.setAt(s.base___607641, s.c___607643, 0);
+    r0 = (s.c___607643 + 1);
+    s.c___607643 = (r0);
     { step = 3; continue; }
   case 4:
-    s.r___564524 = (0);
+    s.r___607653 = (0);
   case 5:
-    r0 = (s.r___564524 < s.rowsA___564494);
+    r0 = (s.r___607653 < s.rowsA___607623);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    s.tmp_1 = r0 = s.result___564510;
-    s.tmp_2 = r0 = s.r___564524;
+    s.tmp_1 = r0 = s.result___607639;
+    s.tmp_2 = r0 = s.r___607653;
     s.tmp_4 = helpers_arraySlice__P477812_mk(s);
-    s.tmp_4.arg0 = s.base___564512;
+    s.tmp_4.arg0 = s.base___607641;
     s.tmp_4.arg1 = 0;
     s.tmp_4.arg2 = undefined;
     s.callLocIdx = 67; s.pc = 16; return s.tmp_4;
@@ -2356,64 +2356,64 @@ switch (step) {
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_1, s.tmp_2, s.tmp_3);
-    r0 = (s.r___564524 + 1);
-    s.r___564524 = (r0);
+    r0 = (s.r___607653 + 1);
+    s.r___607653 = (r0);
     { step = 5; continue; }
   case 6:
-    s.r___564537 = (0);
+    s.r___607666 = (0);
   case 7:
-    r0 = (s.r___564537 < s.rowsA___564494);
+    r0 = (s.r___607666 < s.rowsA___607623);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 12; continue; }
-    s.i___564542 = (0);
+    s.i___607671 = (0);
   case 8:
-    r0 = (s.i___564542 < s.colsA___564497);
+    r0 = (s.i___607671 < s.colsA___607626);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim_Array__getAt(s.temp1___564474, s.r___564537);
+    r0 = pxsim_Array__getAt(s.temp1___607603, s.r___607666);
     s.tmp_1 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_1, s.i___564542);
-    s.temp3___564547 = (r0);
-    s.c___564552 = (0);
+    r0 = pxsim_Array__getAt(s.tmp_1, s.i___607671);
+    s.temp3___607676 = (r0);
+    s.c___607681 = (0);
   case 9:
-    r0 = (s.c___564552 < s.colsB___564503);
+    r0 = (s.c___607681 < s.colsB___607632);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
-    r0 = pxsim_Array__getAt(s.result___564510, s.r___564537);
+    r0 = pxsim_Array__getAt(s.result___607639, s.r___607666);
     s.tmp_1 = r0;
-    s.tmp_2 = r0 = s.c___564552;
-    r0 = pxsim_Array__getAt(s.tmp_1, s.c___564552);
+    s.tmp_2 = r0 = s.c___607681;
+    r0 = pxsim_Array__getAt(s.tmp_1, s.c___607681);
     s.tmp_4 = r0;
-    s.tmp_6 = r0 = s.temp3___564547;
-    r0 = pxsim_Array__getAt(s.temp2___564484, s.i___564542);
+    s.tmp_6 = r0 = s.temp3___607676;
+    r0 = pxsim_Array__getAt(s.temp2___607613, s.i___607671);
     s.tmp_8 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_8, s.c___564552);
+    r0 = pxsim_Array__getAt(s.tmp_8, s.c___607681);
     s.tmp_7 = r0;
     r0 = (s.tmp_6 * s.tmp_7);
     s.tmp_5 = r0;
     r0 = (s.tmp_4 + s.tmp_5);
     s.tmp_3 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_1, s.tmp_2, s.tmp_3);
-    r0 = (s.c___564552 + 1);
-    s.c___564552 = (r0);
+    r0 = (s.c___607681 + 1);
+    s.c___607681 = (r0);
     { step = 9; continue; }
   case 10:
-    r0 = (s.i___564542 + 1);
-    s.i___564542 = (r0);
+    r0 = (s.i___607671 + 1);
+    s.i___607671 = (r0);
     { step = 8; continue; }
   case 11:
-    r0 = (s.r___564537 + 1);
-    s.r___564537 = (r0);
+    r0 = (s.r___607666 + 1);
+    s.r___607666 = (r0);
     { step = 7; continue; }
   case 12:
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_1 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = s.result___564510;
+    s.tmp_1.arg1 = s.result___607639;
     s.callLocIdx = 68; s.pc = 17; return s.tmp_1;
   case 17:
     r0 = s.retval;
@@ -2422,12 +2422,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Tensor_matmul__P564460.info = {"start":227,"length":1371,"line":10,"column":8,"endLine":43,"endColumn":9,"fileName":"torch.ts","functionName":"matmul","argumentNames":["this","other"]}
+Torch_Tensor_matmul__P607589.info = {"start":227,"length":1371,"line":10,"column":8,"endLine":43,"endColumn":9,"fileName":"torch.ts","functionName":"matmul","argumentNames":["this","other"]}
 
-function Torch_Tensor_matmul__P564460_mk(s) {
+function Torch_Tensor_matmul__P607589_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Tensor_matmul__P564460, depth: s.depth + 1,
+        parent: s, fn: Torch_Tensor_matmul__P607589, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2438,20 +2438,20 @@ function Torch_Tensor_matmul__P564460_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  temp1___564474: undefined,
-  temp2___564484: undefined,
-  rowsA___564494: undefined,
-  colsA___564497: undefined,
-  rowsB___564500: undefined,
-  colsB___564503: undefined,
-  result___564510: undefined,
-  base___564512: undefined,
-  c___564514: undefined,
-  r___564524: undefined,
-  r___564537: undefined,
-  i___564542: undefined,
-  temp3___564547: undefined,
-  c___564552: undefined,
+  temp1___607603: undefined,
+  temp2___607613: undefined,
+  rowsA___607623: undefined,
+  colsA___607626: undefined,
+  rowsB___607629: undefined,
+  colsB___607632: undefined,
+  result___607639: undefined,
+  base___607641: undefined,
+  c___607643: undefined,
+  r___607653: undefined,
+  r___607666: undefined,
+  i___607671: undefined,
+  temp3___607676: undefined,
+  c___607681: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -2460,7 +2460,7 @@ function Torch_Tensor_matmul__P564460_mk(s) {
 
 
 
-function temp1_inline__P564478(s) {
+function temp1_inline__P607607(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2484,12 +2484,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-temp1_inline__P564478.info = {"start":304,"length":18,"line":11,"column":38,"endLine":11,"endColumn":56,"fileName":"torch.ts","functionName":"inline","argumentNames":["row"]}
+temp1_inline__P607607.info = {"start":304,"length":18,"line":11,"column":38,"endLine":11,"endColumn":56,"fileName":"torch.ts","functionName":"inline","argumentNames":["row"]}
 
-function temp1_inline__P564478_mk(s) {
+function temp1_inline__P607607_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: temp1_inline__P564478, depth: s.depth + 1,
+        parent: s, fn: temp1_inline__P607607, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -2499,7 +2499,7 @@ function temp1_inline__P564478_mk(s) {
 
 
 
-function temp2_inline__P564488(s) {
+function temp2_inline__P607617(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2523,12 +2523,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-temp2_inline__P564488.info = {"start":386,"length":18,"line":12,"column":39,"endLine":12,"endColumn":57,"fileName":"torch.ts","functionName":"inline","argumentNames":["row"]}
+temp2_inline__P607617.info = {"start":386,"length":18,"line":12,"column":39,"endLine":12,"endColumn":57,"fileName":"torch.ts","functionName":"inline","argumentNames":["row"]}
 
-function temp2_inline__P564488_mk(s) {
+function temp2_inline__P607617_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: temp2_inline__P564488, depth: s.depth + 1,
+        parent: s, fn: temp2_inline__P607617, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -2608,7 +2608,7 @@ function helpers_arrayMap__P477803_mk(s) {
 
 
 
-function Torch_Tensor_constructor__P564465(s) {
+function Torch_Tensor_constructor__P607594(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2624,18 +2624,18 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Tensor__C564459_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_Tensor__C607588_VT)) failedCast(r0);
     r0 = (s.arg0).fields["data"] = (s.arg1);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Tensor_constructor__P564465.info = {"start":146,"length":71,"line":6,"column":8,"endLine":8,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","data"]}
+Torch_Tensor_constructor__P607594.info = {"start":146,"length":71,"line":6,"column":8,"endLine":8,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","data"]}
 
-function Torch_Tensor_constructor__P564465_mk(s) {
+function Torch_Tensor_constructor__P607594_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Tensor_constructor__P564465, depth: s.depth + 1,
+        parent: s, fn: Torch_Tensor_constructor__P607594, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
   arg1: undefined,
@@ -2901,27 +2901,27 @@ switch (step) {
     s.tmp_0 = game_consoleOverlay_setVisible__P480855_mk(s);
     s.tmp_0.arg0 = true;
     s.tmp_0.arg1 = undefined;
-    s.callLocIdx = 119; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 124; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Sequential__C565661_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Sequential__C608902_VT);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Linear__C564844_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Linear__C608090_VT);
     s.tmp_1 = r0;
-    s.tmp_2 = Torch_Linear_constructor__P564848_mk(s);
+    s.tmp_2 = Torch_Linear_constructor__P608094_mk(s);
     s.tmp_2.arg0 = s.tmp_1;
     s.tmp_2.arg1 = 1;
     s.tmp_2.arg2 = 1;
-    s.callLocIdx = 120; s.pc = 4; return s.tmp_2;
+    s.callLocIdx = 125; s.pc = 4; return s.tmp_2;
   case 4:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_3, s.tmp_1);
-    s.tmp_4 = Torch_Sequential_constructor__P565664_mk(s);
+    s.tmp_4 = Torch_Sequential_constructor__P608905_mk(s);
     s.tmp_4.arg0 = s.tmp_0;
     s.tmp_4.arg1 = s.tmp_3;
-    s.callLocIdx = 121; s.pc = 5; return s.tmp_4;
+    s.callLocIdx = 126; s.pc = 5; return s.tmp_4;
   case 5:
     r0 = s.retval;
     s.model___595454 = (s.tmp_0);
@@ -2935,7 +2935,7 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_1 = r0;
     r0 = pxsim_Array__mk();
     s.tmp_2 = r0;
@@ -2943,14 +2943,14 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_3, s.tmp_2);
-    s.tmp_4 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_4 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_4.arg0 = s.tmp_1;
     s.tmp_4.arg1 = s.tmp_3;
-    s.callLocIdx = 122; s.pc = 6; return s.tmp_4;
+    s.callLocIdx = 127; s.pc = 6; return s.tmp_4;
   case 6:
     r0 = s.retval;
     s.inputValue___595468 = (s.tmp_1);
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
     r0 = pxsim_Array__mk();
     s.tmp_1 = r0;
@@ -2958,10 +2958,10 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_2, s.tmp_1);
-    s.tmp_3 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_3 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_3.arg0 = s.tmp_0;
     s.tmp_3.arg1 = s.tmp_2;
-    s.callLocIdx = 123; s.pc = 7; return s.tmp_3;
+    s.callLocIdx = 128; s.pc = 7; return s.tmp_3;
   case 7:
     r0 = s.retval;
     s.targetValue___595474 = (s.tmp_0);
@@ -2975,27 +2975,27 @@ switch (step) {
     s.epochs___595491 = (1500);
     s.tmp_0 = console_log__P478077_mk(s);
     s.tmp_0.arg0 = "Training with MSE...";
-    s.callLocIdx = 124; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 129; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = pause__P478110_mk(s);
     s.tmp_0.arg0 = 0;
-    s.callLocIdx = 125; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 130; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
-    s.tmp_0 = Torch_Sequential_train__P565663_mk(s);
+    s.tmp_0 = Torch_Sequential_train__P608904_mk(s);
     s.tmp_0.arg0 = s.model___595454;
     s.tmp_0.arg1 = s.inputs___595460;
     s.tmp_0.arg2 = s.targets___595462;
     s.tmp_0.arg3 = s.learningRate___595490;
     s.tmp_0.arg4 = s.epochs___595491;
-    s.tmp_0.arg5 = Torch_relu__P564827;
+    s.tmp_0.arg5 = Torch_relu__P607961;
     s.tmp_0.arg6 = undefined;
     s.tmp_0.arg7 = undefined;
-    s.callLocIdx = 126; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 131; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
     r0 = pxsim_Array__mk();
     s.tmp_1 = r0;
@@ -3003,16 +3003,16 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_2, s.tmp_1);
-    s.tmp_3 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_3 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_3.arg0 = s.tmp_0;
     s.tmp_3.arg1 = s.tmp_2;
-    s.callLocIdx = 127; s.pc = 11; return s.tmp_3;
+    s.callLocIdx = 132; s.pc = 11; return s.tmp_3;
   case 11:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
     s.tmp_4 = r0;
     r0 = pxsim_Array__push(s.tmp_4, s.tmp_0);
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_5 = r0;
     r0 = pxsim_Array__mk();
     s.tmp_6 = r0;
@@ -3020,14 +3020,14 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_7 = r0;
     r0 = pxsim_Array__push(s.tmp_7, s.tmp_6);
-    s.tmp_8 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_8 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_8.arg0 = s.tmp_5;
     s.tmp_8.arg1 = s.tmp_7;
-    s.callLocIdx = 128; s.pc = 12; return s.tmp_8;
+    s.callLocIdx = 133; s.pc = 12; return s.tmp_8;
   case 12:
     r0 = s.retval;
     r0 = pxsim_Array__push(s.tmp_4, s.tmp_5);
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_9 = r0;
     r0 = pxsim_Array__mk();
     s.tmp_10 = r0;
@@ -3035,10 +3035,10 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_11 = r0;
     r0 = pxsim_Array__push(s.tmp_11, s.tmp_10);
-    s.tmp_12 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_12 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_12.arg0 = s.tmp_9;
     s.tmp_12.arg1 = s.tmp_11;
-    s.callLocIdx = 129; s.pc = 13; return s.tmp_12;
+    s.callLocIdx = 134; s.pc = 13; return s.tmp_12;
   case 13:
     r0 = s.retval;
     r0 = pxsim_Array__push(s.tmp_4, s.tmp_9);
@@ -3049,7 +3049,7 @@ switch (step) {
     s.tmp_1 = helpers_arrayForEach__P477806_mk(s);
     s.tmp_1.arg0 = s.testInputs___595503;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 138; s.pc = 14; return s.tmp_1;
+    s.callLocIdx = 143; s.pc = 14; return s.tmp_1;
   case 14:
     r0 = s.retval;
     r0 = undefined;
@@ -3108,11 +3108,11 @@ switch (step) {
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = Torch_Sequential_forward__P565662_mk(s);
+    s.tmp_0 = Torch_Sequential_forward__P608903_mk(s);
     s.tmp_0.arg0 = s.caps[0];
     s.tmp_0.arg1 = s.arg0;
-    s.tmp_0.arg2 = Torch_relu__P564827;
-    s.callLocIdx = 130; s.pc = 1; return s.tmp_0;
+    s.tmp_0.arg2 = Torch_relu__P607961;
+    s.callLocIdx = 135; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.prediction___595522 = (r0);
@@ -3125,7 +3125,7 @@ switch (step) {
     r0 = (s.tmp_0 + 2);
     s.expectedOutput___595527 = (r0);
     s.tmp_0 = game_consoleOverlay_clear__P480854_mk(s);
-    s.callLocIdx = 131; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 136; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.tmp_0 = console_log__P478077_mk(s);
@@ -3161,7 +3161,7 @@ switch (step) {
     s.tmp_5 = r0;
     r0 = pxsim_String__concat(s.tmp_1, s.tmp_5);
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 132; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 137; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = console_log__P478077_mk(s);
@@ -3174,7 +3174,7 @@ switch (step) {
     s.tmp_3.arg0 = r0;
     s.tmp_3.arg1 = null;
     s.tmp_3.arg2 = 0;
-    s.callLocIdx = 133; s.pc = 7; return s.tmp_3;
+    s.callLocIdx = 138; s.pc = 7; return s.tmp_3;
   case 7:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -3189,7 +3189,7 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_String__concat("Predicted Output: ", s.tmp_1);
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 134; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 139; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = console_log__P478077_mk(s);
@@ -3202,7 +3202,7 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = (s.tmp_4 - s.expectedOutput___595527);
     s.tmp_3.arg0 = r0;
-    s.callLocIdx = 135; s.pc = 10; return s.tmp_3;
+    s.callLocIdx = 140; s.pc = 10; return s.tmp_3;
   case 10:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -3217,12 +3217,12 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_String__concat("Error: ", s.tmp_1);
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 136; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 141; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     s.tmp_0 = pause__P478110_mk(s);
     s.tmp_0.arg0 = 1000;
-    s.callLocIdx = 137; s.pc = 12; return s.tmp_0;
+    s.callLocIdx = 142; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
     r0 = undefined;
@@ -4260,7 +4260,7 @@ function game_consoleOverlay_clear__P480854_mk(s) {
 
 
 
-function Torch_Sequential_forward__P565662(s) {
+function Torch_Sequential_forward__P608903(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -4270,10 +4270,10 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.output___565674 = undefined;
-    s.layer___565677 = undefined;
-    s.unnamed15642___U2 = undefined;
-    s.unnamed15643___U3 = undefined;
+    s.output___608915 = undefined;
+    s.layer___608918 = undefined;
+    s.unnamed15858___U2 = undefined;
+    s.unnamed15859___U3 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -4281,67 +4281,67 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Sequential__C565661_VT)) failedCast(r0);
-    s.output___565674 = (s.arg1);
-    s.layer___565677 = (undefined);
+    if (!checkSubtype(r0, Torch_Sequential__C608902_VT)) failedCast(r0);
+    s.output___608915 = (s.arg1);
+    s.layer___608918 = (undefined);
     r0 = s.arg0.fields["layers"];
-    s.unnamed15642___U2 = (r0);
-    s.unnamed15643___U3 = (0);
+    s.unnamed15858___U2 = (r0);
+    s.unnamed15859___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed15643___U3;
-    r0 = pxsim_Array__length(s.unnamed15642___U2);
+    s.tmp_0 = r0 = s.unnamed15859___U3;
+    r0 = pxsim_Array__length(s.unnamed15858___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed15642___U2, s.unnamed15643___U3);
-    s.layer___565677 = (r0);
-    r0 = s.layer___565677;
-    r0 = checkSubtype(r0, Torch_ConvLayer__C565169_VT);
+    r0 = pxsim_Array__getAt(s.unnamed15858___U2, s.unnamed15859___U3);
+    s.layer___608918 = (r0);
+    r0 = s.layer___608918;
+    r0 = checkSubtype(r0, Torch_ConvLayer__C608415_VT);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 2; continue; }
-    s.tmp_3 = Torch_ConvLayer_forward__P565170_mk(s);
-    s.tmp_3.arg0 = s.layer___565677;
-    s.tmp_3.arg1 = s.output___565674;
-    s.callLocIdx = 104; s.pc = 5; return s.tmp_3;
+    s.tmp_3 = Torch_ConvLayer_forward__P608416_mk(s);
+    s.tmp_3.arg0 = s.layer___608918;
+    s.tmp_3.arg1 = s.output___608915;
+    s.callLocIdx = 109; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
-    s.output___565674 = (r0);
+    s.output___608915 = (r0);
     { step = 3; continue; }
   case 2:
-    s.tmp_0 = Torch_Linear_forward__P564845_mk(s);
-    s.tmp_0.arg0 = s.layer___565677;
-    s.tmp_0.arg1 = s.output___565674;
+    s.tmp_0 = Torch_Linear_forward__P608091_mk(s);
+    s.tmp_0.arg0 = s.layer___608918;
+    s.tmp_0.arg1 = s.output___608915;
     s.tmp_0.arg2 = s.arg2;
-    s.callLocIdx = 105; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 110; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
-    s.output___565674 = (r0);
+    s.output___608915 = (r0);
   case 3:
-    r0 = (s.unnamed15643___U3 + 1);
-    s.unnamed15643___U3 = (r0);
+    r0 = (s.unnamed15859___U3 + 1);
+    s.unnamed15859___U3 = (r0);
     { step = 1; continue; }
   case 4:
-    s.unnamed15642___U2 = (undefined);
-    r0 = s.output___565674;
+    s.unnamed15858___U2 = (undefined);
+    r0 = s.output___608915;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Sequential_forward__P565662.info = {"start":15525,"length":444,"line":423,"column":8,"endLine":433,"endColumn":9,"fileName":"torch.ts","functionName":"forward","argumentNames":["this","input","activation"]}
+Torch_Sequential_forward__P608903.info = {"start":16619,"length":444,"line":445,"column":8,"endLine":455,"endColumn":9,"fileName":"torch.ts","functionName":"forward","argumentNames":["this","input","activation"]}
 
-function Torch_Sequential_forward__P565662_mk(s) {
+function Torch_Sequential_forward__P608903_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Sequential_forward__P565662, depth: s.depth + 1,
+        parent: s, fn: Torch_Sequential_forward__P608903, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  output___565674: undefined,
-  layer___565677: undefined,
-  unnamed15642___U2: undefined,
-  unnamed15643___U3: undefined,
+  output___608915: undefined,
+  layer___608918: undefined,
+  unnamed15858___U2: undefined,
+  unnamed15859___U3: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -4351,7 +4351,7 @@ function Torch_Sequential_forward__P565662_mk(s) {
 
 
 
-function Torch_Linear_forward__P564845(s) {
+function Torch_Linear_forward__P608091(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -4361,11 +4361,11 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.output___564891 = undefined;
-    s.row___564894 = undefined;
-    s.unnamed15640___U2 = undefined;
-    s.unnamed15641___U3 = undefined;
-    s.neuronOutputs___564897 = undefined;
+    s.output___608137 = undefined;
+    s.row___608140 = undefined;
+    s.unnamed15856___U2 = undefined;
+    s.unnamed15857___U3 = undefined;
+    s.neuronOutputs___608143 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -4373,67 +4373,67 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Linear__C564844_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_Linear__C608090_VT)) failedCast(r0);
     r0 = pxsim_Array__mk();
-    s.output___564891 = (r0);
-    s.row___564894 = (undefined);
+    s.output___608137 = (r0);
+    s.row___608140 = (undefined);
     r0 = s.arg1.fields["data"];
-    s.unnamed15640___U2 = (r0);
-    s.unnamed15641___U3 = (0);
+    s.unnamed15856___U2 = (r0);
+    s.unnamed15857___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed15641___U3;
-    r0 = pxsim_Array__length(s.unnamed15640___U2);
+    s.tmp_0 = r0 = s.unnamed15857___U3;
+    r0 = pxsim_Array__length(s.unnamed15856___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed15640___U2, s.unnamed15641___U3);
-    s.row___564894 = (r0);
-    r0 = pxsim_pxtcore_mkAction(2, neuronOutputs_inline__P564901);
+    r0 = pxsim_Array__getAt(s.unnamed15856___U2, s.unnamed15857___U3);
+    s.row___608140 = (r0);
+    r0 = pxsim_pxtcore_mkAction(2, neuronOutputs_inline__P608147);
     s.tmp_2 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.row___564894);
+    r0 = pxsim_pxtrt_stclo(s.tmp_2, 0, s.row___608140);
     r0 = pxsim_pxtrt_stclo(s.tmp_2, 1, s.arg2);
     s.tmp_3 = helpers_arrayMap__P477803_mk(s);
     r0 = s.arg0.fields["neurons"];
     s.tmp_3.arg0 = r0;
     s.tmp_3.arg1 = s.tmp_2;
-    s.callLocIdx = 87; s.pc = 3; return s.tmp_3;
+    s.callLocIdx = 89; s.pc = 3; return s.tmp_3;
   case 3:
     r0 = s.retval;
-    s.neuronOutputs___564897 = (r0);
-    r0 = pxsim_Array__push(s.output___564891, s.neuronOutputs___564897);
-    r0 = (s.unnamed15641___U3 + 1);
-    s.unnamed15641___U3 = (r0);
+    s.neuronOutputs___608143 = (r0);
+    r0 = pxsim_Array__push(s.output___608137, s.neuronOutputs___608143);
+    r0 = (s.unnamed15857___U3 + 1);
+    s.unnamed15857___U3 = (r0);
     { step = 1; continue; }
   case 2:
-    s.unnamed15640___U2 = (undefined);
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    s.unnamed15856___U2 = (undefined);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_1 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = s.output___564891;
-    s.callLocIdx = 88; s.pc = 4; return s.tmp_1;
+    s.tmp_1.arg1 = s.output___608137;
+    s.callLocIdx = 90; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
     r0 = s.tmp_0;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Linear_forward__P564845.info = {"start":5231,"length":365,"line":147,"column":8,"endLine":154,"endColumn":9,"fileName":"torch.ts","functionName":"forward","argumentNames":["this","input","activation"]}
+Torch_Linear_forward__P608091.info = {"start":6325,"length":365,"line":169,"column":8,"endLine":176,"endColumn":9,"fileName":"torch.ts","functionName":"forward","argumentNames":["this","input","activation"]}
 
-function Torch_Linear_forward__P564845_mk(s) {
+function Torch_Linear_forward__P608091_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Linear_forward__P564845, depth: s.depth + 1,
+        parent: s, fn: Torch_Linear_forward__P608091, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  output___564891: undefined,
-  row___564894: undefined,
-  unnamed15640___U2: undefined,
-  unnamed15641___U3: undefined,
-  neuronOutputs___564897: undefined,
+  output___608137: undefined,
+  row___608140: undefined,
+  unnamed15856___U2: undefined,
+  unnamed15857___U3: undefined,
+  neuronOutputs___608143: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -4443,7 +4443,7 @@ function Torch_Linear_forward__P564845_mk(s) {
 
 
 
-function neuronOutputs_inline__P564901(s) {
+function neuronOutputs_inline__P608147(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -4457,22 +4457,22 @@ switch (step) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = Torch_Neuron_activate__P564756_mk(s);
+    s.tmp_0 = Torch_Neuron_activate__P607885_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.caps[0];
     s.tmp_0.arg2 = s.caps[1];
-    s.callLocIdx = 86; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 88; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-neuronOutputs_inline__P564901.info = {"start":5445,"length":42,"line":150,"column":63,"endLine":150,"endColumn":105,"fileName":"torch.ts","functionName":"inline","argumentNames":["neuron"]}
+neuronOutputs_inline__P608147.info = {"start":6539,"length":42,"line":172,"column":63,"endLine":172,"endColumn":105,"fileName":"torch.ts","functionName":"inline","argumentNames":["neuron"]}
 
-function neuronOutputs_inline__P564901_mk(s) {
+function neuronOutputs_inline__P608147_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: neuronOutputs_inline__P564901, depth: s.depth + 1,
+        parent: s, fn: neuronOutputs_inline__P608147, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -4482,7 +4482,7 @@ function neuronOutputs_inline__P564901_mk(s) {
 
 
 
-function Torch_Neuron_activate__P564756(s) {
+function Torch_Neuron_activate__P607885(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -4492,7 +4492,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.sum___564789 = undefined;
+    s.sum___607918 = undefined;
+    s.i___607921 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -4500,88 +4501,60 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Neuron__C564755_VT)) failedCast(r0);
-    r0 = pxsim_pxtcore_mkAction(1, sum_inline__P564792);
-    s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
-    s.tmp_1 = helpers_arrayReduce__P477809_mk(s);
-    s.tmp_1.arg0 = s.arg1;
-    s.tmp_1.arg1 = s.tmp_0;
+    if (!checkSubtype(r0, Torch_Neuron__C607884_VT)) failedCast(r0);
     r0 = s.arg0.fields["bias"];
-    s.tmp_1.arg2 = r0;
-    s.callLocIdx = 78; s.pc = 1; return s.tmp_1;
+    s.sum___607918 = (r0);
+    s.i___607921 = (0);
   case 1:
-    r0 = s.retval;
-    s.sum___564789 = (r0);
+    s.tmp_1 = r0 = s.i___607921;
+    r0 = pxsim_Array__length(s.arg1);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 < s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 2; continue; }
+    s.tmp_3 = r0 = s.sum___607918;
+    r0 = pxsim_Array__getAt(s.arg1, s.i___607921);
+    s.tmp_5 = r0;
+    r0 = s.arg0.fields["weights"];
+    s.tmp_7 = r0;
+    r0 = pxsim_Array__getAt(s.tmp_7, s.i___607921);
+    s.tmp_6 = r0;
+    r0 = (s.tmp_5 * s.tmp_6);
+    s.tmp_4 = r0;
+    r0 = (s.tmp_3 + s.tmp_4);
+    s.sum___607918 = (r0);
+    r0 = (s.i___607921 + 1);
+    s.i___607921 = (r0);
+    { step = 1; continue; }
+  case 2:
     s.tmp_0 = lambda_2_mk(s);
     s.tmp_0.argL = s.arg2;
-    s.tmp_0.arg0 = s.sum___564789;
+    s.tmp_0.arg0 = s.sum___607918;
     setupLambda(s.tmp_0, s.tmp_0.argL);
-    s.callLocIdx = 79; s.pc = 2; return s.tmp_0;
-  case 2:
+    s.callLocIdx = 78; s.pc = 3; return s.tmp_0;
+  case 3:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Neuron_activate__P564756.info = {"start":4080,"length":211,"line":113,"column":8,"endLine":116,"endColumn":9,"fileName":"torch.ts","functionName":"activate","argumentNames":["this","inputs","activation"]}
+Torch_Neuron_activate__P607885.info = {"start":4157,"length":270,"line":113,"column":8,"endLine":119,"endColumn":9,"fileName":"torch.ts","functionName":"activate","argumentNames":["this","inputs","activation"]}
 
-function Torch_Neuron_activate__P564756_mk(s) {
+function Torch_Neuron_activate__P607885_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Neuron_activate__P564756, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  tmp_1: undefined,
-  sum___564789: undefined,
-  arg0: undefined,
-  arg1: undefined,
-  arg2: undefined,
-} }
-
-
-
-
-
-function sum_inline__P564792(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.arg1 = (s.lambdaArgs[1]);
-      s.arg2 = (s.lambdaArgs[2]);
-      s.lambdaArgs = null;
-    }
-    s.tmp_0 = r0 = s.arg0;
-    s.tmp_2 = r0 = s.arg1;
-    r0 = s.caps[0].fields["weights"];
-    s.tmp_4 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_4, s.arg2);
-    s.tmp_3 = r0;
-    r0 = (s.tmp_2 * s.tmp_3);
-    s.tmp_1 = r0;
-    r0 = (s.tmp_0 + s.tmp_1);
-    return leave(s, r0)
-  default: oops()
-} } }
-sum_inline__P564792.info = {"start":4188,"length":44,"line":114,"column":36,"endLine":114,"endColumn":80,"fileName":"torch.ts","functionName":"inline","argumentNames":["acc","val","i"]}
-
-function sum_inline__P564792_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: sum_inline__P564792, depth: s.depth + 1,
+        parent: s, fn: Torch_Neuron_activate__P607885, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  sum___607918: undefined,
+  i___607921: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -4591,7 +4564,7 @@ function sum_inline__P564792_mk(s) {
 
 
 
-function Torch_ConvLayer_forward__P565170(s) {
+function Torch_ConvLayer_forward__P608416(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -4607,23 +4580,23 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_ConvLayer__C565169_VT)) failedCast(r0);
-    s.tmp_0 = Torch_Tensor_matmul__P564460_mk(s);
+    if (!checkSubtype(r0, Torch_ConvLayer__C608415_VT)) failedCast(r0);
+    s.tmp_0 = Torch_Tensor_matmul__P607589_mk(s);
     s.tmp_0.arg0 = s.arg1;
     r0 = s.arg0.fields["kernel"];
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 99; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 101; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_ConvLayer_forward__P565170.info = {"start":10267,"length":88,"line":265,"column":8,"endLine":267,"endColumn":9,"fileName":"torch.ts","functionName":"forward","argumentNames":["this","input"]}
+Torch_ConvLayer_forward__P608416.info = {"start":11361,"length":88,"line":287,"column":8,"endLine":289,"endColumn":9,"fileName":"torch.ts","functionName":"forward","argumentNames":["this","input"]}
 
-function Torch_ConvLayer_forward__P565170_mk(s) {
+function Torch_ConvLayer_forward__P608416_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_ConvLayer_forward__P565170, depth: s.depth + 1,
+        parent: s, fn: Torch_ConvLayer_forward__P608416, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -4695,7 +4668,7 @@ function helpers_arrayForEach__P477806_mk(s) {
 
 
 
-function Torch_relu__P564827(s) {
+function Torch_relu__P607961(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -4712,18 +4685,18 @@ switch (step) {
     s.tmp_0 = Math_max__P477827_mk(s);
     s.tmp_0.arg0 = 0;
     s.tmp_0.arg1 = s.arg0;
-    s.callLocIdx = 103; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 105; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_relu__P564827.info = {"start":13135,"length":78,"line":341,"column":4,"endLine":343,"endColumn":5,"fileName":"torch.ts","functionName":"relu","argumentNames":["x"]}
+Torch_relu__P607961.info = {"start":14229,"length":78,"line":363,"column":4,"endLine":365,"endColumn":5,"fileName":"torch.ts","functionName":"relu","argumentNames":["x"]}
 
-function Torch_relu__P564827_mk(s) {
+function Torch_relu__P607961_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_relu__P564827, depth: s.depth + 1,
+        parent: s, fn: Torch_relu__P607961, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -4733,7 +4706,7 @@ function Torch_relu__P564827_mk(s) {
 
 
 
-function Torch_Sequential_train__P565663(s) {
+function Torch_Sequential_train__P608904(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -4743,16 +4716,16 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.epoch___565724 = undefined;
-    s.totalLoss___565729 = undefined;
-    s.i___565730 = undefined;
-    s.input___565736 = undefined;
-    s.target___565739 = undefined;
-    s.prediction___565742 = undefined;
-    s.error___565746 = undefined;
-    s.loss___565750 = undefined;
-    s.previousError___565757 = undefined;
-    s.reversedLayers___565759 = undefined;
+    s.epoch___608965 = undefined;
+    s.totalLoss___608970 = undefined;
+    s.i___608971 = undefined;
+    s.input___608977 = undefined;
+    s.target___608980 = undefined;
+    s.prediction___608983 = undefined;
+    s.error___608987 = undefined;
+    s.loss___608991 = undefined;
+    s.previousError___608998 = undefined;
+    s.reversedLayers___609000 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -4765,7 +4738,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Sequential__C565661_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_Sequential__C608902_VT)) failedCast(r0);
     r0 = pxsim_pxtrt.mklocRef();
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stlocRef(s.tmp_0, s.arg3);
@@ -4786,7 +4759,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 1; continue; }
-    r0 = pxsim_pxtrt_stlocRef(s.arg5, Torch_sigmoid__P564813);
+    r0 = pxsim_pxtrt_stlocRef(s.arg5, Torch_sigmoid__P607947);
   case 1:
   case 2:
     r0 = pxsim_pxtrt_ldlocRef(s.arg6);
@@ -4797,90 +4770,90 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    r0 = pxsim_pxtrt_stlocRef(s.arg6, Torch_Sequential_train_inline__P565708);
+    r0 = pxsim_pxtrt_stlocRef(s.arg6, Torch_Sequential_train_inline__P608949);
   case 3:
   case 4:
-    s.epoch___565724 = (0);
+    s.epoch___608965 = (0);
   case 5:
-    r0 = (s.epoch___565724 < s.arg4);
+    r0 = (s.epoch___608965 < s.arg4);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 12; continue; }
-    s.totalLoss___565729 = (0);
-    s.i___565730 = (0);
+    s.totalLoss___608970 = (0);
+    s.i___608971 = (0);
   case 6:
-    s.tmp_1 = r0 = s.i___565730;
+    s.tmp_1 = r0 = s.i___608971;
     r0 = pxsim_Array__length(s.arg1);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
-    r0 = pxsim_Array__getAt(s.arg1, s.i___565730);
-    s.input___565736 = (r0);
-    r0 = pxsim_Array__getAt(s.arg2, s.i___565730);
-    s.target___565739 = (r0);
-    s.tmp_0 = Torch_Sequential_forward__P565662_mk(s);
+    r0 = pxsim_Array__getAt(s.arg1, s.i___608971);
+    s.input___608977 = (r0);
+    r0 = pxsim_Array__getAt(s.arg2, s.i___608971);
+    s.target___608980 = (r0);
+    s.tmp_0 = Torch_Sequential_forward__P608903_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = s.input___565736;
+    s.tmp_0.arg1 = s.input___608977;
     r0 = pxsim_pxtrt_ldlocRef(s.arg5);
     s.tmp_0.arg2 = r0;
-    s.callLocIdx = 109; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 114; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
-    s.prediction___565742 = (r0);
-    s.tmp_0 = Torch_Tensor_sub__P564463_mk(s);
-    s.tmp_0.arg0 = s.target___565739;
-    s.tmp_0.arg1 = s.prediction___565742;
-    s.callLocIdx = 110; s.pc = 14; return s.tmp_0;
+    s.prediction___608983 = (r0);
+    s.tmp_0 = Torch_Tensor_sub__P607592_mk(s);
+    s.tmp_0.arg0 = s.target___608980;
+    s.tmp_0.arg1 = s.prediction___608983;
+    s.callLocIdx = 115; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
-    s.error___565746 = (r0);
+    s.error___608987 = (r0);
     s.tmp_0 = lambda_2_mk(s);
     r0 = pxsim_pxtrt_ldlocRef(s.arg6);
     s.tmp_0.argL = r0;
-    s.tmp_0.arg0 = s.error___565746;
+    s.tmp_0.arg0 = s.error___608987;
     setupLambda(s.tmp_0, s.tmp_0.argL);
-    s.callLocIdx = 111; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 116; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
-    s.loss___565750 = (r0);
-    r0 = (s.totalLoss___565729 + s.loss___565750);
-    s.totalLoss___565729 = (r0);
+    s.loss___608991 = (r0);
+    r0 = (s.totalLoss___608970 + s.loss___608991);
+    s.totalLoss___608970 = (r0);
     r0 = pxsim_pxtrt.mklocRef();
-    s.previousError___565757 = (r0);
-    r0 = pxsim_pxtrt_stlocRef(s.previousError___565757, s.error___565746);
+    s.previousError___608998 = (r0);
+    r0 = pxsim_pxtrt_stlocRef(s.previousError___608998, s.error___608987);
     s.tmp_0 = helpers_arraySlice__P477812_mk(s);
     r0 = s.arg0.fields["layers"];
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = undefined;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 112; s.pc = 16; return s.tmp_0;
+    s.callLocIdx = 117; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
-    s.reversedLayers___565759 = (r0);
+    s.reversedLayers___609000 = (r0);
     s.tmp_0 = helpers_arrayReverse__P477798_mk(s);
-    s.tmp_0.arg0 = s.reversedLayers___565759;
-    s.callLocIdx = 113; s.pc = 17; return s.tmp_0;
+    s.tmp_0.arg0 = s.reversedLayers___609000;
+    s.callLocIdx = 118; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkAction(4, Torch_Sequential_train_inline__P565769);
+    r0 = pxsim_pxtcore_mkAction(4, Torch_Sequential_train_inline__P609010);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.previousError___565757);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.previousError___608998);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg3);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.arg5);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.arg6);
     s.tmp_1 = helpers_arrayForEach__P477806_mk(s);
-    s.tmp_1.arg0 = s.reversedLayers___565759;
+    s.tmp_1.arg0 = s.reversedLayers___609000;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 116; s.pc = 18; return s.tmp_1;
+    s.callLocIdx = 121; s.pc = 18; return s.tmp_1;
   case 18:
     r0 = s.retval;
-    r0 = (s.i___565730 + 1);
-    s.i___565730 = (r0);
+    r0 = (s.i___608971 + 1);
+    s.i___608971 = (r0);
     { step = 6; continue; }
   case 7:
-    r0 = (s.epoch___565724 % 200);
+    r0 = (s.epoch___608965 % 200);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 === 0);
     s.tmp_0 = r0;
@@ -4893,7 +4866,7 @@ switch (step) {
     r0 = (s.tmp_5 * 0.95);
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 0.005;
-    s.callLocIdx = 117; s.pc = 19; return s.tmp_4;
+    s.callLocIdx = 122; s.pc = 19; return s.tmp_4;
   case 19:
     r0 = s.retval;
     s.tmp_3 = r0;
@@ -4905,7 +4878,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
     s.tmp_1 = console_log__P478077_mk(s);
-    r0 = (s.epoch___565724 + 1);
+    r0 = (s.epoch___608965 + 1);
     s.tmp_5 = r0;
     if ((s.tmp_5) && (s.tmp_5).vtable) {
     setupResume(s, 21);
@@ -4920,7 +4893,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_String__concat(s.tmp_3, ", Loss: ");
     s.tmp_2 = r0;
-    s.tmp_8 = r0 = s.totalLoss___565729;
+    s.tmp_8 = r0 = s.totalLoss___608970;
     r0 = pxsim_Array__length(s.arg1);
     s.tmp_9 = r0;
     r0 = (s.tmp_8 / s.tmp_9);
@@ -4936,25 +4909,25 @@ switch (step) {
     s.tmp_6 = r0;
     r0 = pxsim_String__concat(s.tmp_2, s.tmp_6);
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 118; s.pc = 20; return s.tmp_1;
+    s.callLocIdx = 123; s.pc = 20; return s.tmp_1;
   case 20:
     r0 = s.retval;
   case 10:
   case 11:
-    r0 = (s.epoch___565724 + 1);
-    s.epoch___565724 = (r0);
+    r0 = (s.epoch___608965 + 1);
+    s.epoch___608965 = (r0);
     { step = 5; continue; }
   case 12:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Sequential_train__P565663.info = {"start":16006,"length":2021,"line":436,"column":8,"endLine":480,"endColumn":9,"fileName":"torch.ts","functionName":"train","argumentNames":["this","inputs","targets","learningRate","epochs","activation","lossFunction","silent"]}
+Torch_Sequential_train__P608904.info = {"start":17100,"length":2021,"line":458,"column":8,"endLine":502,"endColumn":9,"fileName":"torch.ts","functionName":"train","argumentNames":["this","inputs","targets","learningRate","epochs","activation","lossFunction","silent"]}
 
-function Torch_Sequential_train__P565663_mk(s) {
+function Torch_Sequential_train__P608904_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Sequential_train__P565663, depth: s.depth + 1,
+        parent: s, fn: Torch_Sequential_train__P608904, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -4966,16 +4939,16 @@ function Torch_Sequential_train__P565663_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  epoch___565724: undefined,
-  totalLoss___565729: undefined,
-  i___565730: undefined,
-  input___565736: undefined,
-  target___565739: undefined,
-  prediction___565742: undefined,
-  error___565746: undefined,
-  loss___565750: undefined,
-  previousError___565757: undefined,
-  reversedLayers___565759: undefined,
+  epoch___608965: undefined,
+  totalLoss___608970: undefined,
+  i___608971: undefined,
+  input___608977: undefined,
+  target___608980: undefined,
+  prediction___608983: undefined,
+  error___608987: undefined,
+  loss___608991: undefined,
+  previousError___608998: undefined,
+  reversedLayers___609000: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -4990,7 +4963,7 @@ function Torch_Sequential_train__P565663_mk(s) {
 
 
 
-function Torch_Sequential_train_inline__P565708(s) {
+function Torch_Sequential_train_inline__P608949(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5004,15 +4977,15 @@ switch (step) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    s.tmp_1 = Torch_Tensor_sum__P564464_mk(s);
-    s.tmp_2 = Torch_Tensor_applyFunction__P564461_mk(s);
+    s.tmp_1 = Torch_Tensor_sum__P607593_mk(s);
+    s.tmp_2 = Torch_Tensor_applyFunction__P607590_mk(s);
     s.tmp_2.arg0 = s.arg0;
-    s.tmp_2.arg1 = sum_inline__P565715;
-    s.callLocIdx = 106; s.pc = 2; return s.tmp_2;
+    s.tmp_2.arg1 = sum_inline__P608956;
+    s.callLocIdx = 111; s.pc = 2; return s.tmp_2;
   case 2:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 107; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 112; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -5022,7 +4995,7 @@ switch (step) {
     s.tmp_5 = r0;
     r0 = pxsim_Array__length(s.tmp_5);
     s.tmp_4.arg1 = r0;
-    s.callLocIdx = 108; s.pc = 3; return s.tmp_4;
+    s.callLocIdx = 113; s.pc = 3; return s.tmp_4;
   case 3:
     r0 = s.retval;
     s.tmp_3 = r0;
@@ -5030,12 +5003,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Sequential_train_inline__P565708.info = {"start":16336,"length":81,"line":440,"column":46,"endLine":440,"endColumn":127,"fileName":"torch.ts","functionName":"inline","argumentNames":["error"]}
+Torch_Sequential_train_inline__P608949.info = {"start":17430,"length":81,"line":462,"column":46,"endLine":462,"endColumn":127,"fileName":"torch.ts","functionName":"inline","argumentNames":["error"]}
 
-function Torch_Sequential_train_inline__P565708_mk(s) {
+function Torch_Sequential_train_inline__P608949_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Sequential_train_inline__P565708, depth: s.depth + 1,
+        parent: s, fn: Torch_Sequential_train_inline__P608949, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5050,7 +5023,7 @@ function Torch_Sequential_train_inline__P565708_mk(s) {
 
 
 
-function sum_inline__P565715(s) {
+function sum_inline__P608956(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5068,12 +5041,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-sum_inline__P565715.info = {"start":16367,"length":10,"line":440,"column":77,"endLine":440,"endColumn":87,"fileName":"torch.ts","functionName":"inline","argumentNames":["x"]}
+sum_inline__P608956.info = {"start":17461,"length":10,"line":462,"column":77,"endLine":462,"endColumn":87,"fileName":"torch.ts","functionName":"inline","argumentNames":["x"]}
 
-function sum_inline__P565715_mk(s) {
+function sum_inline__P608956_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: sum_inline__P565715, depth: s.depth + 1,
+        parent: s, fn: sum_inline__P608956, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
 } }
@@ -5082,7 +5055,7 @@ function sum_inline__P565715_mk(s) {
 
 
 
-function Torch_Sequential_train_inline__P565769(s) {
+function Torch_Sequential_train_inline__P609010(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5097,23 +5070,23 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    r0 = checkSubtype(r0, Torch_ConvLayer__C565169_VT);
+    r0 = checkSubtype(r0, Torch_ConvLayer__C608415_VT);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    s.tmp_1 = Torch_ConvLayer_backward__P565171_mk(s);
+    s.tmp_1 = Torch_ConvLayer_backward__P608417_mk(s);
     s.tmp_1.arg0 = s.arg0;
     r0 = pxsim_pxtrt_ldlocRef(s.caps[0]);
     s.tmp_1.arg1 = r0;
     r0 = pxsim_pxtrt_ldlocRef(s.caps[1]);
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 114; s.pc = 3; return s.tmp_1;
+    s.callLocIdx = 119; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
     { step = 2; continue; }
   case 1:
     s.tmp_0 = r0 = s.caps[0];
-    s.tmp_2 = Torch_Linear_backward__P564846_mk(s);
+    s.tmp_2 = Torch_Linear_backward__P608092_mk(s);
     s.tmp_2.arg0 = s.arg0;
     r0 = pxsim_pxtrt_ldlocRef(s.caps[0]);
     s.tmp_2.arg1 = r0;
@@ -5123,7 +5096,7 @@ switch (step) {
     s.tmp_2.arg3 = r0;
     r0 = pxsim_pxtrt_ldlocRef(s.caps[3]);
     s.tmp_2.arg4 = r0;
-    s.callLocIdx = 115; s.pc = 4; return s.tmp_2;
+    s.callLocIdx = 120; s.pc = 4; return s.tmp_2;
   case 4:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -5133,12 +5106,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Sequential_train_inline__P565769.info = {"start":17273,"length":370,"line":462,"column":43,"endLine":468,"endColumn":21,"fileName":"torch.ts","functionName":"inline","argumentNames":["layer"]}
+Torch_Sequential_train_inline__P609010.info = {"start":18367,"length":370,"line":484,"column":43,"endLine":490,"endColumn":21,"fileName":"torch.ts","functionName":"inline","argumentNames":["layer"]}
 
-function Torch_Sequential_train_inline__P565769_mk(s) {
+function Torch_Sequential_train_inline__P609010_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Sequential_train_inline__P565769, depth: s.depth + 1,
+        parent: s, fn: Torch_Sequential_train_inline__P609010, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5150,7 +5123,7 @@ function Torch_Sequential_train_inline__P565769_mk(s) {
 
 
 
-function Torch_Linear_backward__P564846(s) {
+function Torch_Linear_backward__P608092(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5160,9 +5133,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.activatedError___564919 = undefined;
-    s.newError___564927 = undefined;
-    s.i___564929 = undefined;
+    s.activatedError___608165 = undefined;
+    s.newError___608173 = undefined;
+    s.i___608175 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -5172,22 +5145,22 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Linear__C564844_VT)) failedCast(r0);
-    r0 = pxsim_pxtcore_mkAction(1, activatedError_inline__P564922);
+    if (!checkSubtype(r0, Torch_Linear__C608090_VT)) failedCast(r0);
+    r0 = pxsim_pxtcore_mkAction(1, activatedError_inline__P608168);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg3);
-    s.tmp_1 = Torch_Tensor_applyFunction__P564461_mk(s);
+    s.tmp_1 = Torch_Tensor_applyFunction__P607590_mk(s);
     s.tmp_1.arg0 = s.arg1;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 90; s.pc = 3; return s.tmp_1;
+    s.callLocIdx = 92; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.activatedError___564919 = (r0);
+    s.activatedError___608165 = (r0);
     r0 = pxsim_Array__mk();
-    s.newError___564927 = (r0);
-    s.i___564929 = (0);
+    s.newError___608173 = (r0);
+    s.i___608175 = (0);
   case 1:
-    s.tmp_1 = r0 = s.i___564929;
+    s.tmp_1 = r0 = s.i___608175;
     r0 = s.arg0.fields["neurons"];
     s.tmp_3 = r0;
     r0 = pxsim_Array__length(s.tmp_3);
@@ -5199,52 +5172,52 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_4 = r0;
     r0 = pxsim_Array__push(s.tmp_4, 0);
-    r0 = pxsim_Array__push(s.newError___564927, s.tmp_4);
-    r0 = (s.i___564929 + 1);
-    s.i___564929 = (r0);
+    r0 = pxsim_Array__push(s.newError___608173, s.tmp_4);
+    r0 = (s.i___608175 + 1);
+    s.i___608175 = (r0);
     { step = 1; continue; }
   case 2:
-    r0 = pxsim_pxtcore_mkAction(5, Torch_Linear_backward_inline__P564945);
+    r0 = pxsim_pxtcore_mkAction(5, Torch_Linear_backward_inline__P608191);
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.activatedError___564919);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.activatedError___608165);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg1);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 2, s.arg4);
-    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.newError___564927);
+    r0 = pxsim_pxtrt_stclo(s.tmp_0, 3, s.newError___608173);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 4, s.arg2);
     s.tmp_1 = helpers_arrayForEach__P477806_mk(s);
     r0 = s.arg0.fields["neurons"];
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 93; s.pc = 4; return s.tmp_1;
+    s.callLocIdx = 95; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_1 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = s.newError___564927;
-    s.callLocIdx = 94; s.pc = 5; return s.tmp_1;
+    s.tmp_1.arg1 = s.newError___608173;
+    s.callLocIdx = 96; s.pc = 5; return s.tmp_1;
   case 5:
     r0 = s.retval;
     r0 = s.tmp_0;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Linear_backward__P564846.info = {"start":5606,"length":1317,"line":156,"column":8,"endLine":187,"endColumn":9,"fileName":"torch.ts","functionName":"backward","argumentNames":["this","error","learningRate","activation","lossFunction"]}
+Torch_Linear_backward__P608092.info = {"start":6700,"length":1317,"line":178,"column":8,"endLine":209,"endColumn":9,"fileName":"torch.ts","functionName":"backward","argumentNames":["this","error","learningRate","activation","lossFunction"]}
 
-function Torch_Linear_backward__P564846_mk(s) {
+function Torch_Linear_backward__P608092_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Linear_backward__P564846, depth: s.depth + 1,
+        parent: s, fn: Torch_Linear_backward__P608092, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  activatedError___564919: undefined,
-  newError___564927: undefined,
-  i___564929: undefined,
+  activatedError___608165: undefined,
+  newError___608173: undefined,
+  i___608175: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -5256,7 +5229,7 @@ function Torch_Linear_backward__P564846_mk(s) {
 
 
 
-function activatedError_inline__P564922(s) {
+function activatedError_inline__P608168(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5270,21 +5243,21 @@ switch (step) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = Torch_activationDerivative__P564807_mk(s);
+    s.tmp_0 = Torch_activationDerivative__P607941_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.caps[0];
-    s.callLocIdx = 89; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 91; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-activatedError_inline__P564922.info = {"start":5848,"length":40,"line":160,"column":53,"endLine":160,"endColumn":93,"fileName":"torch.ts","functionName":"inline","argumentNames":["x"]}
+activatedError_inline__P608168.info = {"start":6942,"length":40,"line":182,"column":53,"endLine":182,"endColumn":93,"fileName":"torch.ts","functionName":"inline","argumentNames":["x"]}
 
-function activatedError_inline__P564922_mk(s) {
+function activatedError_inline__P608168_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: activatedError_inline__P564922, depth: s.depth + 1,
+        parent: s, fn: activatedError_inline__P608168, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -5294,7 +5267,7 @@ function activatedError_inline__P564922_mk(s) {
 
 
 
-function Torch_Linear_backward_inline__P564945(s) {
+function Torch_Linear_backward_inline__P608191(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5309,7 +5282,7 @@ switch (step) {
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkAction(6, Torch_Linear_backward_inline__P564953);
+    r0 = pxsim_pxtcore_mkAction(6, Torch_Linear_backward_inline__P608199);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg1);
@@ -5322,7 +5295,7 @@ switch (step) {
     r0 = s.arg0.fields["weights"];
     s.tmp_3.arg0 = r0;
     s.tmp_3.arg1 = s.tmp_0;
-    s.callLocIdx = 92; s.pc = 1; return s.tmp_3;
+    s.callLocIdx = 94; s.pc = 1; return s.tmp_3;
   case 1:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -5346,12 +5319,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Linear_backward_inline__P564945.info = {"start":6118,"length":745,"line":167,"column":33,"endLine":184,"endColumn":13,"fileName":"torch.ts","functionName":"inline","argumentNames":["neuron","index"]}
+Torch_Linear_backward_inline__P608191.info = {"start":7212,"length":745,"line":189,"column":33,"endLine":206,"endColumn":13,"fileName":"torch.ts","functionName":"inline","argumentNames":["neuron","index"]}
 
-function Torch_Linear_backward_inline__P564945_mk(s) {
+function Torch_Linear_backward_inline__P608191_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Linear_backward_inline__P564945, depth: s.depth + 1,
+        parent: s, fn: Torch_Linear_backward_inline__P608191, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5369,7 +5342,7 @@ function Torch_Linear_backward_inline__P564945_mk(s) {
 
 
 
-function Torch_Linear_backward_inline__P564953(s) {
+function Torch_Linear_backward_inline__P608199(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5379,7 +5352,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.gradient___564956 = undefined;
+    s.gradient___608202 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -5398,37 +5371,37 @@ switch (step) {
     r0 = pxsim_Array__getAt(s.tmp_4, s.caps[1]);
     s.tmp_3 = r0;
     r0 = (s.tmp_0 * s.tmp_3);
-    s.gradient___564956 = (r0);
+    s.gradient___608202 = (r0);
     s.tmp_0 = r0 = s.caps[3];
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 1; continue; }
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = s.gradient___564956;
+    r0 = s.gradient___608202;
   case 2:
     // jmp value (already in r0)
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 3; continue; }
-    s.tmp_2 = r0 = s.gradient___564956;
+    s.tmp_2 = r0 = s.gradient___608202;
     s.tmp_4 = lambda_2_mk(s);
     s.tmp_4.argL = s.caps[3];
     s.tmp_4.arg0 = s.caps[2];
     setupLambda(s.tmp_4, s.tmp_4.argL);
-    s.callLocIdx = 91; s.pc = 7; return s.tmp_4;
+    s.callLocIdx = 93; s.pc = 7; return s.tmp_4;
   case 7:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = (s.tmp_2 * s.tmp_3);
-    s.gradient___564956 = (r0);
+    s.gradient___608202 = (r0);
   case 3:
   case 4:
-    r0 = pxsim_numops_toBoolDecr(s.gradient___564956);
+    r0 = pxsim_numops_toBoolDecr(s.gradient___608202);
     if (!r0) { step = 5; continue; }
     r0 = pxsim_Array__getAt(s.caps[4], s.arg1);
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.gradient___564956);
+    r0 = pxsim_Array__push(s.tmp_0, s.gradient___608202);
     { step = 6; continue; }
   case 5:
     r0 = pxsim_Array__getAt(s.caps[4], s.arg1);
@@ -5436,18 +5409,18 @@ switch (step) {
     r0 = pxsim_Array__push(s.tmp_0, 0);
   case 6:
     s.tmp_0 = r0 = s.arg0;
-    r0 = (s.caps[5] * s.gradient___564956);
+    r0 = (s.caps[5] * s.gradient___608202);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 + s.tmp_1);
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Linear_backward_inline__P564953.info = {"start":6191,"length":578,"line":168,"column":52,"endLine":181,"endColumn":17,"fileName":"torch.ts","functionName":"inline","argumentNames":["w","j"]}
+Torch_Linear_backward_inline__P608199.info = {"start":7285,"length":578,"line":190,"column":52,"endLine":203,"endColumn":17,"fileName":"torch.ts","functionName":"inline","argumentNames":["w","j"]}
 
-function Torch_Linear_backward_inline__P564953_mk(s) {
+function Torch_Linear_backward_inline__P608199_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Linear_backward_inline__P564953, depth: s.depth + 1,
+        parent: s, fn: Torch_Linear_backward_inline__P608199, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5455,7 +5428,7 @@ function Torch_Linear_backward_inline__P564953_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  gradient___564956: undefined,
+  gradient___608202: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -5464,7 +5437,7 @@ function Torch_Linear_backward_inline__P564953_mk(s) {
 
 
 
-function Torch_activationDerivative__P564807(s) {
+function Torch_activationDerivative__P607941(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5474,27 +5447,33 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.sig___564814 = undefined;
-    s.tanhX___564834 = undefined;
+    s.sig___607948 = undefined;
+    s.tanhX___607974 = undefined;
+    s.sig___607999 = undefined;
+    s.omega___608015 = undefined;
+    s.delta___608021 = undefined;
+    s.sqrt2pi___608041 = undefined;
+    s.x3___608049 = undefined;
+    s.tanhTerm___608055 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = (s.arg1 === Torch_sigmoid__P564813);
+    r0 = (s.arg1 === Torch_sigmoid__P607947);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    s.tmp_1 = Torch_sigmoid__P564813_mk(s);
+    s.tmp_1 = Torch_sigmoid__P607947_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.callLocIdx = 80; s.pc = 14; return s.tmp_1;
-  case 14:
+    s.callLocIdx = 79; s.pc = 28; return s.tmp_1;
+  case 28:
     r0 = s.retval;
-    s.sig___564814 = (r0);
+    s.sig___607948 = (r0);
     s.tmp_1 = isNaN__P477790_mk(s);
-    s.tmp_1.arg0 = s.sig___564814;
-    s.callLocIdx = 81; s.pc = 15; return s.tmp_1;
-  case 15:
+    s.tmp_1.arg0 = s.sig___607948;
+    s.callLocIdx = 80; s.pc = 29; return s.tmp_1;
+  case 29:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
@@ -5502,18 +5481,18 @@ switch (step) {
     r0 = 0;
     { step = 2; continue; }
   case 1:
-    s.tmp_2 = r0 = s.sig___564814;
-    r0 = (1 - s.sig___564814);
+    s.tmp_2 = r0 = s.sig___607948;
+    r0 = (1 - s.sig___607948);
     s.tmp_3 = r0;
     r0 = (s.tmp_2 * s.tmp_3);
   case 2:
     // jmp value (already in r0)
     s.tmp_4 = r0;
     r0 = s.tmp_4;
-    { step = 13; continue; }
+    { step = 27; continue; }
   case 3:
   case 4:
-    r0 = (s.arg1 === Torch_relu__P564827);
+    r0 = (s.arg1 === Torch_relu__P607961);
     s.tmp_5 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 7; continue; }
@@ -5529,51 +5508,187 @@ switch (step) {
     // jmp value (already in r0)
     s.tmp_7 = r0;
     r0 = s.tmp_7;
-    { step = 13; continue; }
+    { step = 27; continue; }
   case 7:
   case 8:
-    r0 = (s.arg1 === Torch_tanh__P564833);
+    r0 = (s.arg1 === Torch_leakyRelu__P607967);
     s.tmp_8 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_8);
     if (!r0) { step = 11; continue; }
-    s.tmp_9 = Torch_tanh__P564833_mk(s);
-    s.tmp_9.arg0 = s.arg0;
-    s.callLocIdx = 82; s.pc = 16; return s.tmp_9;
-  case 16:
+    r0 = (s.arg0 > 0);
+    s.tmp_9 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_9);
+    if (!r0) { step = 9; continue; }
+    r0 = 1;
+    { step = 10; continue; }
+  case 9:
+    r0 = 0.01;
+  case 10:
+    // jmp value (already in r0)
+    s.tmp_10 = r0;
+    r0 = s.tmp_10;
+    { step = 27; continue; }
+  case 11:
+  case 12:
+    r0 = (s.arg1 === Torch_tanh__P607973);
+    s.tmp_11 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_11);
+    if (!r0) { step = 15; continue; }
+    s.tmp_12 = Torch_tanh__P607973_mk(s);
+    s.tmp_12.arg0 = s.arg0;
+    s.callLocIdx = 81; s.pc = 30; return s.tmp_12;
+  case 30:
     r0 = s.retval;
-    s.tanhX___564834 = (r0);
+    s.tanhX___607974 = (r0);
     s.tmp_1 = isNaN__P477790_mk(s);
-    s.tmp_1.arg0 = s.tanhX___564834;
-    s.callLocIdx = 83; s.pc = 17; return s.tmp_1;
-  case 17:
+    s.tmp_1.arg0 = s.tanhX___607974;
+    s.callLocIdx = 82; s.pc = 31; return s.tmp_1;
+  case 31:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
-    if (!r0) { step = 9; continue; }
+    if (!r0) { step = 13; continue; }
     r0 = 0;
-    { step = 10; continue; }
-  case 9:
-    r0 = (s.tanhX___564834 * s.tanhX___564834);
+    { step = 14; continue; }
+  case 13:
+    r0 = (s.tanhX___607974 * s.tanhX___607974);
     s.tmp_2 = r0;
     r0 = (1 - s.tmp_2);
-  case 10:
+  case 14:
     // jmp value (already in r0)
     s.tmp_3 = r0;
     r0 = s.tmp_3;
-    { step = 13; continue; }
-  case 11:
-  case 12:
+    { step = 27; continue; }
+  case 15:
+  case 16:
+    r0 = (s.arg1 === Torch_elu__P607987);
+    s.tmp_4 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_4);
+    if (!r0) { step = 19; continue; }
+    r0 = (s.arg0 > 0);
+    s.tmp_5 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_5);
+    if (!r0) { step = 17; continue; }
     r0 = 1;
-  case 13:
+    { step = 18; continue; }
+  case 17:
+    s.tmp_7 = Torch_elu__P607987_mk(s);
+    s.tmp_7.arg0 = s.arg0;
+    s.tmp_7.arg1 = 1;
+    s.callLocIdx = 83; s.pc = 32; return s.tmp_7;
+  case 32:
+    r0 = s.retval;
+    s.tmp_6 = r0;
+    r0 = (s.tmp_6 + 1);
+  case 18:
+    // jmp value (already in r0)
+    s.tmp_8 = r0;
+    r0 = s.tmp_8;
+    { step = 27; continue; }
+  case 19:
+  case 20:
+    r0 = (s.arg1 === Torch_swish__P607998);
+    s.tmp_9 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_9);
+    if (!r0) { step = 21; continue; }
+    s.tmp_10 = Torch_sigmoid__P607947_mk(s);
+    s.tmp_10.arg0 = s.arg0;
+    s.callLocIdx = 84; s.pc = 33; return s.tmp_10;
+  case 33:
+    r0 = s.retval;
+    s.sig___607999 = (r0);
+    s.tmp_0 = r0 = s.sig___607999;
+    r0 = (s.arg0 * s.sig___607999);
+    s.tmp_2 = r0;
+    r0 = (1 - s.sig___607999);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_2 * s.tmp_3);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 + s.tmp_1);
+    { step = 27; continue; }
+  case 21:
+  case 22:
+    r0 = (s.arg1 === Torch_mish__P608014);
+    s.tmp_4 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_4);
+    if (!r0) { step = 23; continue; }
+    r0 = pxsim.Math_.exp(s.arg0);
+    s.tmp_5 = r0;
+    r0 = (1 + s.tmp_5);
+    s.omega___608015 = (r0);
+    s.tmp_0 = r0 = s.omega___608015;
+    r0 = (s.omega___608015 * s.omega___608015);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 + s.tmp_1);
+    s.delta___608021 = (r0);
+    r0 = pxsim.Math_.exp(s.arg0);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_1 * s.delta___608021);
+    s.tmp_0 = r0;
+    r0 = (s.delta___608021 * s.delta___608021);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_0 / s.tmp_2);
+    { step = 27; continue; }
+  case 23:
+  case 24:
+    r0 = (s.arg1 === Torch_gelu__P608040);
+    s.tmp_3 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_3);
+    if (!r0) { step = 25; continue; }
+    r0 = pxsim.Math_.sqrt(0.6366197723675814);
+    s.sqrt2pi___608041 = (r0);
+    r0 = (s.arg0 * s.arg0);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 * s.arg0);
+    s.x3___608049 = (r0);
+    s.tmp_0 = Torch_tanh__P607973_mk(s);
+    s.tmp_1 = r0 = s.sqrt2pi___608041;
+    s.tmp_3 = r0 = s.arg0;
+    r0 = (0.044715 * s.x3___608049);
+    s.tmp_4 = r0;
+    r0 = (s.tmp_3 + s.tmp_4);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 * s.tmp_2);
+    s.tmp_0.arg0 = r0;
+    s.callLocIdx = 85; s.pc = 34; return s.tmp_0;
+  case 34:
+    r0 = s.retval;
+    s.tanhTerm___608055 = (r0);
+    r0 = (1 + s.tanhTerm___608055);
+    s.tmp_1 = r0;
+    r0 = (s.arg0 * s.sqrt2pi___608041);
+    s.tmp_4 = r0;
+    r0 = (s.tanhTerm___608055 * s.tanhTerm___608055);
+    s.tmp_6 = r0;
+    r0 = (1 - s.tmp_6);
+    s.tmp_5 = r0;
+    r0 = (s.tmp_4 * s.tmp_5);
+    s.tmp_3 = r0;
+    r0 = (0.134145 * s.arg0);
+    s.tmp_9 = r0;
+    r0 = (s.tmp_9 * s.arg0);
+    s.tmp_8 = r0;
+    r0 = (1 + s.tmp_8);
+    s.tmp_7 = r0;
+    r0 = (s.tmp_3 * s.tmp_7);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 + s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = (0.5 * s.tmp_0);
+    { step = 27; continue; }
+  case 25:
+  case 26:
+    r0 = 1;
+  case 27:
     return leave(s, r0)
   default: oops()
 } } }
-Torch_activationDerivative__P564807.info = {"start":4303,"length":471,"line":119,"column":4,"endLine":130,"endColumn":5,"fileName":"torch.ts","functionName":"activationDerivative","argumentNames":["x","activation"]}
+Torch_activationDerivative__P607941.info = {"start":4439,"length":1431,"line":122,"column":4,"endLine":154,"endColumn":5,"fileName":"torch.ts","functionName":"activationDerivative","argumentNames":["x","activation"]}
 
-function Torch_activationDerivative__P564807_mk(s) {
+function Torch_activationDerivative__P607941_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_activationDerivative__P564807, depth: s.depth + 1,
+        parent: s, fn: Torch_activationDerivative__P607941, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5585,8 +5700,17 @@ function Torch_activationDerivative__P564807_mk(s) {
   tmp_7: undefined,
   tmp_8: undefined,
   tmp_9: undefined,
-  sig___564814: undefined,
-  tanhX___564834: undefined,
+  tmp_10: undefined,
+  tmp_11: undefined,
+  tmp_12: undefined,
+  sig___607948: undefined,
+  tanhX___607974: undefined,
+  sig___607999: undefined,
+  omega___608015: undefined,
+  delta___608021: undefined,
+  sqrt2pi___608041: undefined,
+  x3___608049: undefined,
+  tanhTerm___608055: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -5595,7 +5719,7 @@ function Torch_activationDerivative__P564807_mk(s) {
 
 
 
-function Torch_tanh__P564833(s) {
+function Torch_gelu__P608040(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5605,7 +5729,219 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.exp2x___565568 = undefined;
+    s.x3___608789 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = (s.arg0 * s.arg0);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 * s.arg0);
+    s.x3___608789 = (r0);
+    s.tmp_1 = r0 = s.arg0;
+    s.tmp_4 = Torch_tanh__P607973_mk(s);
+    s.tmp_5 = r0 = globals.sqrt2pi___608784;
+    s.tmp_7 = r0 = s.arg0;
+    r0 = (0.044715 * s.x3___608789);
+    s.tmp_8 = r0;
+    r0 = (s.tmp_7 + s.tmp_8);
+    s.tmp_6 = r0;
+    r0 = (s.tmp_5 * s.tmp_6);
+    s.tmp_4.arg0 = r0;
+    s.callLocIdx = 107; s.pc = 1; return s.tmp_4;
+  case 1:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    r0 = (1 + s.tmp_3);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 * s.tmp_2);
+    s.tmp_0 = r0;
+    r0 = (s.tmp_0 / 2);
+    return leave(s, r0)
+  default: oops()
+} } }
+Torch_gelu__P608040.info = {"start":15088,"length":138,"line":393,"column":4,"endLine":396,"endColumn":5,"fileName":"torch.ts","functionName":"gelu","argumentNames":["x"]}
+
+function Torch_gelu__P608040_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: Torch_gelu__P608040, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  x3___608789: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function Torch_mish__P608014(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    s.tmp_0 = r0 = s.arg0;
+    s.tmp_2 = Torch_tanh__P607973_mk(s);
+    r0 = pxsim.Math_.exp(s.arg0);
+    s.tmp_4 = r0;
+    r0 = (1 + s.tmp_4);
+    s.tmp_3 = r0;
+    r0 = pxsim.Math_.log(s.tmp_3);
+    s.tmp_2.arg0 = r0;
+    s.callLocIdx = 106; s.pc = 1; return s.tmp_2;
+  case 1:
+    r0 = s.retval;
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 * s.tmp_1);
+    return leave(s, r0)
+  default: oops()
+} } }
+Torch_mish__P608014.info = {"start":14788,"length":99,"line":384,"column":4,"endLine":386,"endColumn":5,"fileName":"torch.ts","functionName":"mish","argumentNames":["x"]}
+
+function Torch_mish__P608014_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: Torch_mish__P608014, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function Torch_swish__P607998(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    s.tmp_0 = r0 = s.arg0;
+    r0 = (0 - s.arg0);
+    s.tmp_3 = r0;
+    r0 = pxsim.Math_.exp(s.tmp_3);
+    s.tmp_2 = r0;
+    r0 = (1 + s.tmp_2);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 / s.tmp_1);
+    return leave(s, r0)
+  default: oops()
+} } }
+Torch_swish__P607998.info = {"start":14893,"length":118,"line":388,"column":4,"endLine":390,"endColumn":5,"fileName":"torch.ts","functionName":"swish","argumentNames":["x"]}
+
+function Torch_swish__P607998_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: Torch_swish__P607998, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function Torch_elu__P607987(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = (s.arg0 > 0);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    r0 = s.arg0;
+    { step = 2; continue; }
+  case 1:
+    s.tmp_1 = r0 = s.arg1;
+    r0 = pxsim.Math_.exp(s.arg0);
+    s.tmp_3 = r0;
+    r0 = (s.tmp_3 - 1);
+    s.tmp_2 = r0;
+    r0 = (s.tmp_1 * s.tmp_2);
+  case 2:
+    // jmp value (already in r0)
+    s.tmp_4 = r0;
+    r0 = s.tmp_4;
+    return leave(s, r0)
+  default: oops()
+} } }
+Torch_elu__P607987.info = {"start":14433,"length":119,"line":372,"column":4,"endLine":374,"endColumn":5,"fileName":"torch.ts","functionName":"elu","argumentNames":["x","alpha"]}
+
+function Torch_elu__P607987_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: Torch_elu__P607987, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function Torch_tanh__P607973(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.exp2x___608810 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -5613,26 +5949,87 @@ switch (step) {
     r0 = (2 * s.arg0);
     s.tmp_0 = r0;
     r0 = pxsim.Math_.exp(s.tmp_0);
-    s.exp2x___565568 = (r0);
-    r0 = (s.exp2x___565568 - 1);
+    s.exp2x___608810 = (r0);
+    r0 = (s.exp2x___608810 - 1);
     s.tmp_0 = r0;
-    r0 = (s.exp2x___565568 + 1);
+    r0 = (s.exp2x___608810 + 1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 / s.tmp_1);
     return leave(s, r0)
   default: oops()
 } } }
-Torch_tanh__P564833.info = {"start":14171,"length":126,"line":377,"column":4,"endLine":380,"endColumn":5,"fileName":"torch.ts","functionName":"tanh","argumentNames":["x"]}
+Torch_tanh__P607973.info = {"start":15265,"length":126,"line":399,"column":4,"endLine":402,"endColumn":5,"fileName":"torch.ts","functionName":"tanh","argumentNames":["x"]}
 
-function Torch_tanh__P564833_mk(s) {
+function Torch_tanh__P607973_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_tanh__P564833, depth: s.depth + 1,
+        parent: s, fn: Torch_tanh__P607973, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  exp2x___565568: undefined,
+  exp2x___608810: undefined,
   arg0: undefined,
+} }
+
+
+
+
+
+function Torch_leakyRelu__P607967(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.v___608825 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = (s.arg0 > 0);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    r0 = s.arg0;
+    { step = 2; continue; }
+  case 1:
+    r0 = (s.arg1 * s.arg0);
+  case 2:
+    // jmp value (already in r0)
+    s.tmp_1 = r0;
+    s.v___608825 = (s.tmp_1);
+    s.tmp_1 = isNaN__P477790_mk(s);
+    s.tmp_1.arg0 = s.v___608825;
+    s.callLocIdx = 108; s.pc = 5; return s.tmp_1;
+  case 5:
+    r0 = s.retval;
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 3; continue; }
+    s.v___608825 = (0);
+  case 3:
+  case 4:
+    r0 = s.v___608825;
+    return leave(s, r0)
+  default: oops()
+} } }
+Torch_leakyRelu__P607967.info = {"start":15455,"length":182,"line":405,"column":4,"endLine":411,"endColumn":5,"fileName":"torch.ts","functionName":"leakyRelu","argumentNames":["x","alpha"]}
+
+function Torch_leakyRelu__P607967_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: Torch_leakyRelu__P607967, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  v___608825: undefined,
+  arg0: undefined,
+  arg1: undefined,
 } }
 
 
@@ -5673,7 +6070,7 @@ function isNaN__P477790_mk(s) {
 
 
 
-function Torch_ConvLayer_backward__P565171(s) {
+function Torch_ConvLayer_backward__P608417(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5690,18 +6087,18 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_ConvLayer__C565169_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_ConvLayer__C608415_VT)) failedCast(r0);
     s.tmp_0 = r0 = s.arg0;
-    s.tmp_2 = Torch_Tensor_matmul__P564460_mk(s);
+    s.tmp_2 = Torch_Tensor_matmul__P607589_mk(s);
     s.tmp_2.arg0 = s.arg1;
     r0 = s.arg0.fields["kernel"];
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 100; s.pc = 1; return s.tmp_2;
+    s.callLocIdx = 102; s.pc = 1; return s.tmp_2;
   case 1:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["kernelGradients"] = (s.tmp_1);
-    r0 = pxsim_pxtcore_mkAction(2, Torch_ConvLayer_backward_inline__P565245);
+    r0 = pxsim_pxtcore_mkAction(2, Torch_ConvLayer_backward_inline__P608491);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg2);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.arg0);
@@ -5712,7 +6109,7 @@ switch (step) {
     r0 = r0.fields["data"];
     s.tmp_3.arg0 = r0;
     s.tmp_3.arg1 = s.tmp_0;
-    s.callLocIdx = 102; s.pc = 2; return s.tmp_3;
+    s.callLocIdx = 104; s.pc = 2; return s.tmp_3;
   case 2:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -5721,12 +6118,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_ConvLayer_backward__P565171.info = {"start":10434,"length":375,"line":270,"column":8,"endLine":277,"endColumn":9,"fileName":"torch.ts","functionName":"backward","argumentNames":["this","error","learningRate"]}
+Torch_ConvLayer_backward__P608417.info = {"start":11528,"length":375,"line":292,"column":8,"endLine":299,"endColumn":9,"fileName":"torch.ts","functionName":"backward","argumentNames":["this","error","learningRate"]}
 
-function Torch_ConvLayer_backward__P565171_mk(s) {
+function Torch_ConvLayer_backward__P608417_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_ConvLayer_backward__P565171, depth: s.depth + 1,
+        parent: s, fn: Torch_ConvLayer_backward__P608417, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5741,7 +6138,7 @@ function Torch_ConvLayer_backward__P565171_mk(s) {
 
 
 
-function Torch_ConvLayer_backward_inline__P565245(s) {
+function Torch_ConvLayer_backward_inline__P608491(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5756,7 +6153,7 @@ switch (step) {
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkAction(3, Torch_ConvLayer_backward_inline__P565250);
+    r0 = pxsim_pxtcore_mkAction(3, Torch_ConvLayer_backward_inline__P608496);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.caps[0]);
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.caps[1]);
@@ -5764,18 +6161,18 @@ switch (step) {
     s.tmp_1 = helpers_arrayMap__P477803_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 101; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 103; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_ConvLayer_backward_inline__P565245.info = {"start":10696,"length":101,"line":275,"column":52,"endLine":276,"endColumn":69,"fileName":"torch.ts","functionName":"inline","argumentNames":["row","r"]}
+Torch_ConvLayer_backward_inline__P608491.info = {"start":11790,"length":101,"line":297,"column":52,"endLine":298,"endColumn":69,"fileName":"torch.ts","functionName":"inline","argumentNames":["row","r"]}
 
-function Torch_ConvLayer_backward_inline__P565245_mk(s) {
+function Torch_ConvLayer_backward_inline__P608491_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_ConvLayer_backward_inline__P565245, depth: s.depth + 1,
+        parent: s, fn: Torch_ConvLayer_backward_inline__P608491, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5787,7 +6184,7 @@ function Torch_ConvLayer_backward_inline__P565245_mk(s) {
 
 
 
-function Torch_ConvLayer_backward_inline__P565250(s) {
+function Torch_ConvLayer_backward_inline__P608496(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5817,12 +6214,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_ConvLayer_backward_inline__P565250.info = {"start":10716,"length":80,"line":275,"column":72,"endLine":276,"endColumn":68,"fileName":"torch.ts","functionName":"inline","argumentNames":["val","c"]}
+Torch_ConvLayer_backward_inline__P608496.info = {"start":11810,"length":80,"line":297,"column":72,"endLine":298,"endColumn":68,"fileName":"torch.ts","functionName":"inline","argumentNames":["val","c"]}
 
-function Torch_ConvLayer_backward_inline__P565250_mk(s) {
+function Torch_ConvLayer_backward_inline__P608496_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_ConvLayer_backward_inline__P565250, depth: s.depth + 1,
+        parent: s, fn: Torch_ConvLayer_backward_inline__P608496, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5953,7 +6350,7 @@ function helpers_swap__P482119_mk(s) {
 
 
 
-function Torch_Tensor_sub__P564463(s) {
+function Torch_Tensor_sub__P607592(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -5963,23 +6360,23 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.rows___564656 = undefined;
-    s.cols___564664 = undefined;
-    s.result___564672 = undefined;
-    s.base___564674 = undefined;
-    s.c___564676 = undefined;
-    s.r___564686 = undefined;
-    s.data1___564699 = undefined;
-    s.data2___564702 = undefined;
-    s.r___564705 = undefined;
-    s.c___564710 = undefined;
+    s.rows___607785 = undefined;
+    s.cols___607793 = undefined;
+    s.result___607801 = undefined;
+    s.base___607803 = undefined;
+    s.c___607805 = undefined;
+    s.r___607815 = undefined;
+    s.data1___607828 = undefined;
+    s.data2___607831 = undefined;
+    s.r___607834 = undefined;
+    s.c___607839 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Tensor__C564459_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_Tensor__C607588_VT)) failedCast(r0);
     s.tmp_0 = Math_min__P477828_mk(s);
     r0 = s.arg0.fields["data"];
     s.tmp_1 = r0;
@@ -5992,7 +6389,7 @@ switch (step) {
     s.callLocIdx = 72; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
-    s.rows___564656 = (r0);
+    s.rows___607785 = (r0);
     s.tmp_0 = Math_min__P477828_mk(s);
     r0 = s.arg0.fields["data"];
     s.tmp_2 = r0;
@@ -6009,32 +6406,32 @@ switch (step) {
     s.callLocIdx = 73; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    s.cols___564664 = (r0);
+    s.cols___607793 = (r0);
     r0 = pxsim_Array__mk();
-    s.result___564672 = (r0);
+    s.result___607801 = (r0);
     r0 = pxsim_Array__mk();
-    s.base___564674 = (r0);
-    s.c___564676 = (0);
+    s.base___607803 = (r0);
+    s.c___607805 = (0);
   case 1:
-    r0 = (s.c___564676 < s.cols___564664);
+    r0 = (s.c___607805 < s.cols___607793);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    r0 = pxsim_Array_.setAt(s.base___564674, s.c___564676, 0);
-    r0 = (s.c___564676 + 1);
-    s.c___564676 = (r0);
+    r0 = pxsim_Array_.setAt(s.base___607803, s.c___607805, 0);
+    r0 = (s.c___607805 + 1);
+    s.c___607805 = (r0);
     { step = 1; continue; }
   case 2:
-    s.r___564686 = (0);
+    s.r___607815 = (0);
   case 3:
-    r0 = (s.r___564686 < s.rows___564656);
+    r0 = (s.r___607815 < s.rows___607785);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    s.tmp_1 = r0 = s.result___564672;
-    s.tmp_2 = r0 = s.r___564686;
+    s.tmp_1 = r0 = s.result___607801;
+    s.tmp_2 = r0 = s.r___607815;
     s.tmp_4 = helpers_arraySlice__P477812_mk(s);
-    s.tmp_4.arg0 = s.base___564674;
+    s.tmp_4.arg0 = s.base___607803;
     s.tmp_4.arg1 = 0;
     s.tmp_4.arg2 = undefined;
     s.callLocIdx = 74; s.pc = 11; return s.tmp_4;
@@ -6042,53 +6439,53 @@ switch (step) {
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_1, s.tmp_2, s.tmp_3);
-    r0 = (s.r___564686 + 1);
-    s.r___564686 = (r0);
+    r0 = (s.r___607815 + 1);
+    s.r___607815 = (r0);
     { step = 3; continue; }
   case 4:
     r0 = s.arg0.fields["data"];
-    s.data1___564699 = (r0);
+    s.data1___607828 = (r0);
     r0 = s.arg1.fields["data"];
-    s.data2___564702 = (r0);
-    s.r___564705 = (0);
+    s.data2___607831 = (r0);
+    s.r___607834 = (0);
   case 5:
-    r0 = (s.r___564705 < s.rows___564656);
+    r0 = (s.r___607834 < s.rows___607785);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
-    s.c___564710 = (0);
+    s.c___607839 = (0);
   case 6:
-    r0 = (s.c___564710 < s.cols___564664);
+    r0 = (s.c___607839 < s.cols___607793);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
-    r0 = pxsim_Array__getAt(s.result___564672, s.r___564705);
+    r0 = pxsim_Array__getAt(s.result___607801, s.r___607834);
     s.tmp_1 = r0;
-    s.tmp_2 = r0 = s.c___564710;
-    r0 = pxsim_Array__getAt(s.data1___564699, s.r___564705);
+    s.tmp_2 = r0 = s.c___607839;
+    r0 = pxsim_Array__getAt(s.data1___607828, s.r___607834);
     s.tmp_5 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_5, s.c___564710);
+    r0 = pxsim_Array__getAt(s.tmp_5, s.c___607839);
     s.tmp_4 = r0;
-    r0 = pxsim_Array__getAt(s.data2___564702, s.r___564705);
+    r0 = pxsim_Array__getAt(s.data2___607831, s.r___607834);
     s.tmp_7 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_7, s.c___564710);
+    r0 = pxsim_Array__getAt(s.tmp_7, s.c___607839);
     s.tmp_6 = r0;
     r0 = (s.tmp_4 - s.tmp_6);
     s.tmp_3 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_1, s.tmp_2, s.tmp_3);
-    r0 = (s.c___564710 + 1);
-    s.c___564710 = (r0);
+    r0 = (s.c___607839 + 1);
+    s.c___607839 = (r0);
     { step = 6; continue; }
   case 7:
-    r0 = (s.r___564705 + 1);
-    s.r___564705 = (r0);
+    r0 = (s.r___607834 + 1);
+    s.r___607834 = (r0);
     { step = 5; continue; }
   case 8:
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_1 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = s.result___564672;
+    s.tmp_1.arg1 = s.result___607801;
     s.callLocIdx = 75; s.pc = 12; return s.tmp_1;
   case 12:
     r0 = s.retval;
@@ -6096,12 +6493,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Tensor_sub__P564463.info = {"start":2566,"length":983,"line":69,"column":8,"endLine":94,"endColumn":9,"fileName":"torch.ts","functionName":"sub","argumentNames":["this","other"]}
+Torch_Tensor_sub__P607592.info = {"start":2566,"length":983,"line":69,"column":8,"endLine":94,"endColumn":9,"fileName":"torch.ts","functionName":"sub","argumentNames":["this","other"]}
 
-function Torch_Tensor_sub__P564463_mk(s) {
+function Torch_Tensor_sub__P607592_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Tensor_sub__P564463, depth: s.depth + 1,
+        parent: s, fn: Torch_Tensor_sub__P607592, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -6111,16 +6508,16 @@ function Torch_Tensor_sub__P564463_mk(s) {
   tmp_5: undefined,
   tmp_6: undefined,
   tmp_7: undefined,
-  rows___564656: undefined,
-  cols___564664: undefined,
-  result___564672: undefined,
-  base___564674: undefined,
-  c___564676: undefined,
-  r___564686: undefined,
-  data1___564699: undefined,
-  data2___564702: undefined,
-  r___564705: undefined,
-  c___564710: undefined,
+  rows___607785: undefined,
+  cols___607793: undefined,
+  result___607801: undefined,
+  base___607803: undefined,
+  c___607805: undefined,
+  r___607815: undefined,
+  data1___607828: undefined,
+  data2___607831: undefined,
+  r___607834: undefined,
+  c___607839: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -6173,7 +6570,7 @@ function Math_min__P477828_mk(s) {
 
 
 
-function Torch_Tensor_applyFunction__P564461(s) {
+function Torch_Tensor_applyFunction__P607590(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6183,32 +6580,32 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.data___564581 = undefined;
-    s.result___564584 = undefined;
+    s.data___607710 = undefined;
+    s.result___607713 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Tensor__C564459_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_Tensor__C607588_VT)) failedCast(r0);
     r0 = s.arg0.fields["data"];
-    s.data___564581 = (r0);
-    r0 = pxsim_pxtcore_mkAction(1, result_inline__P564587);
+    s.data___607710 = (r0);
+    r0 = pxsim_pxtcore_mkAction(1, result_inline__P607716);
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg1);
     s.tmp_1 = helpers_arrayMap__P477803_mk(s);
-    s.tmp_1.arg0 = s.data___564581;
+    s.tmp_1.arg0 = s.data___607710;
     s.tmp_1.arg1 = s.tmp_0;
     s.callLocIdx = 70; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.result___564584 = (r0);
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    s.result___607713 = (r0);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_1 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = s.result___564584;
+    s.tmp_1.arg1 = s.result___607713;
     s.callLocIdx = 71; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
@@ -6216,17 +6613,17 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Tensor_applyFunction__P564461.info = {"start":1616,"length":246,"line":45,"column":8,"endLine":50,"endColumn":9,"fileName":"torch.ts","functionName":"applyFunction","argumentNames":["this","func"]}
+Torch_Tensor_applyFunction__P607590.info = {"start":1616,"length":246,"line":45,"column":8,"endLine":50,"endColumn":9,"fileName":"torch.ts","functionName":"applyFunction","argumentNames":["this","func"]}
 
-function Torch_Tensor_applyFunction__P564461_mk(s) {
+function Torch_Tensor_applyFunction__P607590_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Tensor_applyFunction__P564461, depth: s.depth + 1,
+        parent: s, fn: Torch_Tensor_applyFunction__P607590, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  data___564581: undefined,
-  result___564584: undefined,
+  data___607710: undefined,
+  result___607713: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -6235,7 +6632,7 @@ function Torch_Tensor_applyFunction__P564461_mk(s) {
 
 
 
-function result_inline__P564587(s) {
+function result_inline__P607716(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6258,12 +6655,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-result_inline__P564587.info = {"start":1737,"length":20,"line":47,"column":34,"endLine":47,"endColumn":54,"fileName":"torch.ts","functionName":"inline","argumentNames":["row"]}
+result_inline__P607716.info = {"start":1737,"length":20,"line":47,"column":34,"endLine":47,"endColumn":54,"fileName":"torch.ts","functionName":"inline","argumentNames":["row"]}
 
-function result_inline__P564587_mk(s) {
+function result_inline__P607716_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: result_inline__P564587, depth: s.depth + 1,
+        parent: s, fn: result_inline__P607716, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -6273,7 +6670,7 @@ function result_inline__P564587_mk(s) {
 
 
 
-function Torch_Tensor_sum__P564464(s) {
+function Torch_Tensor_sum__P607593(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6288,11 +6685,11 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Tensor__C564459_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_Tensor__C607588_VT)) failedCast(r0);
     s.tmp_0 = helpers_arrayReduce__P477809_mk(s);
     r0 = s.arg0.fields["data"];
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = Torch_Tensor_sum_inline__P564741;
+    s.tmp_0.arg1 = Torch_Tensor_sum_inline__P607870;
     s.tmp_0.arg2 = 0;
     s.callLocIdx = 77; s.pc = 1; return s.tmp_0;
   case 1:
@@ -6300,12 +6697,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Tensor_sum__P564464.info = {"start":3558,"length":169,"line":95,"column":8,"endLine":97,"endColumn":9,"fileName":"torch.ts","functionName":"sum","argumentNames":["this"]}
+Torch_Tensor_sum__P607593.info = {"start":3558,"length":169,"line":95,"column":8,"endLine":97,"endColumn":9,"fileName":"torch.ts","functionName":"sum","argumentNames":["this"]}
 
-function Torch_Tensor_sum__P564464_mk(s) {
+function Torch_Tensor_sum__P607593_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Tensor_sum__P564464, depth: s.depth + 1,
+        parent: s, fn: Torch_Tensor_sum__P607593, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -6315,7 +6712,7 @@ function Torch_Tensor_sum__P564464_mk(s) {
 
 
 
-function Torch_Tensor_sum_inline__P564741(s) {
+function Torch_Tensor_sum_inline__P607870(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6333,7 +6730,7 @@ switch (step) {
     s.tmp_0 = r0 = s.arg0;
     s.tmp_2 = helpers_arrayReduce__P477809_mk(s);
     s.tmp_2.arg0 = s.arg1;
-    s.tmp_2.arg1 = Torch_Tensor_sum_inline__P564749;
+    s.tmp_2.arg1 = Torch_Tensor_sum_inline__P607878;
     s.tmp_2.arg2 = 0;
     s.callLocIdx = 76; s.pc = 1; return s.tmp_2;
   case 1:
@@ -6343,12 +6740,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Tensor_sum_inline__P564741.info = {"start":3610,"length":102,"line":96,"column":36,"endLine":96,"endColumn":138,"fileName":"torch.ts","functionName":"inline","argumentNames":["acc","row"]}
+Torch_Tensor_sum_inline__P607870.info = {"start":3610,"length":102,"line":96,"column":36,"endLine":96,"endColumn":138,"fileName":"torch.ts","functionName":"inline","argumentNames":["acc","row"]}
 
-function Torch_Tensor_sum_inline__P564741_mk(s) {
+function Torch_Tensor_sum_inline__P607870_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Tensor_sum_inline__P564741, depth: s.depth + 1,
+        parent: s, fn: Torch_Tensor_sum_inline__P607870, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -6361,7 +6758,7 @@ function Torch_Tensor_sum_inline__P564741_mk(s) {
 
 
 
-function Torch_Tensor_sum_inline__P564749(s) {
+function Torch_Tensor_sum_inline__P607878(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6380,12 +6777,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Tensor_sum_inline__P564749.info = {"start":3659,"length":49,"line":96,"column":85,"endLine":96,"endColumn":134,"fileName":"torch.ts","functionName":"inline","argumentNames":["rowAcc","value"]}
+Torch_Tensor_sum_inline__P607878.info = {"start":3659,"length":49,"line":96,"column":85,"endLine":96,"endColumn":134,"fileName":"torch.ts","functionName":"inline","argumentNames":["rowAcc","value"]}
 
-function Torch_Tensor_sum_inline__P564749_mk(s) {
+function Torch_Tensor_sum_inline__P607878_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Tensor_sum_inline__P564749, depth: s.depth + 1,
+        parent: s, fn: Torch_Tensor_sum_inline__P607878, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
   arg1: undefined,
@@ -6395,7 +6792,7 @@ function Torch_Tensor_sum_inline__P564749_mk(s) {
 
 
 
-function Torch_sigmoid__P564813(s) {
+function Torch_sigmoid__P607947(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6405,7 +6802,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.expX___565469 = undefined;
+    s.expX___608715 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -6413,22 +6810,22 @@ switch (step) {
     r0 = (0 - s.arg0);
     s.tmp_0 = r0;
     r0 = pxsim.Math_.exp(s.tmp_0);
-    s.expX___565469 = (r0);
-    r0 = (1 + s.expX___565469);
+    s.expX___608715 = (r0);
+    r0 = (1 + s.expX___608715);
     s.tmp_0 = r0;
     r0 = (1 / s.tmp_0);
     return leave(s, r0)
   default: oops()
 } } }
-Torch_sigmoid__P564813.info = {"start":13219,"length":114,"line":345,"column":4,"endLine":348,"endColumn":5,"fileName":"torch.ts","functionName":"sigmoid","argumentNames":["x"]}
+Torch_sigmoid__P607947.info = {"start":14313,"length":114,"line":367,"column":4,"endLine":370,"endColumn":5,"fileName":"torch.ts","functionName":"sigmoid","argumentNames":["x"]}
 
-function Torch_sigmoid__P564813_mk(s) {
+function Torch_sigmoid__P607947_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_sigmoid__P564813, depth: s.depth + 1,
+        parent: s, fn: Torch_sigmoid__P607947, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  expX___565469: undefined,
+  expX___608715: undefined,
   arg0: undefined,
 } }
 
@@ -6436,7 +6833,7 @@ function Torch_sigmoid__P564813_mk(s) {
 
 
 
-function Torch_Linear_constructor__P564848(s) {
+function Torch_Linear_constructor__P608094(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6446,8 +6843,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.i___564856 = undefined;
-    s.neuron___564861 = undefined;
+    s.i___608102 = undefined;
+    s.neuron___608107 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -6455,37 +6852,37 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Linear__C564844_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_Linear__C608090_VT)) failedCast(r0);
     s.tmp_0 = r0 = s.arg0;
     r0 = pxsim_Array__mk();
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["neurons"] = (s.tmp_1);
-    s.i___564856 = (0);
+    s.i___608102 = (0);
   case 1:
-    r0 = (s.i___564856 < s.arg2);
+    r0 = (s.i___608102 < s.arg2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Neuron__C564755_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Neuron__C607884_VT);
     s.tmp_1 = r0;
-    s.tmp_2 = Torch_Neuron_constructor__P564757_mk(s);
+    s.tmp_2 = Torch_Neuron_constructor__P607886_mk(s);
     s.tmp_2.arg0 = s.tmp_1;
     s.tmp_2.arg1 = s.arg1;
-    s.callLocIdx = 84; s.pc = 3; return s.tmp_2;
+    s.callLocIdx = 86; s.pc = 3; return s.tmp_2;
   case 3:
     r0 = s.retval;
-    s.neuron___564861 = (s.tmp_1);
-    s.tmp_0 = r0 = s.neuron___564861;
+    s.neuron___608107 = (s.tmp_1);
+    s.tmp_0 = r0 = s.neuron___608107;
     s.tmp_2 = helpers_arrayMap__P477803_mk(s);
-    r0 = s.neuron___564861.fields["weights"];
+    r0 = s.neuron___608107.fields["weights"];
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = Torch_Linear_inline__P564870;
-    s.callLocIdx = 85; s.pc = 4; return s.tmp_2;
+    s.tmp_2.arg1 = Torch_Linear_inline__P608116;
+    s.callLocIdx = 87; s.pc = 4; return s.tmp_2;
   case 4:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["weights"] = (s.tmp_1);
-    s.tmp_0 = r0 = s.neuron___564861;
+    s.tmp_0 = r0 = s.neuron___608107;
     r0 = pxsim.Math_.random();
     s.tmp_3 = r0;
     r0 = (s.tmp_3 * 0.1);
@@ -6495,28 +6892,28 @@ switch (step) {
     r0 = (s.tmp_0).fields["bias"] = (s.tmp_1);
     r0 = s.arg0.fields["neurons"];
     s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, s.neuron___564861);
-    r0 = (s.i___564856 + 1);
-    s.i___564856 = (r0);
+    r0 = pxsim_Array__push(s.tmp_0, s.neuron___608107);
+    r0 = (s.i___608102 + 1);
+    s.i___608102 = (r0);
     { step = 1; continue; }
   case 2:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Linear_constructor__P564848.info = {"start":4840,"length":381,"line":137,"column":8,"endLine":145,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","inDim","outDim"]}
+Torch_Linear_constructor__P608094.info = {"start":5934,"length":381,"line":159,"column":8,"endLine":167,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","inDim","outDim"]}
 
-function Torch_Linear_constructor__P564848_mk(s) {
+function Torch_Linear_constructor__P608094_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Linear_constructor__P564848, depth: s.depth + 1,
+        parent: s, fn: Torch_Linear_constructor__P608094, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  i___564856: undefined,
-  neuron___564861: undefined,
+  i___608102: undefined,
+  neuron___608107: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -6526,7 +6923,7 @@ function Torch_Linear_constructor__P564848_mk(s) {
 
 
 
-function Torch_Linear_inline__P564870(s) {
+function Torch_Linear_inline__P608116(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6544,12 +6941,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Linear_inline__P564870.info = {"start":5062,"length":32,"line":141,"column":52,"endLine":141,"endColumn":84,"fileName":"torch.ts","functionName":"inline","argumentNames":[]}
+Torch_Linear_inline__P608116.info = {"start":6156,"length":32,"line":163,"column":52,"endLine":163,"endColumn":84,"fileName":"torch.ts","functionName":"inline","argumentNames":[]}
 
-function Torch_Linear_inline__P564870_mk(s) {
+function Torch_Linear_inline__P608116_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Linear_inline__P564870, depth: s.depth + 1,
+        parent: s, fn: Torch_Linear_inline__P608116, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -6559,7 +6956,7 @@ function Torch_Linear_inline__P564870_mk(s) {
 
 
 
-function Torch_Neuron_constructor__P564757(s) {
+function Torch_Neuron_constructor__P607886(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6569,62 +6966,64 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.i___564771 = undefined;
+    s.i___607900 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Neuron__C564755_VT)) failedCast(r0);
-    s.tmp_0 = r0 = s.arg0;
-    r0 = pxsim_Array__mk();
-    s.tmp_1 = r0;
-    r0 = (s.tmp_0).fields["weights"] = (s.tmp_1);
+    if (!checkSubtype(r0, Torch_Neuron__C607884_VT)) failedCast(r0);
     s.tmp_0 = r0 = s.arg0;
     r0 = pxsim.Math_.random();
     s.tmp_3 = r0;
-    r0 = (s.tmp_3 * 0.2);
+    r0 = (s.tmp_3 * 0.3);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 - 0.1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["bias"] = (s.tmp_1);
-    s.i___564771 = (0);
+    s.tmp_0 = r0 = s.arg0;
+    r0 = pxsim_Array__mk();
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0).fields["weights"] = (s.tmp_1);
+    s.i___607900 = (0);
   case 1:
-    r0 = (s.i___564771 < s.arg1);
+    r0 = (s.i___607900 < s.arg1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
     r0 = s.arg0.fields["weights"];
     s.tmp_1 = r0;
+    s.tmp_2 = r0 = s.i___607900;
     r0 = pxsim.Math_.random();
+    s.tmp_5 = r0;
+    r0 = (s.tmp_5 * 0.3);
     s.tmp_4 = r0;
-    r0 = (s.tmp_4 * 0.2);
+    r0 = (s.tmp_4 - 0.1);
     s.tmp_3 = r0;
-    r0 = (s.tmp_3 - 0.1);
-    s.tmp_2 = r0;
-    r0 = pxsim_Array__push(s.tmp_1, s.tmp_2);
-    r0 = (s.i___564771 + 1);
-    s.i___564771 = (r0);
+    r0 = pxsim_Array_.setAt(s.tmp_1, s.tmp_2, s.tmp_3);
+    r0 = (s.i___607900 + 1);
+    s.i___607900 = (r0);
     { step = 1; continue; }
   case 2:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Neuron_constructor__P564757.info = {"start":3819,"length":251,"line":104,"column":8,"endLine":111,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","inputSize"]}
+Torch_Neuron_constructor__P607886.info = {"start":3823,"length":324,"line":104,"column":8,"endLine":111,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","inputSize"]}
 
-function Torch_Neuron_constructor__P564757_mk(s) {
+function Torch_Neuron_constructor__P607886_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Neuron_constructor__P564757, depth: s.depth + 1,
+        parent: s, fn: Torch_Neuron_constructor__P607886, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  i___564771: undefined,
+  tmp_5: undefined,
+  i___607900: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -6633,7 +7032,7 @@ function Torch_Neuron_constructor__P564757_mk(s) {
 
 
 
-function Torch_Sequential_constructor__P565664(s) {
+function Torch_Sequential_constructor__P608905(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6649,18 +7048,18 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_Sequential__C565661_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_Sequential__C608902_VT)) failedCast(r0);
     r0 = (s.arg0).fields["layers"] = (s.arg1);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_Sequential_constructor__P565664.info = {"start":15383,"length":89,"line":418,"column":8,"endLine":420,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","layers"]}
+Torch_Sequential_constructor__P608905.info = {"start":16477,"length":89,"line":440,"column":8,"endLine":442,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","layers"]}
 
-function Torch_Sequential_constructor__P565664_mk(s) {
+function Torch_Sequential_constructor__P608905_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_Sequential_constructor__P565664, depth: s.depth + 1,
+        parent: s, fn: Torch_Sequential_constructor__P608905, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
   arg1: undefined,
@@ -42488,7 +42887,7 @@ function scene_Scene_data__P480582_mk(s) {
 
 
 
-function Torch_ConvLayer_constructor__P565173(s) {
+function Torch_ConvLayer_constructor__P608419(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -42498,34 +42897,34 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.kernelArray___565176 = undefined;
-    s.i___565178 = undefined;
-    s.row___565183 = undefined;
-    s.j___565185 = undefined;
+    s.kernelArray___608422 = undefined;
+    s.i___608424 = undefined;
+    s.row___608429 = undefined;
+    s.j___608431 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, Torch_ConvLayer__C565169_VT)) failedCast(r0);
+    if (!checkSubtype(r0, Torch_ConvLayer__C608415_VT)) failedCast(r0);
     r0 = pxsim_Array__mk();
-    s.kernelArray___565176 = (r0);
-    s.i___565178 = (0);
+    s.kernelArray___608422 = (r0);
+    s.i___608424 = (0);
   case 1:
-    r0 = (s.i___565178 < s.arg1);
+    r0 = (s.i___608424 < s.arg1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
     r0 = pxsim_Array__mk();
-    s.row___565183 = (r0);
-    s.j___565185 = (0);
+    s.row___608429 = (r0);
+    s.j___608431 = (0);
   case 2:
-    r0 = (s.j___565185 < s.arg1);
+    r0 = (s.j___608431 < s.arg1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    s.tmp_1 = r0 = s.row___565183;
+    s.tmp_1 = r0 = s.row___608429;
     r0 = pxsim.Math_.random();
     s.tmp_4 = r0;
     r0 = (s.tmp_4 * 0.2);
@@ -42533,36 +42932,36 @@ switch (step) {
     r0 = (s.tmp_3 - 0.1);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_2);
-    r0 = (s.j___565185 + 1);
-    s.j___565185 = (r0);
+    r0 = (s.j___608431 + 1);
+    s.j___608431 = (r0);
     { step = 2; continue; }
   case 3:
-    r0 = pxsim_Array__push(s.kernelArray___565176, s.row___565183);
-    r0 = (s.i___565178 + 1);
-    s.i___565178 = (r0);
+    r0 = pxsim_Array__push(s.kernelArray___608422, s.row___608429);
+    r0 = (s.i___608424 + 1);
+    s.i___608424 = (r0);
     { step = 1; continue; }
   case 4:
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_1 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = s.kernelArray___565176;
-    s.callLocIdx = 95; s.pc = 5; return s.tmp_1;
+    s.tmp_1.arg1 = s.kernelArray___608422;
+    s.callLocIdx = 97; s.pc = 5; return s.tmp_1;
   case 5:
     r0 = s.retval;
     r0 = (s.arg0).fields["kernel"] = (s.tmp_0);
-    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C564459_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(Torch_Tensor__C607588_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = Torch_Tensor_constructor__P564465_mk(s);
+    s.tmp_1 = Torch_Tensor_constructor__P607594_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_2 = helpers_arrayMap__P477803_mk(s);
-    s.tmp_2.arg0 = s.kernelArray___565176;
-    s.tmp_2.arg1 = Torch_ConvLayer_inline__P565218;
-    s.callLocIdx = 97; s.pc = 7; return s.tmp_2;
+    s.tmp_2.arg0 = s.kernelArray___608422;
+    s.tmp_2.arg1 = Torch_ConvLayer_inline__P608464;
+    s.callLocIdx = 99; s.pc = 7; return s.tmp_2;
   case 7:
     r0 = s.retval;
     s.tmp_1.arg1 = r0;
-    s.callLocIdx = 98; s.pc = 6; return s.tmp_1;
+    s.callLocIdx = 100; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
     r0 = (s.arg0).fields["kernelGradients"] = (s.tmp_0);
@@ -42570,22 +42969,22 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_ConvLayer_constructor__P565173.info = {"start":9613,"length":581,"line":250,"column":8,"endLine":262,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","size"]}
+Torch_ConvLayer_constructor__P608419.info = {"start":10707,"length":581,"line":272,"column":8,"endLine":284,"endColumn":9,"fileName":"torch.ts","functionName":"inline","argumentNames":["this","size"]}
 
-function Torch_ConvLayer_constructor__P565173_mk(s) {
+function Torch_ConvLayer_constructor__P608419_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_ConvLayer_constructor__P565173, depth: s.depth + 1,
+        parent: s, fn: Torch_ConvLayer_constructor__P608419, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  kernelArray___565176: undefined,
-  i___565178: undefined,
-  row___565183: undefined,
-  j___565185: undefined,
+  kernelArray___608422: undefined,
+  i___608424: undefined,
+  row___608429: undefined,
+  j___608431: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -42594,7 +42993,7 @@ function Torch_ConvLayer_constructor__P565173_mk(s) {
 
 
 
-function Torch_ConvLayer_inline__P565218(s) {
+function Torch_ConvLayer_inline__P608464(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -42610,19 +43009,19 @@ switch (step) {
     }
     s.tmp_0 = helpers_arrayMap__P477803_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.tmp_0.arg1 = Torch_ConvLayer_inline__P565222;
-    s.callLocIdx = 96; s.pc = 1; return s.tmp_0;
+    s.tmp_0.arg1 = Torch_ConvLayer_inline__P608468;
+    s.callLocIdx = 98; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
   default: oops()
 } } }
-Torch_ConvLayer_inline__P565218.info = {"start":10134,"length":23,"line":261,"column":62,"endLine":261,"endColumn":85,"fileName":"torch.ts","functionName":"inline","argumentNames":["row"]}
+Torch_ConvLayer_inline__P608464.info = {"start":11228,"length":23,"line":283,"column":62,"endLine":283,"endColumn":85,"fileName":"torch.ts","functionName":"inline","argumentNames":["row"]}
 
-function Torch_ConvLayer_inline__P565218_mk(s) {
+function Torch_ConvLayer_inline__P608464_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_ConvLayer_inline__P565218, depth: s.depth + 1,
+        parent: s, fn: Torch_ConvLayer_inline__P608464, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -42632,7 +43031,7 @@ function Torch_ConvLayer_inline__P565218_mk(s) {
 
 
 
-function Torch_ConvLayer_inline__P565222(s) {
+function Torch_ConvLayer_inline__P608468(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -42646,12 +43045,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Torch_ConvLayer_inline__P565222.info = {"start":10149,"length":7,"line":261,"column":77,"endLine":261,"endColumn":84,"fileName":"torch.ts","functionName":"inline","argumentNames":[]}
+Torch_ConvLayer_inline__P608468.info = {"start":11243,"length":7,"line":283,"column":77,"endLine":283,"endColumn":84,"fileName":"torch.ts","functionName":"inline","argumentNames":[]}
 
-function Torch_ConvLayer_inline__P565222_mk(s) {
+function Torch_ConvLayer_inline__P608468_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Torch_ConvLayer_inline__P565222, depth: s.depth + 1,
+        parent: s, fn: Torch_ConvLayer_inline__P608468, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
 } }
 
@@ -45714,7 +46113,7 @@ const Math_FastRandom__C480788_VT = mkVTable({
     "pickRandom": Math_FastRandom_pickRandom__P480793,
   },
 });
-const Torch_Tensor__C564459_VT = mkVTable({
+const Torch_Tensor__C607588_VT = mkVTable({
   name: "Tensor",
   numFields: 1,
   classNo: 21,
@@ -45725,13 +46124,13 @@ const Torch_Tensor__C564459_VT = mkVTable({
   iface: {
     "data": null,
     "set/data": null,
-    "matmul": Torch_Tensor_matmul__P564460,
-    "applyFunction": Torch_Tensor_applyFunction__P564461,
-    "sub": Torch_Tensor_sub__P564463,
-    "sum": Torch_Tensor_sum__P564464,
+    "matmul": Torch_Tensor_matmul__P607589,
+    "applyFunction": Torch_Tensor_applyFunction__P607590,
+    "sub": Torch_Tensor_sub__P607592,
+    "sum": Torch_Tensor_sum__P607593,
   },
 });
-const Torch_Sequential__C565661_VT = mkVTable({
+const Torch_Sequential__C608902_VT = mkVTable({
   name: "Sequential",
   numFields: 1,
   classNo: 22,
@@ -45742,11 +46141,11 @@ const Torch_Sequential__C565661_VT = mkVTable({
   iface: {
     "layers": null,
     "set/layers": null,
-    "forward": Torch_Sequential_forward__P565662,
-    "train": Torch_Sequential_train__P565663,
+    "forward": Torch_Sequential_forward__P608903,
+    "train": Torch_Sequential_train__P608904,
   },
 });
-const Torch_Linear__C564844_VT = mkVTable({
+const Torch_Linear__C608090_VT = mkVTable({
   name: "Linear",
   numFields: 1,
   classNo: 23,
@@ -45757,8 +46156,8 @@ const Torch_Linear__C564844_VT = mkVTable({
   iface: {
     "neurons": null,
     "set/neurons": null,
-    "forward": Torch_Linear_forward__P564845,
-    "backward": Torch_Linear_backward__P564846,
+    "forward": Torch_Linear_forward__P608091,
+    "backward": Torch_Linear_backward__P608092,
   },
 });
 const JSON_Stringifier__C482188_VT = mkVTable({
@@ -45780,7 +46179,7 @@ const JSON_Stringifier__C482188_VT = mkVTable({
     "go": JSON_Stringifier_go__P482190,
   },
 });
-const Torch_ConvLayer__C565169_VT = mkVTable({
+const Torch_ConvLayer__C608415_VT = mkVTable({
   name: "ConvLayer",
   numFields: 2,
   classNo: 25,
@@ -45793,11 +46192,11 @@ const Torch_ConvLayer__C565169_VT = mkVTable({
     "set/kernel": null,
     "kernelGradients": null,
     "set/kernelGradients": null,
-    "forward": Torch_ConvLayer_forward__P565170,
-    "backward": Torch_ConvLayer_backward__P565171,
+    "forward": Torch_ConvLayer_forward__P608416,
+    "backward": Torch_ConvLayer_backward__P608417,
   },
 });
-const Torch_Neuron__C564755_VT = mkVTable({
+const Torch_Neuron__C607884_VT = mkVTable({
   name: "Neuron",
   numFields: 2,
   classNo: 26,
@@ -45810,7 +46209,7 @@ const Torch_Neuron__C564755_VT = mkVTable({
     "set/weights": null,
     "bias": null,
     "set/bias": null,
-    "activate": Torch_Neuron_activate__P564756,
+    "activate": Torch_Neuron_activate__P607885,
   },
 });
 const scene_Scene__C480557_VT = mkVTable({
@@ -47012,7 +47411,7 @@ const sprites_BaseSpriteSayRenderer__C479970_VT = mkVTable({
   },
 });
 
-const breakpoints = setupDebugger(1, ["sqrt2pi___565541","base___595578","result___595576"])
+const breakpoints = setupDebugger(1, ["sqrt2pi___608784","base___595578","result___595576"])
 
-return _main___P596237
+return _main___P610266
 })
