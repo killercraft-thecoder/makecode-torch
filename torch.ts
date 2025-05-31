@@ -46,7 +46,20 @@ namespace Torch {
         }
 
         add(other: Tensor): Tensor {
-            return new Tensor(this.data.map((row, r) => row.map((val, c) => val + other.data[r][c])));
+            let rows = Math.min(this.data.length, other.data.length);
+            let cols = Math.min(this.data[0].length, other.data[0].length);
+
+            let result: number[][] = [];
+
+            for (let r = 0; r < rows; r++) {
+                let row: number[] = [];
+                for (let c = 0; c < cols; c++) {
+                    row.push(this.data[r][c] + other.data[r][c]);
+                }
+                result.push(row);
+            }
+
+            return new Torch.Tensor(result);
         }
         sub(other: Tensor): Tensor {
             let rows = Math.min(this.data.length, other.data.length);
