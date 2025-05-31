@@ -1,29 +1,34 @@
-game.consoleOverlay.setVisible(true)
+/** 
+ * RUn the Example
+*/
+function example() {
 
-// Define the neural network model using the Torch namespace
-let model = new Torch.Linear(2, 1); // 2 input neurons, 1 output neuron
+game.consoleOverlay.setVisible(true);
 
-// Define training data (XOR-like problem)
-let inputs = [
-    new Torch.Tensor([[0, 0]]),
-    new Torch.Tensor([[0, 1]]),
-    new Torch.Tensor([[1, 0]]),
-    new Torch.Tensor([[1, 1]])
-];
+// Create a basic neural network with one layer
+let model = new Torch.Sequential([
+    new Torch.Linear(1, 1) // Single neuron, single output
+]);
 
-let targets = [
-    new Torch.Tensor([[0]]),
-    new Torch.Tensor([[1]]),
-    new Torch.Tensor([[1]]),
-    new Torch.Tensor([[0]])
-];
+// Generate training data
+let inputs: Torch.Tensor[] = [];
+let targets: Torch.Tensor[] = [];
 
-// Training the model
+for (let i = 0; i <= 10; i++) {
+    let inputValue = new Torch.Tensor([[i]]);
+    let targetValue = new Torch.Tensor([[i]]); // Output should match input (X = X)
+    inputs.push(inputValue);
+    targets.push(targetValue);
+}
+
+// Train the model
 let learningRate = 0.1;
-let epochs = 1000;
-model.train(inputs, targets, learningRate, epochs);
+let epochs = 500; // Should converge quickly since it's a simple problem
+model.train(inputs, targets, learningRate, epochs, Torch.relu);
 
-// Testing the trained model
-let testInput = new Torch.Tensor([[1, 0]]); // Expected output ~1
+// Test the trained model
+let testInput = new Torch.Tensor([[5]]); // Expected output: ~5
 let prediction = model.forward(testInput, Torch.relu);
-console.log("Predicted Output:" + JSON.stringify(prediction.data));
+console.log("Predicted Output: " + JSON.stringify(prediction.data));
+
+}
