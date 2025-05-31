@@ -20,20 +20,21 @@ namespace Torch {
 
             // Proper manual preallocation for MakeCode Arcade
             let result: number[][] = [];
+            let base:number[] = []
+            for (let c = 0; c < colsB; c++) {
+                base[c] = 0; // Fill with zeros
+            }
+            // then Copy and Paste the allocated Array
             for (let r = 0; r < rowsA; r++) {
-                let row = []; // Initialize row manually
-                for (let c = 0; c < colsB; c++) {
-                    row[c] = 0; // Fill with zeros
-                }
-                result[r] = row;
+                result[r] = base.slice(0)
             }
 
             // Optimized matrix multiplication
-            for (let c = 0; c < colsB; c++) {
+            for (let r = 0; r < rowsA; r++) { // Process row-wise first
                 for (let i = 0; i < colsA; i++) {
-                    let temp = other.data[i][c]; // Store lookup value
-                    for (let r = 0; r < rowsA; r++) {
-                        result[r][c] += this.data[r][i] * temp;
+                    let temp = this.data[r][i]; // Store lookup value for row
+                    for (let c = 0; c < colsB; c++) {
+                        result[r][c] += temp * other.data[i][c]; // Perform multiplication
                     }
                 }
             }
@@ -152,7 +153,7 @@ namespace Torch {
             let newError: number[][] = [];
 
             for (let i = 0; i < this.neurons.length; i++) {
-                newError.push([]); // Properly initializes an empty array
+                newError.push([0]); // Properly initializes an empty array
             }
 
             this.neurons.forEach((neuron, index) => {
@@ -160,11 +161,14 @@ namespace Torch {
                     let gradient = activatedError.data[0][index] * error.data[0][index];
 
                     // Apply loss function if provided
-                    if (lossFunction) {
+                    if (lossFunction && gradient) {
                         gradient *= lossFunction(error);
                     }
-
-                    newError[j].push(gradient); // Accumulate error for next layer
+                    if (gradient) {
+                      newError[j].push(gradient); // Accumulate error for next layer
+                    } else {
+                        newError[j].push(0);
+                    }
                     return w + learningRate * gradient;
                 });
 
@@ -422,7 +426,7 @@ namespace Torch {
 
         // Train the model
         train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number,
-            activation?: (x: number) => number, lossFunction?: (error: Tensor) => number): void {
+            activation?: (x: number) => number, lossFunction?: (error: Tensor) => number,silent?:boolean): void {
 
             if (!activation) activation = Torch.sigmoid; // Default activation function
             if (!lossFunction) lossFunction = (error) => error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length); // Default to MSE
@@ -461,7 +465,9 @@ namespace Torch {
                     learningRate = Math.max(learningRate * 0.95, 0.005);
                 }
 
-                console.log(`Epoch ${epoch + 1}, Loss: ${totalLoss / inputs.length}`);
+                if (silent !== true) {
+                  console.log(`Epoch ${epoch + 1}, Loss: ${totalLoss / inputs.length}`);
+                }
             }
         }
 
