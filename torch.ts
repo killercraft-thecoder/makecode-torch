@@ -18,22 +18,22 @@ namespace Torch {
                 return null; // Dimension mismatch
             }
 
-            // Manually initialize the result matrix
+            // Proper manual preallocation for MakeCode Arcade
             let result: number[][] = [];
             for (let r = 0; r < rowsA; r++) {
-                let row: number[] = [];
+                let row = []; // Initialize row manually
                 for (let c = 0; c < colsB; c++) {
-                    row.push(0);
+                    row[c] = 0; // Fill with zeros
                 }
-                result.push(row);
+                result[r] = row;
             }
 
             // Optimized matrix multiplication
-            for (let r = 0; r < rowsA; r++) {
+            for (let c = 0; c < colsB; c++) {
                 for (let i = 0; i < colsA; i++) {
-                    let value = this.data[r][i]; // Reduce lookup overhead
-                    for (let c = 0; c < colsB; c++) {
-                        result[r][c] += value * other.data[i][c];
+                    let temp = other.data[i][c]; // Store lookup value
+                    for (let r = 0; r < rowsA; r++) {
+                        result[r][c] += this.data[r][i] * temp;
                     }
                 }
             }
