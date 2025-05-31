@@ -36,3 +36,13 @@ To edit this repository directly within MakeCode:
 ```html
 <script src="https://makecode.com/gh-pages-embed.js"></script>
 <script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+
+### 🔹 GitHub Syncing Tip for MakeCode Arcade
+
+Did you know? **MakeCode Arcade only pulls changes affecting managed project files**, but ignores externally added files like `history.md`.  
+This means you can:
+- Store **documentation or version history** externally without affecting the MakeCode project.
+- Keep **development notes or testing scripts** only in GitHub.
+- Maintain **extra resources** without cluttering the MakeCode editor.
+
+If you need to **make non-code updates**, doing them externally can keep the project cleaner while still benefiting from GitHub's commit tracking!
