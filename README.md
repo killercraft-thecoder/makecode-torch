@@ -32,6 +32,20 @@ To edit this repository directly within MakeCode:
 > You can explore the full project here:  
 > [https://killercraft-thecoder.github.io/makecode-torch/](https://killercraft-thecoder.github.io/makecode-torch/)
 
+## 🔄 PyTorch Model Conversion (`convert.py`)
+
+Torch now includes a **conversion tool** that allows users to **convert saved PyTorch models** into **MakeCode Arcade-compatible TypeScript**.  
+
+### **Usage**
+1. **Run `convert.py`** and provide the path to your saved PyTorch model (`.pth` file).
+2. The script will **extract weights** and **convert layers** into a structured TypeScript format.
+3. The **generated file** can be imported into your MakeCode Arcade project!
+
+Example Command:
+```sh
+python convert.py
+
+
 ### 🔹 GitHub Syncing Tip for MakeCode Arcade
 
 Did you know? **MakeCode Arcade only pulls changes affecting managed project files**, but ignores externally added files like `history.md`.  
