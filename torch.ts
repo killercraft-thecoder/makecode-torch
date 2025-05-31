@@ -331,7 +331,11 @@ namespace Torch {
 
     // Leaky ReLU (Improved ReLU to prevent dead neurons)
     export function leakyRelu(x: number, alpha: number = 0.01): number {
-        return x > 0 ? x : alpha * x;
+        let v = x > 0 ? x : alpha * x;
+        if (isNaN(v)) {
+            v = 0
+        }
+        return v
     }
 
     // Softmax (Used for classification problems)
