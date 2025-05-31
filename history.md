@@ -1,5 +1,9 @@
 # 🔄 Torch - Version History
 
+## **1.3.0** - Expanded Activation Functions
+- Added new activation functions: **Hard Sigmoid, Bent Identity, and Mish**.
+- Updated README to reflect the expanded activation function list.
+
 ## **1.2.0** - Added New Activation Functions
 - Added **ELU**, **Swish**, and **GELU** activation functions.
 - Updated README to reflect the full set of available activation functions.
