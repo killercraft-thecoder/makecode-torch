@@ -304,6 +304,18 @@ namespace Torch {
         return 1 / (1 + Math.exp(-x));
     }
 
+    export function elu(x: number, alpha: number = 1): number {
+        return x > 0 ? x : alpha * (Math.exp(x) - 1);
+    }
+
+    export function swish(x: number): number {
+        return x / (1 + Math.exp(-x)); // Uses sigmoid-like smoothing
+    }
+
+    export function gelu(x: number): number {
+        return x * (1 + tanh(Math.sqrt(2 / Math.PI) * (x + 0.044715 * Math.pow(x, 3)))) / 2;
+    }
+
     // Tanh (Hyperbolic Tangent)
     export function tanh(x: number): number {
         let exp2x = Math.exp(2 * x);
