@@ -31,6 +31,7 @@
 ## **1.0.0** - Initial Release
 - Basic neural network structure with **Linear layers, Tensors, and Training support**.
 
-### **ℹ️ Note**
-- **`convert.py` was added via direct GitHub commit** and is available **outside the versioning system**.
-- Users **do not need 1.4.0** to use PyTorch model conversion, for Full convert.py support a version of >1.1.0 is needed, it's prefered you use the latest version of Torch.
+### ℹ️ Important Note  
+- **`convert.py` was introduced via a direct GitHub commit** and exists **outside the standard versioning system**.  
+- Users **are not required to be on version 1.4.0** to utilize PyTorch model conversion. However, for full compatibility with `convert.py`, a **Torch version greater than 1.1.0** is recommended.  
+- To ensure access to the latest features, performance improvements, and full compatibility, **it is highly recommended to use the most recent version of Torch**.  
