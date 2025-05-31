@@ -97,22 +97,25 @@ namespace Torch {
             return this.data.reduce((acc: number, row: number[]) => acc + row.reduce((rowAcc: number, value: number) => rowAcc + value, 0), 0);
         }
     }
-
+    
     export class Neuron {
         weights: number[];
         bias: number;
 
         constructor(inputSize: number) {
-            this.weights = [];
-            this.bias = Math.random() * 0.2 - 0.1;
+            this.bias = Math.random() * 0.3 - 0.1;
+            this.weights = []; // Must explicitly declare it as an empty array
 
             for (let i = 0; i < inputSize; i++) {
-                this.weights.push(Math.random() * 0.2 - 0.1);
+                this.weights[i] = Math.random() * 0.3 - 0.1; // Assign values directly
             }
         }
 
         activate(inputs: number[], activation: (x: number) => number): number {
-            let sum = inputs.reduce((acc, val, i) => acc + val * this.weights[i], this.bias);
+            let sum = this.bias;
+            for (let i = 0; i < inputs.length; i++) {
+                sum += inputs[i] * this.weights[i];
+            }
             return activation(sum);
         }
     }
@@ -123,14 +126,33 @@ namespace Torch {
             return isNaN(sig) ? 0 : sig * (1 - sig);
         }
         if (activation === Torch.relu) return x > 0 ? 1 : 0;
+        if (activation === Torch.leakyRelu) return x > 0 ? 1 : 0.01; // Default α=0.01
         if (activation === Torch.tanh) {
             let tanhX = Torch.tanh(x);
             return isNaN(tanhX) ? 0 : 1 - tanhX * tanhX;
         }
-        return 1;
+        if (activation === Torch.elu) {
+            return x > 0 ? 1 : Torch.elu(x) + 1; // ELU's derivative
+        }
+        if (activation === Torch.swish) {
+            let sig = Torch.sigmoid(x);
+            return sig + x * sig * (1 - sig); // Swish derivative
+        }
+        if (activation === Torch.mish) {
+            let omega = 1 + Math.exp(x);
+            let delta = omega + omega * omega;
+            return (Math.exp(x) * delta) / (delta * delta); // Mish derivative
+        }
+        if (activation === Torch.gelu) {
+            const sqrt2pi = Math.sqrt(2 / Math.PI);
+            const coeff = 0.044715;
+            let x3 = x * x * x;
+            let tanhTerm = tanh(sqrt2pi * (x + coeff * x3));
+            return 0.5 * (1 + tanhTerm + x * sqrt2pi * (1 - tanhTerm * tanhTerm) * (1 + 3 * coeff * x * x));
+        }
+
+        return 1; // Default case (linear activation)
     }
-
-
 
     export class Linear {
         neurons: Neuron[];
