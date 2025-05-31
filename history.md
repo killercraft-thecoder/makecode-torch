@@ -2,6 +2,9 @@
 
 # 🔄 Torch - Version History
 
+## **1.4.0** - Optimized Matrix Multiplication + PyTorch Model Conversion
+- **Optimized `matmul()` in Torch.Tensor** to improve memory allocation and speed in MakeCode Arcade.
+
 ## **1.3.0** - Expanded Activation Functions
 - Added new activation functions: **Hard Sigmoid, Bent Identity, and Mish**.
 - Updated README to reflect the expanded activation function list.
