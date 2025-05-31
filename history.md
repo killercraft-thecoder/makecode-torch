@@ -4,7 +4,7 @@
 
 ### **ℹ️ Note**
 - **`convert.py` was added via direct GitHub commit** and is available **outside the versioning system**.
-- Users **do not need 1.4.0** to use PyTorch model conversion.
+- Users **do not need 1.4.0** to use PyTorch model conversion, for Full convert.py support a version of > 1.1.0 is needed
 
 ## **1.4.0** - Optimized Matrix Multiplication + PyTorch Model Conversion
 - **Optimized `matmul()` in Torch.Tensor** to improve memory allocation and speed in MakeCode Arcade.
