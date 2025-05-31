@@ -9,10 +9,12 @@ namespace Torch {
         }
 
         matmul(other: Tensor): Tensor | null {
-            let rowsA = this.data.length;
-            let colsA = this.data[0].length;
-            let rowsB = other.data.length;
-            let colsB = other.data[0].length;
+            let temp1 = this.data.map(row => row.slice()); // Ensure a true copy
+            let temp2 = other.data.map(row => row.slice()); // Prevent referencing original tensor
+            let rowsA = temp1.length;
+            let colsA = temp1[0].length;
+            let rowsB = temp2.length;
+            let colsB = temp2[0].length;
 
             if (colsA !== rowsB) {
                 return null; // Dimension mismatch
@@ -32,18 +34,20 @@ namespace Torch {
             // Optimized matrix multiplication
             for (let r = 0; r < rowsA; r++) { // Process row-wise first
                 for (let i = 0; i < colsA; i++) {
-                    let temp = this.data[r][i]; // Store lookup value for row
+                    let temp3 = temp1[r][i]; // Store lookup value for row
                     for (let c = 0; c < colsB; c++) {
-                        result[r][c] += temp * other.data[i][c]; // Perform multiplication
+                        result[r][c] += temp3 * temp2[i][c]; // Perform multiplication
                     }
                 }
             }
-
             return new Tensor(result);
         }
         
         applyFunction(func: (x: number) => number): Tensor {
-            return new Tensor(this.data.map(row => row.map(func)));
+            let data = this.data;
+            let result = data.map(row => row.map(func)); // Direct transformation without extra storage
+
+            return new Torch.Tensor(result);
         }
 
         add(other: Tensor): Tensor {
