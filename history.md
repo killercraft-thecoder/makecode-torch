@@ -2,6 +2,11 @@
 
 # 🔄 Torch - Version History
 
+## **1.7.1** - Tensor Performance Optimizations 🚀  
+- **Reduced property lookups (`this.data`)** → Improved performance in `add()`, `sub()`, and `sum()`.  
+- **Refined memory allocation in `sub()`** → Prevented unintended shared memory issues.  
+- **Direct assignment in tensor loops** → Avoided `.push()` overhead for faster matrix calculations.  
+
 ## **1.7.0** - Performance & Training Enhancements  
 - **Optimized `matmul()` in Torch.Tensor** → Improved efficiency and memory allocation for MakeCode Arcade.  
 - **Added Silent Mode (`silent` parameter) to `train()`** → Allows training without console logs when set to `true`.  
