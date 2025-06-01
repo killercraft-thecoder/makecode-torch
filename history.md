@@ -2,6 +2,18 @@
 
 # 🔄 Torch - Version History
 
+## **1.8.1** - Adaptive Loss Refinements & ConvLayer Fixes  
+### 🔹 **Changes & Enhancements**  
+- **Refined `AL (AdaptiveLoss)`** → Ensures smoother switching between loss functions for stable training.  
+- **Fixed missing activation/loss function support in `ConvLayer`** → Now fully integrates custom loss methods during training.  
+- **Updated weight initialization strategy** → Improves neuron diversity in early training stages.  
+- **Added `arrayToTensor1D()` helper function** → Streamlines data formatting for Torch networks.  
+
+### 🔹 **Important Notes**  
+- **Models using `AdaptiveLoss` should see improved convergence behavior**, especially in precision-heavy tasks.  
+- **ConvLayer fixes** ensure smoother feature extraction and training stability.  
+- **New helper function (`arrayToTensor1D`)** simplifies tensor input preparation for better usability.  
+
 ## **1.7.1** - Tensor Performance Optimizations 🚀  
 - **Reduced property lookups (`this.data`)** → Improved performance in `add()`, `sub()`, and `sum()`.  
 - **Refined memory allocation in `sub()`** → Prevented unintended shared memory issues.  
