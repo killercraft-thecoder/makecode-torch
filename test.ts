@@ -27,6 +27,7 @@ function example() {
     let epochs = 1500;
 
     // Train using different loss functions
+    console.log("\n\n\n")
     console.log("Training with MSE...");
     pause(0)
     model.train(inputs, targets, learningRate, epochs, Torch.relu);
@@ -36,11 +37,13 @@ function example() {
 
     testInputs.forEach((testInput, index) => {
         let prediction = model.forward(testInput, Torch.relu);
-        let expectedOutput = testInput.data[0][0] + 2;
+        let expectedOutput = testInput.data[0][0];
         game.consoleOverlay.clear()
+        console.log("\n  \n  \n")
         console.log(`Test ${index + 1} - Input: ${testInput.data[0][0]}`);
         console.log(`Predicted Output: ${JSON.stringify(prediction.data[0][0])}`);
         console.log(`Error: ${Math.abs(prediction.data[0][0] - expectedOutput)}`);
+        console.log(`Wanted: ${testInput.data[0][0]}`)
         pause(1000)
     });
 }
