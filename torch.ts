@@ -161,8 +161,8 @@ namespace Torch {
             this.neurons = [];
             for (let i = 0; i < outDim; i++) {
                 let neuron = new Neuron(inDim)
-                neuron.weights = neuron.weights.map(() => Math.random() * 0.1 - 0.05);
-                neuron.bias = Math.random() * 0.1 - 0.05;
+                neuron.weights = neuron.weights.map(() => Math.random() * 0.5 - 0.25);
+                neuron.bias = Math.random() * 0.5 - 0.25;
                 this.neurons.push(neuron);
             }
         }
@@ -266,6 +266,10 @@ namespace Torch {
         }
     }
 
+    export function arrayToTensor1D(arr: number[], data:number[]): Tensor {
+        return new Tensor([data])
+    }
+
     export class ConvLayer {
         kernel: Tensor;
         kernelGradients: Tensor; // Store gradients for backpropagation
@@ -276,7 +280,7 @@ namespace Torch {
             for (let i = 0; i < size; i++) {
                 let row: number[] = [];
                 for (let j = 0; j < size; j++) {
-                    row.push(Math.random() * 0.2 - 0.1);
+                    row.push(Math.random() * 0.5 - 0.25);
                 }
                 kernelArray.push(row);
             }
@@ -300,7 +304,10 @@ namespace Torch {
         }
 
         // **Training Step**
-        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number): void {
+        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number, activation?: (x: number) => number, lossFunction?: (error: Tensor) => number): void {
+            if (!activation) activation = relu; // Default to ReLU for feature mapping
+            if (!lossFunction) lossFunction = mse; // Default to MSE if none provided
+
             for (let epoch = 0; epoch < epochs; epoch++) {
                 let totalLoss = 0;
 
@@ -308,12 +315,12 @@ namespace Torch {
                     let input = inputs[i];
                     let target = targets[i];
 
-                    // Forward pass
-                    let prediction = this.forward(input);
+                    // Forward pass with activation
+                    let prediction = activation ? input.matmul(this.kernel).applyFunction(activation) : input.matmul(this.kernel);
                     let error = target.sub(prediction);
 
-                    // Compute Mean Squared Error (MSE) loss
-                    let loss = error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length);
+                    // Compute loss
+                    let loss = lossFunction(error);
                     totalLoss += loss;
 
                     // Backward pass to adjust kernel weights
@@ -349,7 +356,19 @@ namespace Torch {
     export function huber(error: Tensor): number {
         return error.applyFunction(x => Math.abs(x) <= 1 ? 0.5 * x * x : Math.abs(x) - 0.5).sum() / Math.max(1, error.data.length);
     }
+   
+    export function al(error:Tensor):number {
+        let meanAbsError = error.applyFunction(x => Math.abs(x)).sum() / Math.max(1, error.data.length);
 
+        // Dynamic switching based on error scale
+        if (meanAbsError < 0.05) {
+            return rmse(error); // RMSE for small errors (stability)
+        } else if (meanAbsError > 10) {
+            return huber(error); // Huber Loss for large errors (robustness)
+        } else {
+            return mce(error); // MCE for precision optimization
+        }
+    }
 
 
     export function mae(predictions: Tensor, targets: Tensor): number {
@@ -359,8 +378,6 @@ namespace Torch {
         return totalError / elementCount;
     }
     
-
-
     export function relu(x: number): number {
         return Math.max(0, x);
     }
