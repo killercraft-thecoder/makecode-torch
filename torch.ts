@@ -149,8 +149,10 @@ namespace Torch {
             return activation(sum);
         }
     }
-    const sqrt2pi = Math.sqrt(2 / Math.PI);
-    const coeff = 0.044715;
+    export class Constants {
+    static sqrt2pi = Math.sqrt(2 / Math.PI);
+    static coeff = 0.044715;
+    }
     export function activationDerivative(x: number, activation: (x: number) => number): number {
         if (activation === Torch.sigmoid) {
             let sig = Torch.sigmoid(x);
@@ -176,8 +178,8 @@ namespace Torch {
         }
         if (activation === Torch.gelu) {
             let x3 = x * x * x;
-            let tanhTerm = tanh(sqrt2pi * (x + coeff * x3));
-            return 0.5 * (1 + tanhTerm + x * sqrt2pi * (1 - tanhTerm * tanhTerm) * (1 + 3 * coeff * x * x));
+            let tanhTerm = tanh(Constants.sqrt2pi * (x + Constants.coeff * x3));
+            return 0.5 * (1 + tanhTerm + x * Constants.sqrt2pi * (1 - tanhTerm * tanhTerm) * (1 + 3 * Constants.coeff * x * x));
         }
 
         return 1; // Default case (linear activation)
@@ -433,48 +435,91 @@ namespace Torch {
         let elementCount = predictions.data.length * predictions.data[0].length;
         return totalError / elementCount;
     }
-
+    /**
+    * Applies the Rectified Linear Unit (ReLU) activation function.
+    * @param x Input value.
+    * @returns `x` if positive, otherwise `0`.
+    */
     export function relu(x: number): number {
         return Math.max(0, x);
     }
-
+    /**
+    * Applies the Sigmoid activation function, useful for binary classification.
+    * @param x Input value.
+    * @returns A value between 0 and 1.
+    */
     export function sigmoid(x: number): number {
         let expX = Math.exp(-x);
         return 1 / (1 + expX);
     }
-
+    /**
+    * Applies the Exponential Linear Unit (ELU) activation function.
+    * @param x Input value.
+    * @param alpha Scaling factor for negative values (default: 1).
+    * @returns `x` if positive, otherwise `alpha * (exp(x) - 1)`.
+    */
     export function elu(x: number, alpha: number = 1): number {
         return x > 0 ? x : alpha * (Math.exp(x) - 1);
     }
-
+    /**
+    * Applies the Hard Sigmoid activation function, a computationally efficient alternative.
+    * @param x Input value.
+    * @returns A clipped linear approximation of the sigmoid function, constrained between 0 and 1.
+    */
     export function hardSigmoid(x: number): number {
         return Math.max(0, Math.min(1, (0.2 * x + 0.5)));
     }
-
+    /**
+    * Applies the Bent Identity activation function, preserving identity while introducing slight curvature.
+    * @param x Input value.
+    * @returns `(sqrt(x² + 1) - 1) / 2 + x`.
+    */
     export function bentIdentity(x: number): number {
         return (Math.sqrt(x * x + 1) - 1) / 2 + x;
     }
-
+    /**
+    * Applies the Mish activation function, a smooth alternative to ReLU.
+    * @param x Input value.
+    * @returns `x * tanh(ln(1 + exp(x)))`.
+    */
     export function mish(x: number): number {
         return x * tanh(Math.log(1 + Math.exp(x)));
-    }
-
+    } 
+    /**
+    * Applies the Swish activation function, a sigmoid-weighted version of ReLU.
+    * @param x Input value.
+    * @returns `x / (1 + exp(-x))`.
+    */
     export function swish(x: number): number {
         return x / (1 + Math.exp(-x)); // Uses sigmoid-like smoothing
     }
-
+    /**
+    * Applies the Gaussian Error Linear Unit (GELU) activation function.
+    * @param x Input value.
+    * @returns `x * (1 + tanh(sqrt2pi * (x + coeff * x³))) / 2`.
+    */
     export function gelu(x: number): number {
         let x3 = x * x * x;
-        return x * (1 + tanh(sqrt2pi * (x + coeff * x3))) / 2;
+        return x * (1 + tanh(Constants.sqrt2pi * (x + Constants.coeff * x3))) / 2;
     }
 
-    // Tanh (Hyperbolic Tangent)
+    /**
+    * Applies the Hyperbolic Tangent (Tanh) activation function.
+    * @param x Input value.
+    * @returns A value between -1 and 1.
+    */
     export function tanh(x: number): number {
         let exp2x = Math.exp(2 * x);
         return (exp2x - 1) / (exp2x + 1);
     }
 
-    // Leaky ReLU (Improved ReLU to prevent dead neurons)
+    /**
+    * Applies the Leaky ReLU activation function, preventing dead neurons.
+    * @param x Input value.
+    * @param alpha Slope for negative values (default: 0.01).
+    * @returns `x` if positive, otherwise `alpha * x`.
+    */
+
     export function leakyRelu(x: number, alpha: number = 0.01): number {
         let v = x > 0 ? x : alpha * x;
         if (isNaN(v)) {
