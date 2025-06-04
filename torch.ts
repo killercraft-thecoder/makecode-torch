@@ -1,13 +1,26 @@
 // torch.ts - Extended Neural Network Library for MakeCode Arcade
 
+/**
+ * Torch: See https://github.com/killercraft-thecoder/makecode-torch/blob/master/README.md for more detials
+ */
 namespace Torch {
+    /**
+    * Represents a multi-dimensional tensor for matrix computations.
+    */
     export class Tensor {
         data: number[][];
-
+        /**
+        * Creates a new tensor from a 2D number array.
+       * @param data A 2D array representing the tensor values.
+       */
         constructor(data: number[][]) {
             this.data = data;
         }
-
+        /**
+        * Performs matrix multiplication (A * B) and returns the resulting tensor.
+        * @param other The tensor to multiply with.
+       * @returns The resulting tensor, or `null` if dimensions do not match.
+       */
         matmul(other: Tensor): Tensor | null {
             let temp1 = this.data.map(row => row.slice()); // Ensure a true copy
             let temp2 = other.data.map(row => row.slice()); // Prevent referencing original tensor
@@ -22,7 +35,7 @@ namespace Torch {
 
             // Proper manual preallocation for MakeCode Arcade
             let result: number[][] = [];
-            let base:number[] = []
+            let base: number[] = []
             for (let c = 0; c < colsB; c++) {
                 base[c] = 0; // Fill with zeros
             }
@@ -42,14 +55,22 @@ namespace Torch {
             }
             return new Tensor(result);
         }
-        
+        /**
+        * Applies a function to every element in the tensor and returns a new transformed tensor.
+        * @param func The function to apply to each tensor element.
+        * @returns A new tensor with transformed values.
+        */
         applyFunction(func: (x: number) => number): Tensor {
             let data = this.data;
             let result = data.map(row => row.map(func)); // Direct transformation without extra storage
 
             return new Torch.Tensor(result);
         }
-
+        /**
+        * Adds another tensor element-wise and returns the resulting tensor.
+        * @param other The tensor to add.
+        * @returns The resulting tensor after addition.
+        */
         add(other: Tensor): Tensor {
             let rows = Math.min(this.data.length, other.data.length);
             let cols = Math.min(this.data[0].length, other.data[0].length);
@@ -67,6 +88,11 @@ namespace Torch {
 
             return new Torch.Tensor(result);
         }
+        /**
+       * Subtracts another tensor element-wise and returns the resulting tensor.
+       * @param other The tensor to subtract.
+       * @returns The resulting tensor after subtraction.
+       */
         sub(other: Tensor): Tensor {
             let rows = Math.min(this.data.length, other.data.length);
             let cols = Math.min(this.data[0].length, other.data[0].length);
@@ -93,11 +119,15 @@ namespace Torch {
 
             return new Torch.Tensor(result);
         }
+        /**
+        * Computes the sum of all elements in the tensor.
+        * @returns The sum of all tensor elements.
+        */
         sum(): number {
             return this.data.reduce((acc: number, row: number[]) => acc + row.reduce((rowAcc: number, value: number) => rowAcc + value, 0), 0);
         }
     }
-    
+
     export class Neuron {
         weights: number[];
         bias: number;
@@ -119,7 +149,8 @@ namespace Torch {
             return activation(sum);
         }
     }
-
+    const sqrt2pi = Math.sqrt(2 / Math.PI);
+    const coeff = 0.044715;
     export function activationDerivative(x: number, activation: (x: number) => number): number {
         if (activation === Torch.sigmoid) {
             let sig = Torch.sigmoid(x);
@@ -144,8 +175,6 @@ namespace Torch {
             return (Math.exp(x) * delta) / (delta * delta); // Mish derivative
         }
         if (activation === Torch.gelu) {
-            const sqrt2pi = Math.sqrt(2 / Math.PI);
-            const coeff = 0.044715;
             let x3 = x * x * x;
             let tanhTerm = tanh(sqrt2pi * (x + coeff * x3));
             return 0.5 * (1 + tanhTerm + x * sqrt2pi * (1 - tanhTerm * tanhTerm) * (1 + 3 * coeff * x * x));
@@ -153,10 +182,16 @@ namespace Torch {
 
         return 1; // Default case (linear activation)
     }
-
+    /**
+    * Represents a fully connected layer (Linear layer) in a neural network.
+    */
     export class Linear {
         neurons: Neuron[];
-
+        /**
+        * Initializes a linear layer with random weights and biases.
+        * @param inDim The number of input dimensions (neurons in the previous layer).
+        * @param outDim The number of output dimensions (neurons in this layer).
+        */
         constructor(inDim: number, outDim: number) {
             this.neurons = [];
             for (let i = 0; i < outDim; i++) {
@@ -166,7 +201,12 @@ namespace Torch {
                 this.neurons.push(neuron);
             }
         }
-
+        /**
+        * Performs a forward pass, computing the output of the layer given an input tensor.
+        * @param input The input tensor.
+        * @param activation The activation function to apply to each neuron's output.
+        * @returns The resulting tensor after applying the layer transformation.
+        */
         forward(input: Tensor, activation: (x: number) => number): Tensor {
             let output: number[][] = [];
             for (let row of input.data) {
@@ -175,7 +215,14 @@ namespace Torch {
             }
             return new Tensor(output);
         }
-
+        /**
+        * Performs backpropagation to adjust weights based on the error tensor.
+        * @param error The error tensor (difference between actual and predicted values).
+        * @param learningRate The rate at which weights are adjusted.
+        * @param activation The activation function to apply to the error.
+        * @param lossFunction Optional loss function to modify weight updates.
+        * @returns A tensor containing the propagated error for the previous layer.
+        */
         backward(error: Tensor, learningRate: number, activation: (x: number) => number,
             lossFunction?: (error: Tensor) => number): Tensor {
 
@@ -196,7 +243,7 @@ namespace Torch {
                         gradient *= lossFunction(error);
                     }
                     if (gradient) {
-                      newError[j].push(gradient); // Accumulate error for next layer
+                        newError[j].push(gradient); // Accumulate error for next layer
                     } else {
                         newError[j].push(0);
                     }
@@ -208,7 +255,16 @@ namespace Torch {
 
             return new Torch.Tensor(newError);
         }
-
+        /**
+       * Trains the layer using multiple input-target pairs over several epochs.
+       * @param inputs Array of input tensors.
+       * @param targets Array of expected output tensors.
+       * @param learningRate The learning rate for weight adjustments.
+       * @param epochs Number of training iterations.
+       * @param activation Activation function for training (default: sigmoid).
+       * @param lossFunction Loss function to optimize weight updates (default: MSE).
+       * @param disableLogging If true, disables console logs for training progress.
+       */
         train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number,
             activation?: (x: number) => number, lossFunction?: (error: Tensor) => number, disableLogging?: boolean): void {
 
@@ -266,7 +322,7 @@ namespace Torch {
         }
     }
 
-    export function arrayToTensor1D(arr: number[], data:number[]): Tensor {
+    export function arrayToTensor1D(arr: number[], data: number[]): Tensor {
         return new Tensor([data])
     }
 
@@ -356,8 +412,8 @@ namespace Torch {
     export function huber(error: Tensor): number {
         return error.applyFunction(x => Math.abs(x) <= 1 ? 0.5 * x * x : Math.abs(x) - 0.5).sum() / Math.max(1, error.data.length);
     }
-   
-    export function al(error:Tensor):number {
+
+    export function al(error: Tensor): number {
         let meanAbsError = error.applyFunction(x => Math.abs(x)).sum() / Math.max(1, error.data.length);
 
         // Dynamic switching based on error scale
@@ -377,7 +433,7 @@ namespace Torch {
         let elementCount = predictions.data.length * predictions.data[0].length;
         return totalError / elementCount;
     }
-    
+
     export function relu(x: number): number {
         return Math.max(0, x);
     }
@@ -406,8 +462,7 @@ namespace Torch {
     export function swish(x: number): number {
         return x / (1 + Math.exp(-x)); // Uses sigmoid-like smoothing
     }
-    const sqrt2pi = Math.sqrt(2 / Math.PI);
-    const coeff = 0.044715;
+
     export function gelu(x: number): number {
         let x3 = x * x * x;
         return x * (1 + tanh(sqrt2pi * (x + coeff * x3))) / 2;
@@ -451,15 +506,28 @@ namespace Torch {
 
         return softmaxOutput;
     }
-
+    /**
+    * Represents a sequential model consisting of multiple layers (Linear or ConvLayer).
+    */
     export class Sequential {
+        /** Array of layers included in the model. */
         layers: (Linear | ConvLayer)[];
 
+        /**
+        * Initializes a sequential model with the given layers.
+        * @param layers An array of `Linear` or `ConvLayer` instances.
+        */
         constructor(layers: (Linear | ConvLayer)[]) {
             this.layers = layers;
         }
 
         // Forward pass through all layers
+        /**
+        * Performs a forward pass through all layers in the sequential model.
+        * @param input The input tensor.
+        * @param activation The activation function to use (applied to linear layers).
+        * @returns The resulting tensor after passing through all layers.
+        */
         forward(input: Tensor, activation: (x: number) => number): Tensor {
             let output = input;
             for (let layer of this.layers) {
@@ -473,8 +541,18 @@ namespace Torch {
         }
 
         // Train the model
+        /**
+        * Trains the sequential model using backpropagation.
+        * @param inputs An array of input tensors used for training.
+        * @param targets An array of target tensors (expected outputs).
+        * @param learningRate The learning rate for updating weights.
+       * @param epochs The number of training iterations.
+       * @param activation The activation function to apply (default: sigmoid).
+       * @param lossFunction Optional loss function to optimize weight updates (default: MSE).
+       * @param silent If `true`, disables console logging for training progress.
+       */
         train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number,
-            activation?: (x: number) => number, lossFunction?: (error: Tensor) => number,silent?:boolean): void {
+            activation?: (x: number) => number, lossFunction?: (error: Tensor) => number, silent?: boolean): void {
 
             if (!activation) activation = Torch.sigmoid; // Default activation function
             if (!lossFunction) lossFunction = (error) => error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length); // Default to MSE
@@ -503,7 +581,7 @@ namespace Torch {
                         if (layer instanceof ConvLayer) {
                             layer.backward(previousError, learningRate); // ConvLayer only adjusts kernels
                         } else {
-                            previousError = layer.backward(previousError, learningRate, activation,lossFunction);
+                            previousError = layer.backward(previousError, learningRate, activation, lossFunction);
                         }
                     });
                 }
@@ -514,7 +592,7 @@ namespace Torch {
                 }
 
                 if (silent !== true) {
-                  console.log(`Epoch ${epoch + 1}, Loss: ${totalLoss / inputs.length}`);
+                    console.log(`Epoch ${epoch + 1}, Loss: ${totalLoss / inputs.length}`);
                 }
             }
         }
