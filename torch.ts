@@ -33,16 +33,7 @@ namespace Torch {
                 return null; // Dimension mismatch
             }
 
-            // Proper manual preallocation for MakeCode Arcade
             let result: number[][] = [];
-            let base: number[] = []
-            for (let c = 0; c < colsB; c++) {
-                base[c] = 0; // Fill with zeros
-            }
-            // then Copy and Paste the allocated Array
-            for (let r = 0; r < rowsA; r++) {
-                result[r] = base.slice(0)
-            }
 
             // Optimized matrix multiplication
             for (let r = 0; r < rowsA; r++) { // Process row-wise first
