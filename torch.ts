@@ -22,8 +22,8 @@ namespace Torch {
        * @returns The resulting tensor, or `null` if dimensions do not match.
        */
         matmul(other: Tensor): Tensor | null {
-            let temp1 = this.data.map(row => row.slice()); // Ensure a true copy
-            let temp2 = other.data.map(row => row.slice()); // Prevent referencing original tensor
+            let temp1 = this.data; // Ensure a true copy
+            let temp2 = other.data; // Prevent referencing original tensor
             let rowsA = temp1.length;
             let colsA = temp1[0].length;
             let rowsB = temp2.length;
