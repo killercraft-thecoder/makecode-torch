@@ -57,6 +57,13 @@ namespace Torch {
 
             return new Torch.Tensor(result);
         }
+        /** 
+         * Does the same thing as `applyFunction` but on itslef instead of outputing a new Tensor
+        */
+        applyFunction2(func:(x:number) => number):void {
+            let data = this.data;
+            this.data = data.map(row => row.map(func)); // Direct transformation without extra storage
+        }
         /**
         * Adds another tensor element-wise and returns the resulting tensor.
         * @param other The tensor to add.
