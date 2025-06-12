@@ -76,7 +76,7 @@ namespace Torch {
                     result[r][c] = data1[r][c] + data2[r][c]; // Direct assignment avoids push overhead
                 }
             }
-
+ 
             return new Torch.Tensor(result);
         }
         /**
@@ -88,23 +88,12 @@ namespace Torch {
             let rows = Math.min(this.data.length, other.data.length);
             let cols = Math.min(this.data[0].length, other.data[0].length);
 
-            // Manual memory allocation workaround
+            // Manual array allocation without `new Array()`
             let result: number[][] = [];
-            let base: number[] = [];
-            for (let c = 0; c < cols; c++) {
-                base[c] = 0; // Initialize array with zero values
-            }
-
             for (let r = 0; r < rows; r++) {
-                result[r] = base.slice(0); // Correct duplication without referencing `Array`
-            }
-            let data1 = this.data;
-            let data2 = other.data;
-
-            // Optimized subtraction loop
-            for (let r = 0; r < rows; r++) {
+                result[r] = [];  // No `new Array()`, just an empty array
                 for (let c = 0; c < cols; c++) {
-                    result[r][c] = data1[r][c] - data2[r][c]; // Direct assignment avoids push overhead
+                    result[r][c] = this.data[r][c] - other.data[r][c];
                 }
             }
 
@@ -134,7 +123,8 @@ namespace Torch {
 
         activate(inputs: number[], activation: (x: number) => number): number {
             let sum = this.bias;
-            for (let i = 0; i < inputs.length; i++) {
+            let len = inputs.length; // Cache length
+            for (let i = 0; i < len; i++) {
                 sum += inputs[i] * this.weights[i];
             }
             return activation(sum);
