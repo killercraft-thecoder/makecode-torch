@@ -1,6 +1,6 @@
 {
     "name": "TORCH - makecode arcade TS version",
-    "version": "1.8.7",
+    "version": "1.8.8",
     "description": "",
     "dependencies": {
         "device": "*"
