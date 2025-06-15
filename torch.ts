@@ -4,16 +4,25 @@
  * Torch: See https://github.com/killercraft-thecoder/makecode-torch/blob/master/README.md for more detials
  */
 namespace Torch {
+    /** A Activation Function */
+    type ActivationFunction = (x: number) => number
+    /** A Generic Number Function */
+    type Function = (x: number) => number
+    /** A Error Function */
+    type LossFunction = (error: Tensor) => number
+    
+    /** A 2d Matrix */
+    type Matrix = number[][]
     /**
     * Represents a multi-dimensional tensor for matrix computations.
     */
     export class Tensor {
-        data: number[][];
+        data: Matrix;
         /**
         * Creates a new tensor from a 2D number array.
        * @param data A 2D array representing the tensor values.
        */
-        constructor(data: number[][]) {
+        constructor(data: Matrix) {
             this.data = data;
         }
         /**
@@ -117,11 +126,11 @@ namespace Torch {
     /**
      * a Matrix of Inputs to a NN
      */
-    type Inputs = number[][]
+    type Inputs = Matrix
     /** 
      * A Matrix of Outputs from a NN
     */
-    type Outputs = number[][]
+    type Outputs = Matrix
     /** 
      * A DataSet of I/O pairs
     */
@@ -153,7 +162,7 @@ namespace Torch {
         /** 
          * Concats a DataSet with this `DataSet` directly and returns the updated `DataSet`
         */
-        concat(other:DataSet):DataSet {
+        concat(other: DataSet): DataSet {
             this.inputs = this.inputs.concat(other.inputs)
             this.outputs = this.outputs.concat(other.outputs)
             return this
@@ -161,8 +170,8 @@ namespace Torch {
         /**
          * Returns a Part of the `DataSet` Starting from `start` and optinally ending at `end`
          */
-        slice(start:number,end?:number):DataSet {
-            return new DataSet(this.inputs.slice(start,end),this.outputs.slice(start,end))
+        slice(start: number, end?: number): DataSet {
+            return new DataSet(this.inputs.slice(start, end), this.outputs.slice(start, end))
         }
     }
     /** A Singluar `Neuron` */
@@ -307,7 +316,7 @@ namespace Torch {
        * @param disableLogging If true, disables console logs for training progress.
        */
         train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number,
-            activation?: (x: number) => number, lossFunction?: (error: Tensor) => number, disableLogging?: boolean): void {
+            activation?: ActivationFunction, lossFunction?: LossFunction, disableLogging?: boolean): void {
 
             if (!activation) activation = Torch.sigmoid; // Default activation function
             if (!lossFunction) lossFunction = (error) => error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length); // Default to MSE
@@ -379,7 +388,7 @@ namespace Torch {
         * @param lossFunction Optional loss function for optimizing weight updates (default: MSE).
         * @param disableLogging If true, disables console logs for training progress.
         */
-        trainDataSet(DataSet: DataSet, learningRate: number, epochs: number, activation?: (x: number) => number, lossFunction?: (error: Tensor) => number, disableLogging?: boolean) {
+        trainDataSet(DataSet: DataSet, learningRate: number, epochs: number, activation?: ActivationFunction, lossFunction?: LossFunction, disableLogging?: boolean) {
             this.train(this.tensorize(DataSet.inputs), this.tensorize(DataSet.outputs), learningRate, epochs, activation, lossFunction, disableLogging)
         }
     }
@@ -422,7 +431,7 @@ namespace Torch {
         }
 
         // **Training Step**
-        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number, activation?: (x: number) => number, lossFunction?: (error: Tensor) => number): void {
+        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number, activation?: ActivationFunction, lossFunction?: LossFunction): void {
             if (!activation) activation = relu; // Default to ReLU for feature mapping
             if (!lossFunction) lossFunction = mse; // Default to MSE if none provided
 
@@ -633,7 +642,7 @@ namespace Torch {
         * @param activation The activation function to use (applied to linear layers).
         * @returns The resulting tensor after passing through all layers.
         */
-        forward(input: Tensor, activation: (x: number) => number): Tensor {
+        forward(input: Tensor, activation: ActivationFunction): Tensor {
             let output = input;
             for (let layer of this.layers) {
                 if (layer instanceof ConvLayer) {
@@ -657,7 +666,7 @@ namespace Torch {
        * @param silent If `true`, disables console logging for training progress.
        */
         train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number,
-            activation?: (x: number) => number, lossFunction?: (error: Tensor) => number, silent?: boolean): void {
+            activation?: ActivationFunction, lossFunction?: LossFunction, silent?: boolean): void {
 
             if (!activation) activation = Torch.sigmoid; // Default activation function
             if (!lossFunction) lossFunction = (error) => error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length); // Default to MSE
@@ -701,26 +710,26 @@ namespace Torch {
                 }
             }
         }
-    /** 
-    * `Internal Use Only`
-    * Tensorizes a 2d matrix -> Tensor array
-    */
-    protected tensorize(data: number[][]): Tensor[] {
-        let tensors: Tensor[] = []
-        data.forEach((a) => tensors.push(new Tensor([a])))
-        return tensors
+        /** 
+        * `Internal Use Only`
+        * Tensorizes a 2d matrix -> Tensor array
+        */
+        protected tensorize(data: number[][]): Tensor[] {
+            let tensors: Tensor[] = []
+            data.forEach((a) => tensors.push(new Tensor([a])))
+            return tensors
+        }
+        /**
+        * Trains a dataset using multiple input-target pairs over several epochs.
+        * @param DataSet The dataset containing input-output pairs.
+        * @param learningRate The learning rate for weight adjustments.
+        * @param epochs Number of training iterations.
+        * @param activation Optional activation function for training (default: sigmoid).
+        * @param lossFunction Optional loss function for optimizing weight updates (default: MSE).
+        * @param disableLogging If true, disables console logs for training progress.
+        */
+        trainDataSet(DataSet: DataSet, learningRate: number, epochs: number, activation?: ActivationFunction, lossFunction?: LossFunction, disableLogging?: boolean) {
+            this.train(this.tensorize(DataSet.inputs), this.tensorize(DataSet.outputs), learningRate, epochs, activation, lossFunction, disableLogging)
+        }
     }
-    /**
-    * Trains a dataset using multiple input-target pairs over several epochs.
-    * @param DataSet The dataset containing input-output pairs.
-    * @param learningRate The learning rate for weight adjustments.
-    * @param epochs Number of training iterations.
-    * @param activation Optional activation function for training (default: sigmoid).
-    * @param lossFunction Optional loss function for optimizing weight updates (default: MSE).
-    * @param disableLogging If true, disables console logs for training progress.
-    */
-    trainDataSet(DataSet: DataSet, learningRate: number, epochs: number, activation ?: (x: number) => number, lossFunction ?: (error: Tensor) => number, disableLogging ?: boolean) {
-        this.train(this.tensorize(DataSet.inputs), this.tensorize(DataSet.outputs), learningRate, epochs, activation, lossFunction, disableLogging)
-    }
-  }
-} 
+}
