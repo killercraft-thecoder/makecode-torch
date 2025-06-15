@@ -114,30 +114,62 @@ namespace Torch {
             return this.data.reduce((acc: number, row: number[]) => acc + row.reduce((rowAcc: number, value: number) => rowAcc + value, 0), 0);
         }
     }
+    /**
+     * a Matrix of Inputs to a NN
+     */
     type Inputs = number[][]
+    /** 
+     * A Matrix of Outputs from a NN
+    */
     type Outputs = number[][]
     /** 
      * A DataSet of I/O pairs
     */
     export class DataSet {
+        /** the `Inputs` of the `DataSet` */
         inputs: Inputs
+        /** the `Outputs` of the `DataSet` */
         outputs: Outputs
+        /** 
+         * Create a new `DataSet`
+        */
         constructor(inputs: Inputs, outputs: Outputs) {
             this.inputs = inputs
             this.outputs = outputs
         }
+        /** 
+         * Pushes a new Data Pair to the `DataSet`
+        */
         push(dataPair: { input: number[], output: number[] }) {
             this.inputs.push(dataPair.input)
             this.outputs.push(dataPair.output)
         }
+        /**
+         * Pops the last data Pair from the `DataSet`
+         */
         pop(): { input: number[], output: number[] } {
             return { input: this.inputs.pop(), output: this.outputs.pop() }
         }
+        /** 
+         * Concats a DataSet with this `DataSet` directly and returns the updated `DataSet`
+        */
+        concat(other:DataSet):DataSet {
+            this.inputs = this.inputs.concat(other.inputs)
+            this.outputs = this.outputs.concat(other.outputs)
+            return this
+        }
+        /**
+         * Returns a Part of the `DataSet` Starting from `start` and optinally ending at `end`
+         */
+        slice(start:number,end?:number):DataSet {
+            return new DataSet(this.inputs.slice(start,end),this.outputs.slice(start,end))
+        }
     }
+    /** A Singluar `Neuron` */
     export class Neuron {
         weights: number[];
         bias: number;
-
+        /** Create a new `Neuron` */
         constructor(inputSize: number) {
             this.bias = Math.random() * 0.3 - 0.1;
             this.weights = []; // Must explicitly declare it as an empty array
@@ -146,7 +178,7 @@ namespace Torch {
                 this.weights[i] = Math.random() * 0.3 - 0.1; // Assign values directly
             }
         }
-
+        /** Activate this `Neuron` */
         activate(inputs: number[], activation: (x: number) => number): number {
             let sum = this.bias;
             let len = inputs.length; // Cache length
