@@ -60,7 +60,7 @@ namespace Torch {
         /** 
          * Does the same thing as `applyFunction` but on itslef instead of outputing a new Tensor
         */
-        applyFunction2(func:(x:number) => number):void {
+        applyFunction2(func: (x: number) => number): void {
             let data = this.data;
             this.data = data.map(row => row.map(func)); // Direct transformation without extra storage
         }
@@ -83,7 +83,7 @@ namespace Torch {
                     result[r][c] = data1[r][c] + data2[r][c]; // Direct assignment avoids push overhead
                 }
             }
- 
+
             return new Torch.Tensor(result);
         }
         /**
@@ -114,7 +114,26 @@ namespace Torch {
             return this.data.reduce((acc: number, row: number[]) => acc + row.reduce((rowAcc: number, value: number) => rowAcc + value, 0), 0);
         }
     }
-
+    type Inputs = number[][]
+    type Outputs = number[][]
+    /** 
+     * A DataSet of I/O pairs
+    */
+    export class DataSet {
+        inputs: Inputs
+        outputs: Outputs
+        constructor(inputs: Inputs, outputs: Outputs) {
+            this.inputs = inputs
+            this.outputs = outputs
+        }
+        push(dataPair: { input: number[], output: number[] }) {
+            this.inputs.push(dataPair.input)
+            this.outputs.push(dataPair.output)
+        }
+        pop(): { input: number[], output: number[] } {
+            return { input: this.inputs.pop(), output: this.outputs.pop() }
+        }
+    }
     export class Neuron {
         weights: number[];
         bias: number;
@@ -138,8 +157,8 @@ namespace Torch {
         }
     }
     export class Constants {
-    static sqrt2pi = Math.sqrt(2 / Math.PI);
-    static coeff = 0.044715;
+        static sqrt2pi = Math.sqrt(2 / Math.PI);
+        static coeff = 0.044715;
     }
     export function activationDerivative(x: number, activation: (x: number) => number): number {
         if (activation === Torch.sigmoid) {
@@ -310,6 +329,27 @@ namespace Torch {
                 }
             }
         }
+        /** 
+         * `Internal Use Only`
+         * Tensorizes a 2d matrix -> Tensor array
+        */
+        protected tensorize(data: number[][]): Tensor[] {
+            let tensors: Tensor[] = []
+            data.forEach((a) => tensors.push(new Tensor([a])))
+            return tensors
+        }
+        /**
+        * Trains a dataset using multiple input-target pairs over several epochs.
+        * @param DataSet The dataset containing input-output pairs.
+        * @param learningRate The learning rate for weight adjustments.
+        * @param epochs Number of training iterations.
+        * @param activation Optional activation function for training (default: sigmoid).
+        * @param lossFunction Optional loss function for optimizing weight updates (default: MSE).
+        * @param disableLogging If true, disables console logs for training progress.
+        */
+        trainDataSet(DataSet: DataSet, learningRate: number, epochs: number, activation?: (x: number) => number, lossFunction?: (error: Tensor) => number, disableLogging?: boolean) {
+            this.train(this.tensorize(DataSet.inputs), this.tensorize(DataSet.outputs), learningRate, epochs, activation, lossFunction, disableLogging)
+        }
     }
 
     export function arrayToTensor1D(arr: number[], data: number[]): Tensor {
@@ -472,7 +512,7 @@ namespace Torch {
     */
     export function mish(x: number): number {
         return x * tanh(Math.log(1 + Math.exp(x)));
-    } 
+    }
     /**
     * Applies the Swish activation function, a sigmoid-weighted version of ReLU.
     * @param x Input value.
@@ -629,9 +669,26 @@ namespace Torch {
                 }
             }
         }
-
-
+    /** 
+    * `Internal Use Only`
+    * Tensorizes a 2d matrix -> Tensor array
+    */
+    protected tensorize(data: number[][]): Tensor[] {
+        let tensors: Tensor[] = []
+        data.forEach((a) => tensors.push(new Tensor([a])))
+        return tensors
     }
-
-
-}
+    /**
+    * Trains a dataset using multiple input-target pairs over several epochs.
+    * @param DataSet The dataset containing input-output pairs.
+    * @param learningRate The learning rate for weight adjustments.
+    * @param epochs Number of training iterations.
+    * @param activation Optional activation function for training (default: sigmoid).
+    * @param lossFunction Optional loss function for optimizing weight updates (default: MSE).
+    * @param disableLogging If true, disables console logs for training progress.
+    */
+    trainDataSet(DataSet: DataSet, learningRate: number, epochs: number, activation ?: (x: number) => number, lossFunction ?: (error: Tensor) => number, disableLogging ?: boolean) {
+        this.train(this.tensorize(DataSet.inputs), this.tensorize(DataSet.outputs), learningRate, epochs, activation, lossFunction, disableLogging)
+    }
+  }
+} 
