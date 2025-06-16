@@ -5,26 +5,71 @@
  */
 namespace Torch {
     /** A Activation Function */
-    type ActivationFunction = (x: number) => number
+    type ActivationFunction = Function
     /** A Generic Number Function */
     type Function = (x: number) => number
     /** A Error Function */
-    type LossFunction = (error: Tensor) => number
-    
+    type LossFunction = (error: TensorLike) => number
+
     /** A 2d Matrix */
     type Matrix = number[][]
+
+    export interface TensorLike {
+        data: Matrix
+        matmul(other:TensorLike): TensorLike | null
+        applyFunction(func: (x: number) => number): TensorLike
+        add(other: TensorLike): TensorLike
+        sub(other: TensorLike): TensorLike
+        sum(): number
+    }
+
+    /** Torch's Allocater */
+    export class Allocator {
+        /** Do Not Create A `Allocater` , it Will only cost memory */
+        constructor () {}
+        
+        /** Allocates a 2d matrix */
+        static allocateMatrix(rows: number, cols: number, defaultValue: number = 0): Matrix {
+            let matrix: number[][] = [];
+
+            for (let i = 0; i < rows; i++) {
+                let row: number[] = [];
+                for (let j = 0; j < cols; j++) {
+                    row.push(defaultValue);
+                }
+                matrix.push(row);
+            }
+
+            return matrix;
+        }
+        /** Allocates a 1D standard array */
+        static allocateArray(rows:number,defaultValue:number = 0):number[] {
+            let array:number[] = [];
+
+            for (let i = 0; i < rows; i++) {
+                array.push(defaultValue)
+            }
+
+            return array
+        }
+    }
+
     /**
     * Represents a multi-dimensional tensor for matrix computations.
     */
-    export class Tensor {
+    export class Tensor implements TensorLike {
+        /** 
+         * The Data Of the Tensor
+        */
         data: Matrix;
         /**
-        * Creates a new tensor from a 2D number array.
-       * @param data A 2D array representing the tensor values.
-       */
+        * Creates a new tensor from a 2D `Matrix`.
+        * @param data A 2D `Matrix` representing the tensor values.
+        */
         constructor(data: Matrix) {
             this.data = data;
         }
+
         /**
         * Performs matrix multiplication (A * B) and returns the resulting tensor.
         * @param other The tensor to multiply with.
@@ -63,16 +108,9 @@ namespace Torch {
         applyFunction(func: (x: number) => number): Tensor {
             let data = this.data;
             let result = data.map(row => row.map(func)); // Direct transformation without extra storage
-
             return new Torch.Tensor(result);
         }
-        /** 
-         * Does the same thing as `applyFunction` but on itslef instead of outputing a new Tensor
-        */
-        applyFunction2(func: (x: number) => number): void {
-            let data = this.data;
-            this.data = data.map(row => row.map(func)); // Direct transformation without extra storage
-        }
+
         /**
         * Adds another tensor element-wise and returns the resulting tensor.
         * @param other The tensor to add.
@@ -95,11 +133,12 @@ namespace Torch {
 
             return new Torch.Tensor(result);
         }
+
         /**
-       * Subtracts another tensor element-wise and returns the resulting tensor.
-       * @param other The tensor to subtract.
-       * @returns The resulting tensor after subtraction.
-       */
+        *Subtracts another tensor element-wise and returns the resulting tensor.
+        * @param other The tensor to subtract.
+        * @returns The resulting tensor after subtraction.
+        */
         sub(other: Tensor): Tensor {
             let rows = Math.min(this.data.length, other.data.length);
             let cols = Math.min(this.data[0].length, other.data[0].length);
@@ -115,6 +154,7 @@ namespace Torch {
 
             return new Torch.Tensor(result);
         }
+
         /**
         * Computes the sum of all elements in the tensor.
         * @returns The sum of all tensor elements.
@@ -257,7 +297,7 @@ namespace Torch {
         * @param activation The activation function to apply to each neuron's output.
         * @returns The resulting tensor after applying the layer transformation.
         */
-        forward(input: Tensor, activation: (x: number) => number): Tensor {
+        forward(input: TensorLike, activation: (x: number) => number): Tensor {
             let output: number[][] = [];
             for (let row of input.data) {
                 let neuronOutputs: number[] = this.neurons.map(neuron => neuron.activate(row, activation));
@@ -273,8 +313,8 @@ namespace Torch {
         * @param lossFunction Optional loss function to modify weight updates.
         * @returns A tensor containing the propagated error for the previous layer.
         */
-        backward(error: Tensor, learningRate: number, activation: (x: number) => number,
-            lossFunction?: (error: Tensor) => number): Tensor {
+        backward(error: TensorLike, learningRate: number, activation: (x: number) => number,
+            lossFunction?: (error: TensorLike) => number): TensorLike {
 
             // Apply activation derivative
             let activatedError = error.applyFunction(x => activationDerivative(x, activation));
@@ -315,7 +355,7 @@ namespace Torch {
        * @param lossFunction Loss function to optimize weight updates (default: MSE).
        * @param disableLogging If true, disables console logs for training progress.
        */
-        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number,
+        train(inputs: TensorLike[], targets: TensorLike[], learningRate: number, epochs: number,
             activation?: ActivationFunction, lossFunction?: LossFunction, disableLogging?: boolean): void {
 
             if (!activation) activation = Torch.sigmoid; // Default activation function
@@ -416,12 +456,12 @@ namespace Torch {
         }
 
         // **Forward Pass**: Apply convolution to input tensor
-        forward(input: Tensor): Tensor {
+        forward(input: TensorLike): TensorLike {
             return input.matmul(this.kernel);
         }
 
         // **Backpropagation**: Compute gradients for weight updates
-        backward(error: Tensor, learningRate: number): void {
+        backward(error: TensorLike, learningRate: number): void {
             // Compute gradients
             this.kernelGradients = error.matmul(this.kernel);
 
@@ -431,7 +471,7 @@ namespace Torch {
         }
 
         // **Training Step**
-        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number, activation?: ActivationFunction, lossFunction?: LossFunction): void {
+        train(inputs: TensorLike[], targets: TensorLike[], learningRate: number, epochs: number, activation?: ActivationFunction, lossFunction?: LossFunction): void {
             if (!activation) activation = relu; // Default to ReLU for feature mapping
             if (!lossFunction) lossFunction = mse; // Default to MSE if none provided
 
@@ -460,31 +500,31 @@ namespace Torch {
     }
 
     // Mean Squared Error (MSE)
-    export function mse(error: Tensor): number {
+    export function mse(error: TensorLike): number {
         return error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length);
     }
 
     // Mean Cubed Error (MCE)
-    export function mce(error: Tensor): number {
+    export function mce(error: TensorLike): number {
         return error.applyFunction(x => x * x * x).sum() / Math.max(1, error.data.length);
     }
 
     // Mean Error (ME) - Identity function (X = X)
-    export function me(error: Tensor): number {
+    export function me(error: TensorLike): number {
         return error.sum() / Math.max(1, error.data.length);
     }
 
     // Root Mean Squared Error (RMSE)
-    export function rmse(error: Tensor): number {
+    export function rmse(error: TensorLike): number {
         return Math.sqrt(error.applyFunction(x => x * x).sum() / Math.max(1, error.data.length));
     }
 
     // Huber Loss (Delta = 1)
-    export function huber(error: Tensor): number {
+    export function huber(error: TensorLike): number {
         return error.applyFunction(x => Math.abs(x) <= 1 ? 0.5 * x * x : Math.abs(x) - 0.5).sum() / Math.max(1, error.data.length);
     }
 
-    export function al(error: Tensor): number {
+    export function al(error: TensorLike): number {
         let meanAbsError = error.applyFunction(x => Math.abs(x)).sum() / Math.max(1, error.data.length);
 
         // Dynamic switching based on error scale
@@ -498,7 +538,7 @@ namespace Torch {
     }
 
 
-    export function mae(predictions: Tensor, targets: Tensor): number {
+    export function mae(predictions: TensorLike, targets: TensorLike): number {
         let errorTensor = predictions.add(targets.applyFunction(x => -x));
         let totalError = errorTensor.data.reduce((sum, row) => sum + row.reduce((rSum, val) => rSum + Math.abs(val), 0), 0);
         let elementCount = predictions.data.length * predictions.data[0].length;
@@ -642,7 +682,7 @@ namespace Torch {
         * @param activation The activation function to use (applied to linear layers).
         * @returns The resulting tensor after passing through all layers.
         */
-        forward(input: Tensor, activation: ActivationFunction): Tensor {
+        forward(input: Tensor, activation: ActivationFunction): TensorLike {
             let output = input;
             for (let layer of this.layers) {
                 if (layer instanceof ConvLayer) {
@@ -665,7 +705,7 @@ namespace Torch {
        * @param lossFunction Optional loss function to optimize weight updates (default: MSE).
        * @param silent If `true`, disables console logging for training progress.
        */
-        train(inputs: Tensor[], targets: Tensor[], learningRate: number, epochs: number,
+        train(inputs: TensorLike[], targets: TensorLike[], learningRate: number, epochs: number,
             activation?: ActivationFunction, lossFunction?: LossFunction, silent?: boolean): void {
 
             if (!activation) activation = Torch.sigmoid; // Default activation function
@@ -714,7 +754,7 @@ namespace Torch {
         * `Internal Use Only`
         * Tensorizes a 2d matrix -> Tensor array
         */
-        protected tensorize(data: number[][]): Tensor[] {
+        protected tensorize(data: number[][]): TensorLike[] {
             let tensors: Tensor[] = []
             data.forEach((a) => tensors.push(new Tensor([a])))
             return tensors
