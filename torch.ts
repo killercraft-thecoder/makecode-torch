@@ -440,7 +440,7 @@ namespace Torch {
         }
     }
 
-    export function arrayToTensor1D(arr: number[], data: number[]): Tensor {
+    export function arrayToTensor1D(data: number[]): Tensor {
         return new Tensor([data])
     }
 
