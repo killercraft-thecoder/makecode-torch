@@ -14,6 +14,7 @@ namespace Torch {
     /** A 2d Matrix */
     type Matrix = number[][]
 
+    /** A `TensorLike` Object. */
     export interface TensorLike {
         data: Matrix
         matmul(other:TensorLike): TensorLike | null
@@ -21,6 +22,12 @@ namespace Torch {
         add(other: TensorLike): TensorLike
         sub(other: TensorLike): TensorLike
         sum(): number
+    }
+    /** the Interface for Standard Models. */
+    export interface Model {
+        forward(input: Tensor, activation: ActivationFunction): TensorLike;
+        train(inputs: TensorLike[], targets: TensorLike[], learningRate: number, epochs: number, activation?: ActivationFunction, lossFunction?: LossFunction, silent?: boolean): void
+        trainDataSet(DataSet: DataSet, learningRate: number, epochs: number, activation?: ActivationFunction, lossFunction?: LossFunction, disableLogging?: boolean): void
     }
 
     /** Torch's Allocater */
@@ -275,7 +282,7 @@ namespace Torch {
     /**
     * Represents a fully connected layer (Linear layer) in a neural network.
     */
-    export class Linear {
+    export class Linear implements Model {
         neurons: Neuron[];
         /**
         * Initializes a linear layer with random weights and biases.
@@ -663,7 +670,7 @@ namespace Torch {
     /**
     * Represents a sequential model consisting of multiple layers (Linear or ConvLayer).
     */
-    export class Sequential {
+    export class Sequential implements Model {
         /** Array of layers included in the model. */
         layers: (Linear | ConvLayer)[];
 
