@@ -17,7 +17,7 @@ namespace Torch {
     /** A `TensorLike` Object. */
     export interface TensorLike {
         data: Matrix
-        matmul(other:TensorLike): TensorLike | null
+        matmul(other: TensorLike): TensorLike | null
         applyFunction(func: (x: number) => number): TensorLike
         add(other: TensorLike): TensorLike
         sub(other: TensorLike): TensorLike
@@ -33,8 +33,8 @@ namespace Torch {
     /** Torch's Allocater */
     export class Allocator {
         /** Do Not Create A `Allocater` , it Will only cost memory */
-        constructor () {}
-        
+        constructor() { }
+
         /** Allocates a 2d matrix */
         static allocateMatrix(rows: number, cols: number, defaultValue: number = 0): Matrix {
             let matrix: number[][] = [];
@@ -50,8 +50,8 @@ namespace Torch {
             return matrix;
         }
         /** Allocates a 1D standard array */
-        static allocateArray(rows:number,defaultValue:number = 0):number[] {
-            let array:number[] = [];
+        static allocateArray(rows: number, defaultValue: number = 0): number[] {
+            let array: number[] = [];
 
             for (let i = 0; i < rows; i++) {
                 array.push(defaultValue)
@@ -243,6 +243,10 @@ namespace Torch {
             }
             return activation(sum);
         }
+
+        weight_decay(strength: number = 0.999) {
+            this.weights.forEach((a) => a *= strength)
+        }
     }
     export class Constants {
         static sqrt2pi = Math.sqrt(2 / Math.PI);
@@ -284,6 +288,8 @@ namespace Torch {
     */
     export class Linear implements Model {
         neurons: Neuron[];
+        private _decay = 0.999;
+
         /**
         * Initializes a linear layer with random weights and biases.
         * @param inDim The number of input dimensions (neurons in the previous layer).
@@ -297,6 +303,18 @@ namespace Torch {
                 neuron.bias = Math.random() * 0.5 - 0.25;
                 this.neurons.push(neuron);
             }
+        }
+        /** 
+         * Set the Weight Decay to a Value to have each neurons weights be multplied by
+        */
+        set decay(x: number) {
+            this._decay = x
+        }
+        /**
+        * Get the Weight Decay to a Value Which will have each neurons weights be multplied by
+        */
+        get decay(): number {
+            return this._decay
         }
         /**
         * Performs a forward pass, computing the output of the layer given an input tensor.
@@ -330,7 +348,7 @@ namespace Torch {
             for (let i = 0; i < this.neurons.length; i++) {
                 newError.push([0]); // Properly initializes an empty array
             }
-
+            this.neurons.forEach((a) => a.weight_decay(this._decay))
             this.neurons.forEach((neuron, index) => {
                 neuron.weights = neuron.weights.map((w, j) => {
                     let gradient = activatedError.data[0][index] * error.data[0][index];
@@ -370,7 +388,7 @@ namespace Torch {
 
             for (let epoch = 0; epoch < epochs; epoch++) {
                 let totalLoss = 0;
-
+                this.neurons.forEach((a) => a.weight_decay(this._decay))
                 for (let i = 0; i < inputs.length; i++) {
                     let input = inputs[i];
                     let target = targets[i];
@@ -447,6 +465,12 @@ namespace Torch {
     export class ConvLayer {
         kernel: Tensor;
         kernelGradients: Tensor; // Store gradients for backpropagation
+        private _decay = 0.999;
+
+        /** Decay Not Supported for ConvLayer */
+        get decay():number {return -1}
+        /** Decay Not Supported for ConvLayer */
+        set decay(x:number) {}
 
         constructor(size: number) {
             // Explicitly initialize the kernel with randomized weights
@@ -673,6 +697,7 @@ namespace Torch {
     export class Sequential implements Model {
         /** Array of layers included in the model. */
         layers: (Linear | ConvLayer)[];
+        private _decay = 0.999;
 
         /**
         * Initializes a sequential model with the given layers.
@@ -680,6 +705,20 @@ namespace Torch {
         */
         constructor(layers: (Linear | ConvLayer)[]) {
             this.layers = layers;
+        }
+
+        /** 
+        * Set the Weight Decay to a Value to have each neurons weights be multplied by
+        */
+        set decay(x: number) {
+            this._decay = x
+            this.layers.forEach((a) => a.decay = x)
+        }
+        /**
+        * Get the Weight Decay to a Value Which will have each neurons weights be multplied by
+        */
+        get decay(): number {
+            return this._decay
         }
 
         // Forward pass through all layers
