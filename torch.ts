@@ -110,11 +110,10 @@ namespace Torch {
             let matrix: number[][] = [];
 
             for (let i = 0; i < rows; i++) {
-                let row: number[] = [];
+                matrix[i] = []
                 for (let j = 0; j < cols; j++) {
-                    row.push(defaultValue);
+                    matrix[i][j] = defaultValue;
                 }
-                matrix.push(row);
             }
 
             return matrix;
@@ -124,7 +123,7 @@ namespace Torch {
             let array: number[] = [];
 
             for (let i = 0; i < rows; i++) {
-                array.push(defaultValue)
+                array[i] = defaultValue
             }
 
             return array
