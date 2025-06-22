@@ -33,17 +33,17 @@ function example() {
     model.train(inputs, targets, learningRate, epochs, Torch.relu);
 
     // Testing trained models
-    let testInputs = [new Torch.Tensor([[5]]), new Torch.Tensor([[8]]),new Torch.Tensor([[0]])];
+    let testInputs = [5,8,0];
 
     testInputs.forEach((testInput, index) => {
-        let prediction = model.forward(testInput, Torch.relu);
-        let expectedOutput = testInput.data[0][0];
+        let prediction = model.forward(new Torch.Tensor([[testInput]]),Torch.relu)
+        let expectedOutput = testInput;
         game.consoleOverlay.clear()
         console.log("\n  \n  \n")
-        console.log(`Test ${index + 1} - Input: ${testInput.data[0][0]}`);
+        console.log(`Test ${index + 1} - Input: ${testInput}`);
         console.log(`Predicted Output: ${JSON.stringify(prediction.data[0][0])}`);
         console.log(`Error: ${Math.abs(prediction.data[0][0] - expectedOutput)}`);
-        console.log(`Wanted: ${testInput.data[0][0]}`)
+        console.log(`Wanted: ${testInput}`)
         pause(1000)
     });
 }

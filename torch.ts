@@ -4,6 +4,7 @@
  * Torch: See https://github.com/killercraft-thecoder/makecode-torch/blob/master/README.md for more detials
  */
 namespace Torch {
+
     /** A Activation Function */
     type ActivationFunction = Function
     /** A Generic Number Function */
@@ -23,15 +24,84 @@ namespace Torch {
         sub(other: TensorLike): TensorLike
         sum(): number
     }
+      
     /** the Interface for Standard Models. */
     export interface Model {
         forward(input: Tensor, activation: ActivationFunction): TensorLike;
         train(inputs: TensorLike[], targets: TensorLike[], learningRate: number, epochs: number, activation?: ActivationFunction, lossFunction?: LossFunction, silent?: boolean): void
         trainDataSet(DataSet: DataSet, learningRate: number, epochs: number, activation?: ActivationFunction, lossFunction?: LossFunction, disableLogging?: boolean): void
     }
+    /** the Interaface for a `Layer` in a Stanard Model */
+    export interface Layer extends Model {
+        neurons: Neuron[];
+        decay:number;
+    }
+    /** A `CNNLayer` use nstead of `Torch.Layer` For CNN Layers Only */
+    export interface CNNLayer {
+        /** The convolution kernel weights. */
+        kernel: TensorLike;
+
+        /** The gradient matrix used for updating the kernel during training. */
+        kernelGradients: TensorLike;
+
+        /** Forward pass: applies the layer's convolution operation. */
+        forward(input: TensorLike): TensorLike;
+
+        /** 
+         * Backward pass: computes gradients and updates kernel weights.
+         * @param error - The loss error propagated to this layer.
+         * @param learningRate - Scalar controlling the weight update magnitude.
+         */
+        backward(error: TensorLike, learningRate: number): void;
+
+        /**
+         * Trains the convolutional layer on a set of input-target pairs.
+         * @param inputs - A batch of input tensors.
+         * @param targets - A batch of expected output tensors.
+         * @param learningRate - Scalar value for gradient descent.
+         * @param epochs - Number of training iterations.
+         * @param activation - Optional activation function (defaults to ReLU).
+         * @param lossFunction - Optional loss function (defaults to MSE).
+         */
+        train(
+            inputs: TensorLike[],
+            targets: TensorLike[],
+            learningRate: number,
+            epochs: number,
+            activation?: ActivationFunction,
+            lossFunction?: LossFunction
+        ): void;
+    }
+
+    /** 
+     * A Weight Equalizer
+    */
+    export class Equalizer {
+        /** 
+         * Equalizes a Models Weights closer to 0
+        */
+        static equalize(model:Linear | Sequential) {
+            // Step 1: Figure Out the Type
+            let ml = model as Linear
+            if (ml.neurons && ml.neurons.length > 0) {
+                // Linear Layer Type
+                ml.neurons.forEach((a) => a.weights.forEach((a) => a /= 1 + (Math.abs(a) / 16)))
+            } else {
+                // Sequential Layer Type
+                let ms = model as Sequential
+                if (ms.layers) {
+                  ms.layers.forEach((a) => Equalizer.equalize(a as Linear))
+                } else {
+                    // Invalid Model
+                    throw "Invalid Model,Model niether valid Linear or Valid Sequential"
+                }
+            }
+        }
+    }
 
     /** Torch's Allocater */
     export class Allocator {
+
         /** Do Not Create A `Allocater` , it Will only cost memory */
         constructor() { }
 
@@ -80,9 +150,9 @@ namespace Torch {
         /**
         * Performs matrix multiplication (A * B) and returns the resulting tensor.
         * @param other The tensor to multiply with.
-       * @returns The resulting tensor, or `null` if dimensions do not match.
-       */
-        matmul(other: Tensor): Tensor | null {
+        * @returns The resulting tensor, or `null` if dimensions do not match.
+        */
+        matmul(other: TensorLike): TensorLike | null {
             let temp1 = this.data; // Ensure a true copy
             let temp2 = other.data; // Prevent referencing original tensor
             let rowsA = temp1.length;
@@ -112,7 +182,7 @@ namespace Torch {
         * @param func The function to apply to each tensor element.
         * @returns A new tensor with transformed values.
         */
-        applyFunction(func: (x: number) => number): Tensor {
+        applyFunction(func: (x: number) => number): TensorLike {
             let data = this.data;
             let result = data.map(row => row.map(func)); // Direct transformation without extra storage
             return new Torch.Tensor(result);
@@ -123,7 +193,7 @@ namespace Torch {
         * @param other The tensor to add.
         * @returns The resulting tensor after addition.
         */
-        add(other: Tensor): Tensor {
+        add(other: TensorLike): TensorLike {
             let rows = Math.min(this.data.length, other.data.length);
             let cols = Math.min(this.data[0].length, other.data[0].length);
 
@@ -146,7 +216,7 @@ namespace Torch {
         * @param other The tensor to subtract.
         * @returns The resulting tensor after subtraction.
         */
-        sub(other: Tensor): Tensor {
+        sub(other: TensorLike): TensorLike {
             let rows = Math.min(this.data.length, other.data.length);
             let cols = Math.min(this.data[0].length, other.data[0].length);
 
@@ -286,7 +356,7 @@ namespace Torch {
     /**
     * Represents a fully connected layer (Linear layer) in a neural network.
     */
-    export class Linear implements Model {
+    export class Linear implements Layer {
         neurons: Neuron[];
         private _decay = 0.999;
 
@@ -308,6 +378,9 @@ namespace Torch {
          * Set the Weight Decay to a Value to have each neurons weights be multplied by
         */
         set decay(x: number) {
+            if (x > 1) {
+                return;
+            }
             this._decay = x
         }
         /**
@@ -316,6 +389,7 @@ namespace Torch {
         get decay(): number {
             return this._decay
         }
+
         /**
         * Performs a forward pass, computing the output of the layer given an input tensor.
         * @param input The input tensor.
@@ -462,7 +536,7 @@ namespace Torch {
         return new Tensor([data])
     }
 
-    export class ConvLayer {
+    export class ConvLayer implements CNNLayer {
         kernel: Tensor;
         kernelGradients: Tensor; // Store gradients for backpropagation
         private _decay = 0.999;
@@ -473,6 +547,7 @@ namespace Torch {
         set decay(x:number) {}
 
         constructor(size: number) {
+
             // Explicitly initialize the kernel with randomized weights
             let kernelArray: number[][] = [];
             for (let i = 0; i < size; i++) {
@@ -721,6 +796,7 @@ namespace Torch {
             return this._decay
         }
 
+
         // Forward pass through all layers
         /**
         * Performs a forward pass through all layers in the sequential model.
@@ -784,6 +860,7 @@ namespace Torch {
                             previousError = layer.backward(previousError, learningRate, activation, lossFunction);
                         }
                     });
+
                 }
 
                 // Learning rate decay with a minimum limit
