@@ -35,6 +35,8 @@ namespace Torch {
     export interface Layer extends Model {
         neurons: Neuron[];
         decay:number;
+        outputSize: number;
+        inputSize: number;
     }
     /** A `CNNLayer` use nstead of `Torch.Layer` For CNN Layers Only */
     export interface CNNLayer {
@@ -357,6 +359,8 @@ namespace Torch {
     */
     export class Linear implements Layer {
         neurons: Neuron[];
+        outputSize:number;
+        inputSize:number;
         private _decay = 0.999;
 
         /**
@@ -366,6 +370,9 @@ namespace Torch {
         */
         constructor(inDim: number, outDim: number) {
             this.neurons = [];
+            this.inputSize = inDim;
+            this.outputSize = outDim;
+             
             for (let i = 0; i < outDim; i++) {
                 let neuron = new Neuron(inDim)
                 neuron.weights = neuron.weights.map(() => Math.random() * 0.5 - 0.25);
@@ -413,6 +420,10 @@ namespace Torch {
         */
         backward(error: TensorLike, learningRate: number, activation: (x: number) => number,
             lossFunction?: (error: TensorLike) => number): TensorLike {
+            if (error.data.length !== this.outputSize) {
+                error.data = error.data.slice(0,this.outputSize); // ReShape:
+            }
+
 
             // Apply activation derivative
             let activatedError = error.applyFunction(x => activationDerivative(x, activation));
@@ -843,6 +854,8 @@ namespace Torch {
                     let prediction = this.forward(input, activation);
                     let error = target.sub(prediction);
 
+                    error.applyFunction((x) => Math.clamp(x,-10,20))
+
                     // Compute loss using the provided function
                     let loss = lossFunction(error);
                     totalLoss += loss;
@@ -850,6 +863,7 @@ namespace Torch {
                     // Backpropagation through all layers in reverse order
                     let previousError = error;
                     let reversedLayers = this.layers.slice();
+                    
                     reversedLayers.reverse();
 
                     reversedLayers.forEach(layer => {
