@@ -4,7 +4,10 @@
  * Torch: See https://github.com/killercraft-thecoder/makecode-torch/blob/master/README.md for more detials
  */
 namespace Torch {
-
+    export interface Shape {
+        rows:number;
+        columns:number;
+    }
     /** A Activation Function */
     type ActivationFunction = Function
     /** A Generic Number Function */
@@ -18,6 +21,10 @@ namespace Torch {
     /** A `TensorLike` Object. */
     export interface TensorLike {
         data: Matrix
+        shape:Shape
+        round():TensorLike;
+        floor():TensorLike;
+        flat():number[];
         matmul(other: TensorLike): TensorLike | null
         applyFunction(func: (x: number) => number): TensorLike
         add(other: TensorLike): TensorLike
@@ -136,6 +143,8 @@ namespace Torch {
     * Represents a multi-dimensional tensor for matrix computations.
     */
     export class Tensor implements TensorLike {
+        shape:Shape
+
         /** 
          * The Data Of the Tensor
         */
@@ -146,6 +155,36 @@ namespace Torch {
         */
         constructor(data: Matrix) {
             this.data = data;
+            this.shape = {rows:data.length,columns:data[0].length}
+        }
+
+        /**
+         * Returns a new tensor with each element rounded to the nearest integer.
+         *
+         * @returns {TensorLike} A tensor with rounded values.
+         */
+        round():TensorLike {
+            return this.applyFunction((x) => Math.round(x))
+        }
+
+        /**
+         * Returns a new tensor with each element rounded down to the nearest whole number.
+         *
+         * @returns {TensorLike} A tensor with floored values.
+         */
+        floor():TensorLike {
+            return this.applyFunction((x) => Math.floor(x))
+        }
+
+        /**
+         * Flattens the 2D tensor into a 1D array in row-major order.
+         *
+         * @returns {number[]} A flat array containing all elements of the tensor.
+         */
+        flat():number[] {
+            let data:number[] = []
+            this.data.forEach((a) => a.forEach((b) => data.push(b)))
+            return data
         }
 
         /**
