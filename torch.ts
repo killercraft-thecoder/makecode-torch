@@ -480,6 +480,13 @@ namespace Torch {
                     if (lossFunction && gradient) {
                         gradient *= lossFunction(error);
                     }
+
+                    // Guard against undefined row
+                    if (!newError[j]) {
+                        newError[j] = [];   // ensure it's an array
+                    }
+
+                    // Guard against gradient being falsy
                     if (gradient) {
                         newError[j].push(gradient); // Accumulate error for next layer
                     } else {
