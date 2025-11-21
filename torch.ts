@@ -467,9 +467,13 @@ namespace Torch {
             // Apply activation derivative
             let activatedError = error.applyFunction(x => activationDerivative(x, activation));
             let newError: number[][] = [];
+            let col:number[] = [];
+            for (let i = 0; i < this.neurons[0].weights.length; i++) {
+                col.push(0)
+            }
 
             for (let i = 0; i < this.neurons.length; i++) {
-                newError.push([0]); // Properly initializes an empty array
+                newError.push(col); // Properly initializes an empty array
             }
             this.neurons.forEach((a) => a.weight_decay(this._decay))
             this.neurons.forEach((neuron, index) => {
@@ -553,7 +557,7 @@ namespace Torch {
                     learningRate = Math.max(learningRate * 0.95, 0.005);
                 }
 
-                if (!disableLogging) {
+                if (disableLogging && disableLogging as boolean == false) {
                     console.log(`Epoch ${epoch + 1}, Loss: ${totalLoss / inputs.length}`);
                 }
             }
