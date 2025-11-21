@@ -467,14 +467,10 @@ namespace Torch {
             // Apply activation derivative
             let activatedError = error.applyFunction(x => activationDerivative(x, activation));
             let newError: number[][] = [];
-            let col:number[] = [];
-            for (let i = 0; i < this.neurons[0].weights.length; i++) {
-                col.push(0)
+            for (let i = 0; i < this.neurons.length; i++) {
+                newError.push([]); // each row is a new array
             }
 
-            for (let i = 0; i < this.neurons.length; i++) {
-                newError.push(col); // Properly initializes an empty array
-            }
             this.neurons.forEach((a) => a.weight_decay(this._decay))
             this.neurons.forEach((neuron, index) => {
                 neuron.weights = neuron.weights.map((w, j) => {
