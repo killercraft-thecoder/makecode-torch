@@ -26,7 +26,7 @@ namespace Torch {
         floor():TensorLike;
         flat():number[];
         matmul(other: TensorLike): TensorLike | null
-        applyFunction(func: (x: number) => number): TensorLike
+        applyFunction(func: Function): TensorLike
         add(other: TensorLike): TensorLike
         sub(other: TensorLike): TensorLike
         sum(): number
@@ -222,7 +222,7 @@ namespace Torch {
         * @param func The function to apply to each tensor element.
         * @returns A new tensor with transformed values.
         */
-        applyFunction(func: (x: number) => number): TensorLike {
+        applyFunction(func: Function): TensorLike {
             let data = this.data;
             let result = data.map(row => row.map(func)); // Direct transformation without extra storage
             return new Torch.Tensor(result);
