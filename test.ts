@@ -56,27 +56,4 @@ function example() {
     console.log(`Average Error:${avg}`)
 }
 
-if (game.ask("Trained Model test?")) {
 example();
-} else if (game.ask("matrix Mul Spedd Test?")) {
-    game.consoleOverlay.setVisible(true);
-    let result: number[][] = [];
-    let base: number[] = []
-    for (let c = 0; c < 100; c++) {
-        base[c] = randint(1,100); // Fill with zeros
-    }
-    // then Copy and Paste the allocated Array
-    for (let r = 0; r < 100; r++) {
-        result[r] = base.slice(0)
-    }
-    for (let r = 0; r < 10;r++) {
-    let tensor1 = new Torch.Tensor(result)
-    let tensor2 = new Torch.Tensor(result)
-    let start = control.micros()
-    tensor1.matmul(tensor2)
-    let end = control.micros()
-    console.log("Time for Matrix Multiplactation for matrixs of size 100x100 with each matrix wit hrandom numbers from 0 -> 100:")
-    console.log(((end - start) / 1000) + " Milliseconds")
-    }
-}
-
