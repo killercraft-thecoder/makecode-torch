@@ -827,7 +827,7 @@ namespace Torch {
     */
     export class Sequential implements Model {
         /** Array of layers included in the model. */
-        layers: (Linear | ConvLayer)[];
+        layers: (Linear | ConvLayer | any)[];
         private _decay = 0.999;
 
         /**
